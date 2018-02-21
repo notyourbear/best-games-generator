@@ -8,7 +8,8 @@
     "test": "yarn lint && jest --coverage",
     "lint": "eslint ./dev",
     "build": "rimraf ./dist/bundle.js && ./node_modules/.bin/rollup -c",
-    "build-prod": "NODE_ENV=production yarn build"
+    "build-prod": "NODE_ENV=production yarn build",
+    "watch": "rimraf ./dist/bundle.js && ./node_modules/.bin/rollup -c -w"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",

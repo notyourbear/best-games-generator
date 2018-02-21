@@ -6,18 +6,17 @@ const parseUrl = () => {
   return showResults ? loc : []
 }
 
-const setUrl = (title, start, end) =>
-  window.location.assign(`?/${title}/${start}-${end}`)
+const setUrl = (title, amount) =>
+  window.location.assign(`?/${title}/${amount}`)
 
 function validateInputs(inputs) {
-  const initCheck = (inputs.length === 2) && inputs[1].includes('-')
+  const initCheck = inputs.length === 2
   if (initCheck === false) return false
 
-  const [title, nums] = inputs
+  const [title, num] = inputs
   if (title.length === 0) return false
 
-  const digits = nums.split('-').map(Number)
-  return digits[0] > digits[1]
+  return parseInt(num, 10) > 0
 }
 
-export default { parseUrl, setUrl }
+export default { parseUrl, setUrl, validateInputs }
