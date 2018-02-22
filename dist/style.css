@@ -24,7 +24,7 @@ form div {
   letter-spacing: 0.15rem;
   line-height: 3rem;
   margin: 2rem 0;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 form > span {
@@ -44,14 +44,13 @@ input {
 
 #title-input {
   display: block;
-  font-weight: 300;
   margin: 0 auto;
-  padding: 0.25rem;
+  padding: 0.35rem 0.15rem;
   font-size: 1rem;
 }
 
 #amount-input {
-  font-weight: 800;
+  font-weight: 700;
   padding-left: 1.5rem;
   width: 6rem;
 }
@@ -59,7 +58,7 @@ input {
 #submit-input {
   cursor: pointer;
   display: block;
-  font-weight: 800;
+  font-weight: 700;
   margin: 2rem auto 0;
   padding: 0.5rem 1rem;
 }
