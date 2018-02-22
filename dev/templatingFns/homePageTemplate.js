@@ -1,13 +1,13 @@
 const homePageTemplate = () =>
   `<form class='create-best-games'>
-    <div>
-      <input id='title-input' type='text' name='title' placeholder='Outlet Name'>
-      <span>'s </span>
-      <input id='amount-input' type='number' name='amount' placeholder='Number'>
-      <span> best games of all time. </span>
-
-      <input type='submit' name='submit' value='send'>
-    </div>
+      <input id='title-input' type='text' name='title' value='Not Polygon' autofocus>
+      <div>
+        <span> The </span>
+        <input id='amount-input' type='number' name='amount' value='50'>
+        <span> best games of all time</span>
+      </div>
+      <span> After weeks of voting and arguments, we’re ready to present our choices </span>
+      <input id='submit-input' type='submit' name='submit' value='View Now'>
    </form>`
 
 export default homePageTemplate
