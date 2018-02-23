@@ -1,35 +1,39 @@
 body {
-  background: #0f5c4f;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.logo {
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  display: block;
-  text-indent: -9999px;
-  width: 600px;
-  height: 600px;
+.background-logo {
   background: url(background.svg);
   background-size: 600px 600px;
+  height: 600px;
+  left: 50%;
+  position: absolute;
+  text-indent: -9999px;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px;
 }
 
-.create-best-games {
+.form-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: #0f5c4f;
+}
+
+.form {
   color: #fff;
   margin: 0 auto;
   max-width: 500px;
   left: 50%;
   padding: 1rem 0;
   position: absolute;
+  text-align: center;
   top: 50%;
   transform: translate(-50%,-50%);
   width: 100%;
-}
-
-form {
-  text-align: center;
 }
 
 form div {
@@ -76,6 +80,6 @@ input {
   padding: 0.5rem 1rem;
 }
 
-.create-best-games input:focus {
+.form input:focus {
 	outline: none;
 }

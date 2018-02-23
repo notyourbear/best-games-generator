@@ -31,7 +31,7 @@ function validateInputs(inputs) {
 var urlFns = { parseUrl: parseUrl, setUrl: setUrl, validateInputs: validateInputs };
 
 var homePageTemplate = function homePageTemplate() {
-  return "<form class='create-best-games'>\n      <input id='title-input' type='text' name='title' value='Not Polygon' autofocus>\n      <div>\n        <span> The </span>\n        <input id='amount-input' type='number' name='amount' value='50'>\n        <span> best games of all time</span>\n      </div>\n      <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n      <input id='submit-input' type='submit' name='submit' value='View Now'>\n   </form>";
+  return " <div class='form-container'>\n      <div class=\"background-logo\"></div>\n      <form class='form'>\n        <input id='title-input' type='text' name='title' value='Not Polygon' autofocus>\n        <div>\n          <span> The </span>\n          <input id='amount-input' type='number' name='amount' value='50'>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id='submit-input' type='submit' name='submit' value='View Now'>\n     </form>\n     </div>";
 };
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
