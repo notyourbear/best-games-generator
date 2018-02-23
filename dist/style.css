@@ -7,13 +7,13 @@ body {
   left: 50%;
   position: absolute;
   top: 50%;
-  transform: translate(-55%,-52.5%);
+  transform: translate(-50%,-50%);
   display: block;
   text-indent: -9999px;
-  width: 565px;
-  height: 565px;
+  width: 600px;
+  height: 600px;
   background: url(background.svg);
-  background-size: 565px 565px;
+  background-size: 600px 600px;
 }
 
 .create-best-games {
@@ -43,7 +43,7 @@ form div {
 form > span {
   font-size: 1.25rem;
   margin: 2rem 0;
-  font-weight: 500;
+  font-weight: 600;
   font-style: italic;
 }
 
