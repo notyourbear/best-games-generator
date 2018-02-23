@@ -1,6 +1,19 @@
 body {
-  background: green;
+  background: #0f5c4f;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.logo {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-55%,-52.5%);
+  display: block;
+  text-indent: -9999px;
+  width: 565px;
+  height: 565px;
+  background: url(background.svg);
+  background-size: 565px 565px;
 }
 
 .create-best-games {
