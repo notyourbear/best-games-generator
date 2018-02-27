@@ -4,7 +4,6 @@ import urlFns from '../urlFunctions'
 const paintHomePage = container => {
   container.innerHTML = ''
   container.innerHTML = homePageTemplate()
-  console.log('paint')
 
   const form = container.querySelector('.create-best-games')
 
@@ -18,8 +17,6 @@ const paintHomePage = container => {
 
     if (urlFns.validateInputs(data)) {
       urlFns.setUrl(...data)
-    } else {
-      console.log('false', data)
     }
   })
 }
