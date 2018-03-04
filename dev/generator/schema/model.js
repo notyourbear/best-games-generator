@@ -1,6 +1,7 @@
 const model = {
   adjective: {
-    evocative: ['evocative', 'dream-like', 'realistic', 'gorgeous']
+    evocative: ['evocative', 'dream-like', 'realistic', 'gorgeous'],
+    open: ['open', 'sweeping', 'extensive']
   },
   noun: {
     ability: ['mastery', 'profoundness', 'depth', 'acumen'],
