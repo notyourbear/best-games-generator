@@ -2,7 +2,7 @@ import seedrandom from 'seedrandom';
 
 const sample = ({ array, seed }) => {
   const rng = seed ? seedrandom(seed) : seedrandom();
-  const index = Math.floor(rng() * array.length - 1);
+  const index = Math.floor(rng() * array.length);
   return array[index];
 }
 
@@ -16,9 +16,9 @@ const MarkovNode = ({entry, exit, value}) => {
   return Object.assign(state, { entry, exit, value});
 };
 
-const arrayMaker = ({sentence, type='word'}) => {
-  if (type === 'word') return sentence.split(' ');
-}
+const arrayMaker = ({input}) => {
+  return input.split(' ');
+};
 
 const addToState = ({array, state = {}}) => {
   array.forEach((item, i) => {
