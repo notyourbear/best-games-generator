@@ -3,6 +3,7 @@ import seedrandom from 'seedrandom';
 const sample = ({ array, seed }) => {
   const rng = seed ? seedrandom(seed) : seedrandom();
   const index = Math.floor(rng() * array.length);
+  console.log({index})
   return array[index];
 }
 
@@ -41,18 +42,25 @@ const addToState = ({array, state = {}}) => {
   return state;
 }
 
-const getItem = state => sample(sample(state));
+const getItem = ({state, seed}) => {
+  let array = Array.isArray(state) ?
+    sample({array: state, seed}) :
+    sample({array: Object.values(state), seed});
+
+  return sample({array, seed});
+}
+
 const switcher = direction => (direction === 'prev' ? 'next' : 'prev');
 
-const createChain = ({state, amount}) => {
+const createChain = ({state, amount, seed}) => {
   let haveStart = false;
   let haveEnd = false;
   let direction = 'prev';
   let i = 0;
 
-  let item = getItem(state);
+  let item = getItem({seed, state});
   while (item.next === true && item.prev === true) {
-    item = getItem(state);
+    item = getItem({seed, state});
   }
 
   let sentence = '';
@@ -63,7 +71,7 @@ const createChain = ({state, amount}) => {
     if (haveStart && direction === 'prev') continue;
     if (haveEnd && direction === 'next') continue;
 
-    item = getItem(state)
+    item = getItem({seed, state})
     sentence = direction === 'prev' ? `${item.value} ${sentence}` : `${sentence} ${item.value}`;
 
     haveStart = item.entry === true;
@@ -73,18 +81,18 @@ const createChain = ({state, amount}) => {
   }
 
   if (haveStart === false) {
-    let item = getItem(state);
+    let item = getItem({seed, state});
     while(item.entry !== true) {
-      item = getItem(state);
+      item = getItem({seed, state});
     }
 
     sentence = `${item.prev} ${sentence}`;
   }
 
   if (haveEnd === false) {
-    let item = getItem(state);
+    let item = getItem({seed, state});
     while(item.exit !== true) {
-      item = getItem(state);
+      item = getItem({seed, state});
     }
     sentence = `${sentence} ${item.next}`;
   }

@@ -30,4 +30,53 @@ describe('title generator functions', () => {
       expect(result).toEqual(4);
     });
   });
+
+  describe('addToState', () => {
+    test('creates a state with three items', () => {
+      const array = ['hey', 'you', 'there'];
+      const expected = {
+        hey: [{
+          entry: true,
+          exit: false,
+          value: 'hey'
+        }],
+        you: [{
+          entry: false,
+          exit: false,
+          value: 'you'
+        }],
+        there: [{
+          entry: false,
+          exit: true,
+          value: 'there'
+        }]
+      };
+
+      expect(fns.addToState({array})).toEqual(expect.objectContaining(expected));
+    });
+  });
+
+  describe('createChain', () => {
+    const state = {
+      hey: [{
+        entry: true,
+        exit: false,
+        value: 'hey'
+      }],
+      you: [{
+        entry: false,
+        exit: false,
+        value: 'you'
+      }],
+      there: [{
+        entry: false,
+        exit: true,
+        value: 'there'
+      }]
+    };
+
+    expect(fns.createChain({state, amount: 1})).toEqual('hey')
+
+
+  })
 });
