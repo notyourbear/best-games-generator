@@ -16,11 +16,11 @@ const MarkovNode = ({entry, exit, value}) => {
   return Object.assign(state, { entry, exit, value});
 };
 
-const arrayMaker = ({sentence, amount, type='word'}) => {
+const arrayMaker = ({sentence, type='word'}) => {
   if (type === 'word') return sentence.split(' ');
 }
 
-const addToState = ({amount, array, state = {}}) => {
+const addToState = ({array, state = {}}) => {
   array.forEach((item, i) => {
     let nexti = i + 1;
     let previ = i - 1;
@@ -44,7 +44,7 @@ const addToState = ({amount, array, state = {}}) => {
 const getItem = state => sample(sample(state));
 const switcher = direction => (direction === 'prev' ? 'next' : 'prev');
 
-const createChain = ({state, amount, type}) => {
+const createChain = ({state, amount}) => {
   let haveStart = false;
   let haveEnd = false;
   let direction = 'prev';
@@ -94,6 +94,7 @@ const createChain = ({state, amount, type}) => {
 
 export default {
   sample,
+  addToState,
   MarkovNode,
   arrayMaker,
   createChain,
