@@ -16,6 +16,15 @@ describe('title generator functions', () => {
     });
   });
 
+  describe('getPart', () => {
+    test('return a unique part', () => {
+      const state = ['hello', 'world'];
+      const array = ['hello'];
+      const result = fns.getPart({array, state});
+      expect(result).toBe('world');
+    });
+  });
+
   describe('sample', () => {
     test('returns a random item from array', () => {
       const array = [1,2,3];
@@ -35,21 +44,25 @@ describe('title generator functions', () => {
     test('creates a state with three items', () => {
       const array = ['hey', 'you', 'there'];
       const expected = {
-        hey: [{
-          entry: true,
-          exit: false,
-          value: 'hey'
-        }],
-        you: [{
-          entry: false,
-          exit: false,
-          value: 'you'
-        }],
-        there: [{
-          entry: false,
-          exit: true,
-          value: 'there'
-        }]
+        entry: ['hey'],
+        exit: ['there'],
+        node: {
+          hey: [{
+            entry: true,
+            exit: false,
+            value: 'hey'
+          }],
+          you: [{
+            entry: false,
+            exit: false,
+            value: 'you'
+          }],
+          there: [{
+            entry: false,
+            exit: true,
+            value: 'there'
+          }]
+        }
       };
 
       expect(fns.addToState({array})).toEqual(expect.objectContaining(expected));
@@ -58,25 +71,47 @@ describe('title generator functions', () => {
 
   describe('createChain', () => {
     const state = {
-      hey: [{
-        entry: true,
-        exit: false,
-        value: 'hey'
-      }],
-      you: [{
-        entry: false,
-        exit: false,
-        value: 'you'
-      }],
-      there: [{
-        entry: false,
-        exit: true,
-        value: 'there'
-      }]
+      entry: ['hey', 'hello'],
+      exit: ['there', 'where'],
+      node: {
+        hey: [{
+          entry: true,
+          exit: false,
+          value: 'hey'
+        }],
+        hello: [{
+          entry: true,
+          exit: false,
+          value: 'hello'
+        }],
+        you: [{
+          entry: false,
+          exit: false,
+          value: 'you'
+        }],
+        are: [{
+          entry: false,
+          exit: false,
+          value: 'are'
+        }],
+        out: [{
+          entry: false,
+          exit: false,
+          value: 'out'
+        }],
+        there: [{
+          entry: false,
+          exit: true,
+          value: 'there'
+        }],
+        where: [{
+          entry: false,
+          exit: true,
+          value: 'where'
+        }]
+      }
     };
 
-    expect(fns.createChain({state, amount: 1})).toEqual('hey')
-
-
-  })
+    expect(fns.createChain({state, amount: 1, seed: 'anybody'})).toEqual('hey where')
+  });
 });

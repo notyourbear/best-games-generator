@@ -3,44 +3,38 @@ import seedrandom from 'seedrandom';
 const sample = ({ array, seed }) => {
   const rng = seed ? seedrandom(seed) : seedrandom();
   const index = Math.floor(rng() * array.length);
-  console.log({index})
   return array[index];
 }
 
-const MarkovNode = ({entry, exit, value}) => {
-  const state = {
-    entry: false,
-    exit: false,
-    value: null
-  };
+const arrayMaker = ({input}) => input.split(' ');
 
-  return Object.assign(state, { entry, exit, value});
-};
-
-const arrayMaker = ({input}) => {
-  return input.split(' ');
-};
-
-const addToState = ({array, state = {}}) => {
-  array.forEach((item, i) => {
+const addToState = ({array, state = { entry: [], exit: [], node: {}}}) => {
+  array.forEach((value, i) => {
     let nexti = i + 1;
     let previ = i - 1;
 
-    const nodeState = {
+    const node = {
+      value,
       entry: false,
-      exit: false,
-      value: item
+      exit: false
     };
 
-    if (previ < 0) nodeState.entry = true;
-    if (nexti >= array.length) nodeState.exit = true;
+    if (previ < 0) {
+      node.entry = true;
+      state.entry.push(value);
+    }
 
-    if (state[item] === undefined) state[item] = [];
-    state[item].push(MarkovNode(nodeState));
+    if (nexti >= array.length) {
+      node.exit = true;
+      state.exit.push(value);
+    }
+
+    if (state.node[value] === undefined) state.node[value] = [];
+    state.node[value].push(node);
   });
 
   return state;
-}
+};
 
 const getItem = ({state, seed}) => {
   let array = Array.isArray(state) ?
@@ -48,7 +42,7 @@ const getItem = ({state, seed}) => {
     sample({array: Object.values(state), seed});
 
   return sample({array, seed});
-}
+};
 
 const switcher = direction => (direction === 'prev' ? 'next' : 'prev');
 
@@ -57,13 +51,13 @@ const createChain = ({state, amount, seed}) => {
   let haveEnd = false;
   let direction = 'prev';
   let i = 0;
+  let item = getItem({seed, state: state.node});
 
-  let item = getItem({seed, state});
   while (item.next === true && item.prev === true) {
-    item = getItem({seed, state});
+    item = getItem({seed, state: state.node});
   }
 
-  let sentence = '';
+  let parts = [];
 
   while (i < amount) {
     direction = switcher(direction);
@@ -71,9 +65,11 @@ const createChain = ({state, amount, seed}) => {
     if (haveStart && direction === 'prev') continue;
     if (haveEnd && direction === 'next') continue;
 
-    item = getItem({seed, state})
-    sentence = direction === 'prev' ? `${item.value} ${sentence}` : `${sentence} ${item.value}`;
+    item = getItem({seed: seed + i, state: state.node});
+    if (parts.includes(item.value)) continue;
 
+    if (direction === 'prev') parts.push(item.value);
+    if (direction === 'next') parts.unshift(item.value);
     haveStart = item.entry === true;
     haveEnd = item.exit === true;
 
@@ -81,29 +77,39 @@ const createChain = ({state, amount, seed}) => {
   }
 
   if (haveStart === false) {
-    let item = getItem({seed, state});
-    while(item.entry !== true) {
-      item = getItem({seed, state});
-    }
-
-    sentence = `${item.prev} ${sentence}`;
+    let v = getPart({array: parts, state: state.entry, seed});
+    parts.unshift(v);
   }
 
   if (haveEnd === false) {
-    let item = getItem({seed, state});
-    while(item.exit !== true) {
-      item = getItem({seed, state});
-    }
-    sentence = `${sentence} ${item.next}`;
+    let v = getPart({array: parts, state: state.exit, seed});
+    parts.push(v);
   }
 
-  return sentence;
+  if (i < amount) {
+    let v = getPart({array: parts, state: state.exit, seed});
+    parts.push(v);
+  }
+
+  return parts.join(' ');
 };
+
+const getPart = ({array, state, seed}) => {
+  let value = sample({array: state, seed});
+  let i = 0;
+
+  while (array.includes(value)) {
+    value = sample({array: state, seed: seed + i});
+    i++;
+  }
+
+  return value;
+}
 
 export default {
   sample,
+  getPart,
   addToState,
-  MarkovNode,
   arrayMaker,
   createChain,
   getItem,
