@@ -55,6 +55,8 @@ const createChain = ({state, amount, seed}) => {
 
   while (item.next === true && item.prev === true) {
     item = getItem({seed, state: state.node});
+    haveStart = item.entry === true;
+    haveEnd = item.exit === true;
   }
 
   let parts = [];
