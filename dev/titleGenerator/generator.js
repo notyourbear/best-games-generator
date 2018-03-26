@@ -8,7 +8,7 @@ const populateState = ({array, state}) => {
   });
 };
 
-const create = ({state}) => (options = { amount: 2 }) => {
+const create = ({state}) => (options = { amount: 3 }) => {
   let { amount, seed } = options;
   return fns.createChain({state, amount, seed});
 }
