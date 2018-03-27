@@ -11,7 +11,7 @@ describe('Markov', () => {
     const gen = Markov();
     let unique = true;
     let prev;
-    for(let i = 0; i < 30; i++) {
+    for(let i = 0; i < 20; i++) {
       const val = gen.create();
       if (i !== 0) {
         unique = prev !== val;
