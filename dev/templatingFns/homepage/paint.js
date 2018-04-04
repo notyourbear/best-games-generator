@@ -6,8 +6,9 @@ const paintHomePage = container => {
   container.innerHTML = homePageTemplate();
 
   const form = container.querySelector('.create-best-games');
-
+  console.log({form})
   form.addEventListener('submit', e => {
+    console.log({e, form})
     e.preventDefault();
     const inputs = ['title', 'amount'];
     const data = inputs.map((id, i) => {

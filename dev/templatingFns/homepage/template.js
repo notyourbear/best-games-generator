@@ -1,7 +1,7 @@
 const homePageTemplate = () =>
   ` <div class='form-container'>
       <div class="background-logo"></div>
-      <form class='form'>
+      <form class='form create-best-games'>
         <input id='title-input' type='text' name='title' value='Not Polygon' autofocus>
         <div>
           <span> The </span>
