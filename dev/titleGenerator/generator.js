@@ -13,7 +13,6 @@ const create = ({state}) => (options = { amount: 2 }) => {
   return fns.createChain({state, amount, seed});
 }
 
-
 const Markov = () => {
   const state = {
     entry: [],

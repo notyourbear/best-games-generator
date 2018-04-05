@@ -19,10 +19,15 @@ if (isHomePage) {
 
   let list = [];
   for (let i = number; i > 0; i--) {
-    let seed = title+1;
-    let item = {};
-    item.title = Title.create({amount: 1, seed});
-    item.releases = consoleGenerator({amount: 3, seed});
+    let seed = title+i;
+    let item = {
+      title: Title.create({amount: 1, seed}),
+      releases: consoleGenerator({amount: 3, seed}),
+      number: i
+    };
+
+    list.push(item);
   }
+  console.log({list})
   paintListPage(container, list);
 }
