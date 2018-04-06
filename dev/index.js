@@ -22,7 +22,9 @@ if (isHomePage) {
     let seed = title+i;
     let item = {
       title: Title.create({amount: 1, seed}),
-      releases: consoleGenerator({amount: 3, seed}),
+      releases: consoleGenerator({amount: 3, seed}).reduce((str, console, i) => {
+        return i === 0 ? `${console}` : `${str}, ${console}`;
+      }, ''),
       number: i
     };
 
