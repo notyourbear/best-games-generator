@@ -1,9 +1,9 @@
-import consoles from './consoles.js';
+import systems from './systems.js';
 import fns from '../titleGenerator/fns.js';
 
 const generator = (obj = {}) => {
   let {amount, seed} = obj;
-  const consoleArray = Object.values(consoles);
+  const consoleArray = Object.values(systems);
   const generation = fns.sample({array: consoleArray, seed}).slice();
 
   if (amount === undefined) {
