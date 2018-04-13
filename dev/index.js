@@ -3,7 +3,7 @@ import paintHomePage from './templatingFns/homepage/paint';
 import paintListPage from  './templatingFns/listpage/paint';
 
 import titleGenerator from './titleGenerator/generator';
-import consoleGenerator from './consoleGenerator/generator';
+import systemsGenerator from './systemsGenerator/generator';
 
 const parsedUrl = urlFns.parseUrl();
 const isHomePage = parsedUrl.length === 0;
@@ -20,11 +20,15 @@ if (isHomePage) {
   let list = [];
   for (let i = number; i > 0; i--) {
     let seed = title+i;
+    let title = Title.create({seed, amount: 2});
+    let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
+
     let item = {
-      title: Title.create({amount: 1, seed}),
-      releases: consoleGenerator({amount: 3, seed}).reduce((str, console, i) => {
+      title,
+      releases: systems.reduce((str, console, i) => {
         return i === 0 ? `${console}` : `${str}, ${console}`;
       }, ''),
+      releaseDate,
       number: i
     };
 
