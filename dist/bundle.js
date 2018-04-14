@@ -1337,6 +1337,7 @@ if (isHomePage) {
   for (var i = number; i > 0; i--) {
     var seed = siteName + i;
     var title = Title.create({ seed: seed, amount: 2 });
+    // let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
     var _systemsGenerator = generator({ seed: seed, title: title }),
         systems$1 = _systemsGenerator.systems,

@@ -21,7 +21,9 @@ if (isHomePage) {
   for (let i = number; i > 0; i--) {
     let seed = siteName+i;
     let title = Title.create({seed, amount: 2});
-    let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
+    // let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
+    let { systems, releaseDate } = systemsGenerator({seed, title});
+
 
     let item = {
       title,
