@@ -18,7 +18,6 @@ describe('Markov', () => {
       }
       if (unique === false) break;
       prev = val;
-      console.log(val)
     }
 
     expect(unique).toBe(true);
