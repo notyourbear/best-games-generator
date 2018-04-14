@@ -1287,10 +1287,13 @@ var generator = function generator() {
   }
 
   var plats = [];
+  var list = systems$$1.slice();
+
   for (var i = 0; i < amount; i++) {
-    var console = fns.sample({ array: systems$$1, seed: seed });
-    var consoleIndex = systems$$1.indexOf(console);
-    plats.push(systems$$1.splice(consoleIndex, 1).pop());
+    var plat = fns.sample({ array: list, seed: seed });
+    var platIndex = list.indexOf(plat);
+    plats.push(plat);
+    list.splice(platIndex, 1);
   }
 
   result.systems = plats;
@@ -1334,7 +1337,6 @@ if (isHomePage) {
 
     list.push(item);
   }
-  console.log({ list: list });
   paintListPage(container, list);
 }
 

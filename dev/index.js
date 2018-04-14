@@ -34,6 +34,5 @@ if (isHomePage) {
 
     list.push(item);
   }
-  console.log({list})
   paintListPage(container, list);
 }
