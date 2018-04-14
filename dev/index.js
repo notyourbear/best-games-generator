@@ -1,12 +1,14 @@
 import urlFns from './urlFunctions';
 import paintHomePage from './templatingFns/homepage/paint';
 import paintListPage from  './templatingFns/listpage/paint';
+import formEvent from './templatingFns/formEvent';
 
 import titleGenerator from './titleGenerator/generator';
 import systemsGenerator from './systemsGenerator/generator';
 
 const parsedUrl = urlFns.parseUrl();
 const isHomePage = parsedUrl.length === 0;
+
 const container = document.querySelector('.container');
 
 if (isHomePage) {
@@ -33,4 +35,9 @@ if (isHomePage) {
     list.push(item);
   }
   paintListPage({container, list, title: siteName, amount: number});
+  setTimeout(() => {
+    document.querySelector("ul").scrollIntoView({behavior: 'smooth'});
+  }, 100);
 }
+
+formEvent();

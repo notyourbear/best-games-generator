@@ -39,27 +39,9 @@ var homePageTemplate = function homePageTemplate() {
   return ' <div class=\'form-container\'>\n      <div class="background-logo"></div>\n      <form class=\'form create-best-games\'>\n        <input id=\'title-input\' type=\'text\' name=\'title\' value=\'' + title + '\' autofocus>\n        <div>\n          <span> The </span>\n          <input id=\'amount-input\' type=\'number\' name=\'amount\' value=' + number + '>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id=\'submit-input\' type=\'submit\' name=\'submit\' value=\'View Now\'>\n     </form>\n     </div>';
 };
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 var paintHomePage = function paintHomePage(container) {
   container.innerHTML = '';
   container.innerHTML = homePageTemplate();
-
-  var form = container.querySelector('.create-best-games');
-  console.log({ form: form });
-  form.addEventListener('submit', function (e) {
-    console.log({ e: e, form: form });
-    e.preventDefault();
-    var inputs = ['title', 'amount'];
-    var data = inputs.map(function (id, i) {
-      var input = document.querySelector('#' + id + '-input');
-      return i === 0 ? input.value : parseInt(input.value, 10);
-    });
-
-    if (urlFns.validateInputs(data)) {
-      urlFns.setUrl.apply(urlFns, _toConsumableArray(data));
-    }
-  });
 };
 
 var itemTemplate = function itemTemplate(_ref) {
@@ -90,6 +72,26 @@ var paintListPage = function paintListPage(_ref) {
   container.innerHTML = '';
 
   container.innerHTML = listTemplate({ list: list, title: title, number: number });
+};
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var formEvent = function formEvent() {
+  var form = document.querySelector('form');
+  console.log({ form: form });
+  form.addEventListener('submit', function (e) {
+    console.log({ e: e, form: form });
+    e.preventDefault();
+    var inputs = ['title', 'amount'];
+    var data = inputs.map(function (id, i) {
+      var input = document.querySelector('#' + id + '-input');
+      return i === 0 ? input.value : parseInt(input.value, 10);
+    });
+
+    if (urlFns.validateInputs(data)) {
+      urlFns.setUrl.apply(urlFns, _toConsumableArray(data));
+    }
+  });
 };
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -1319,6 +1321,7 @@ var _slicedToArray$2 = function () { function sliceIterator(arr, i) { var _arr =
 
 var parsedUrl = urlFns.parseUrl();
 var isHomePage = parsedUrl.length === 0;
+
 var container = document.querySelector('.container');
 
 if (isHomePage) {
@@ -1351,6 +1354,11 @@ if (isHomePage) {
     list.push(item);
   }
   paintListPage({ container: container, list: list, title: siteName, amount: number });
+  setTimeout(function () {
+    document.querySelector("ul").scrollIntoView({ behavior: 'smooth' });
+  }, 100);
 }
+
+formEvent();
 
 }());
