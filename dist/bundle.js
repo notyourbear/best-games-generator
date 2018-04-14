@@ -31,7 +31,12 @@ function validateInputs(inputs) {
 var urlFns = { parseUrl: parseUrl, setUrl: setUrl, validateInputs: validateInputs };
 
 var homePageTemplate = function homePageTemplate() {
-  return " <div class='form-container'>\n      <div class=\"background-logo\"></div>\n      <form class='form create-best-games'>\n        <input id='title-input' type='text' name='title' value='Not Polygon' autofocus>\n        <div>\n          <span> The </span>\n          <input id='amount-input' type='number' name='amount' value='50'>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id='submit-input' type='submit' name='submit' value='View Now'>\n     </form>\n     </div>";
+  var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var title = obj.title || 'Not Polygon';
+  var number = obj.number || 50;
+
+  return ' <div class=\'form-container\'>\n      <div class="background-logo"></div>\n      <form class=\'form create-best-games\'>\n        <input id=\'title-input\' type=\'text\' name=\'title\' value=\'' + title + '\' autofocus>\n        <div>\n          <span> The </span>\n          <input id=\'amount-input\' type=\'number\' name=\'amount\' value=' + number + '>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id=\'submit-input\' type=\'submit\' name=\'submit\' value=\'View Now\'>\n     </form>\n     </div>';
 };
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -63,18 +68,28 @@ var itemTemplate = function itemTemplate(_ref) {
 };
 
 var listTemplate = function listTemplate(_ref) {
-  var list = _ref.list;
+  var list = _ref.list,
+      title = _ref.title,
+      number = _ref.number;
 
+  var template = homePageTemplate({ title: title, number: number });
   var ul = '<ul>';
   list.forEach(function (item) {
     return ul += itemTemplate({ item: item });
   });
-  return ul += '</ul>';
+  ul += '</ul>';
+  return template + ul;
 };
 
-var paintListPage = function paintListPage(container, list) {
+var paintListPage = function paintListPage(_ref) {
+  var container = _ref.container,
+      list = _ref.list,
+      title = _ref.title,
+      number = _ref.number;
+
   container.innerHTML = '';
-  container.innerHTML = listTemplate({ list: list });
+
+  container.innerHTML = listTemplate({ list: list, title: title, number: number });
 };
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -1306,28 +1321,26 @@ var parsedUrl = urlFns.parseUrl();
 var isHomePage = parsedUrl.length === 0;
 var container = document.querySelector('.container');
 
-console.log({ parsedUrl: parsedUrl });
-
 if (isHomePage) {
   paintHomePage(container);
 } else {
   var _parsedUrl = _slicedToArray$2(parsedUrl, 2),
-      title = _parsedUrl[0],
+      siteName = _parsedUrl[0],
       number = _parsedUrl[1];
 
   var Title = Markov();
 
   var list = [];
   for (var i = number; i > 0; i--) {
-    var seed = _title + i;
-    var _title = Title.create({ seed: seed, amount: 2 });
+    var seed = siteName + i;
+    var title = Title.create({ seed: seed, amount: 2 });
 
-    var _systemsGenerator = generator({ seed: seed, title: _title }),
+    var _systemsGenerator = generator({ seed: seed, title: title }),
         systems$1 = _systemsGenerator.systems,
         releaseDate = _systemsGenerator.releaseDate;
 
     var item = {
-      title: _title,
+      title: title,
       releases: systems$1.reduce(function (str, console, i) {
         return i === 0 ? '' + console : str + ', ' + console;
       }, ''),
@@ -1337,7 +1350,7 @@ if (isHomePage) {
 
     list.push(item);
   }
-  paintListPage(container, list);
+  paintListPage({ container: container, list: list, title: siteName, amount: number });
 }
 
 }());

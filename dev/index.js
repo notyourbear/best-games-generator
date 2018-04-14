@@ -9,17 +9,15 @@ const parsedUrl = urlFns.parseUrl();
 const isHomePage = parsedUrl.length === 0;
 const container = document.querySelector('.container');
 
-console.log({parsedUrl});
-
 if (isHomePage) {
   paintHomePage(container);
 } else {
-  let [title, number] = parsedUrl;
+  let [siteName, number] = parsedUrl;
   let Title = titleGenerator();
 
   let list = [];
   for (let i = number; i > 0; i--) {
-    let seed = title+i;
+    let seed = siteName+i;
     let title = Title.create({seed, amount: 2});
     let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
@@ -34,5 +32,5 @@ if (isHomePage) {
 
     list.push(item);
   }
-  paintListPage(container, list);
+  paintListPage({container, list, title: siteName, amount: number});
 }

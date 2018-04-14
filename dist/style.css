@@ -87,7 +87,12 @@ input {
 
 ul {
   list-style-type: none;
-  margin: 0 auto;
+  position: absolute;
+  top: 100vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   padding: 0;
   width: 450px;
 }
