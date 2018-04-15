@@ -5,6 +5,7 @@ import formEvent from './templatingFns/formEvent';
 
 import titleGenerator from './titleGenerator/generator';
 import systemsGenerator from './systemsGenerator/generator';
+import textGenerator from './textGenerator/generator';
 
 const parsedUrl = urlFns.parseUrl();
 const isHomePage = parsedUrl.length === 0;
@@ -21,9 +22,11 @@ if (isHomePage) {
   for (let i = number; i > 0; i--) {
     let seed = siteName+i;
     let title = Title.create({seed, amount: 2});
-    // let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
-    let { systems, releaseDate } = systemsGenerator({seed, title});
+    let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
+    let text = textGenerator({seed, title, platform: systems, type: consoleType});
+
+    console.log({text})
 
     let item = {
       title,

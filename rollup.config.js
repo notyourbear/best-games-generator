@@ -14,7 +14,8 @@ export default {
     file: 'dist/bundle.js',
     format: 'iife',
     globals: {
-      seedrandom: 'seedrandom'
+      seedrandom: '*',
+      deutung: '*'
     }
   },
   plugins: [
