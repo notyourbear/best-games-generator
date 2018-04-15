@@ -28,9 +28,8 @@ const generator = ({title, platform, type, seed}) => {
   }, '');
 
   const schema = { model, grammar, entry };
-  console.log({schema})
 
-  return Deutung(schema);
+  return Deutung(schema, {seed}).compiled;
 };
 
 export default generator;

@@ -104,7 +104,7 @@ var paintHomePage = function paintHomePage(container) {
 
 var itemTemplate = function itemTemplate(_ref) {
   var item = _ref.item;
-  return "<li>\n    <h2>" + item.number + ". " + item.title + "</h2>\n    <p>(" + item.releaseDate + ", " + item.releases + ")</p>\n    <p>these are words. they are a lot of words. then there are more words. how amazing.</p>\n  </li>";
+  return "<li>\n    <h2>" + item.number + ". " + item.title + "</h2>\n    <p>(" + item.releaseDate + ", " + item.releases + ")</p>\n    <p>" + item.text + "</p>\n  </li>";
 };
 
 var listTemplate = function listTemplate(_ref) {
@@ -150,9 +150,7 @@ var formEvent = function formEvent() {
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function commonjsRequire () {
-	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
-}
+
 
 
 
@@ -1055,58 +1053,6 @@ if (('object') == 'object' && module.exports) {
 );
 });
 
-// A library of seedable RNGs implemented in Javascript.
-//
-// Usage:
-//
-// var seedrandom = require('seedrandom');
-// var random = seedrandom(1); // or any seed.
-// var x = random();       // 0 <= x < 1.  Every bit is random.
-// var x = random.quick(); // 0 <= x < 1.  32 bits of randomness.
-
-// alea, a 53-bit multiply-with-carry generator by Johannes Baagøe.
-// Period: ~2^116
-// Reported to pass all BigCrush tests.
-
-
-// xor128, a pure xor-shift generator by George Marsaglia.
-// Period: 2^128-1.
-// Reported to fail: MatrixRank and LinearComp.
-
-
-// xorwow, George Marsaglia's 160-bit xor-shift combined plus weyl.
-// Period: 2^192-2^32
-// Reported to fail: CollisionOver, SimpPoker, and LinearComp.
-
-
-// xorshift7, by François Panneton and Pierre L'ecuyer, takes
-// a different approach: it adds robustness by allowing more shifts
-// than Marsaglia's original three.  It is a 7-shift generator
-// with 256 bits, that passes BigCrush with no systmatic failures.
-// Period 2^256-1.
-// No systematic BigCrush failures reported.
-
-
-// xor4096, by Richard Brent, is a 4096-bit xor-shift with a
-// very long period that also adds a Weyl generator. It also passes
-// BigCrush with no systematic failures.  Its long period may
-// be useful if you have many generators and need to avoid
-// collisions.
-// Period: 2^4128-2^32.
-// No systematic BigCrush failures reported.
-
-
-// Tyche-i, by Samuel Neves and Filipe Araujo, is a bit-shifting random
-// number generator derived from ChaCha, a modern stream cipher.
-// https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
-// Period: ~2^127
-// No systematic BigCrush failures reported.
-
-
-// The original ARC4-based prng included in this library.
-// Period: ~2^1600
-
-
 seedrandom.alea = alea;
 seedrandom.xor128 = xor128;
 seedrandom.xorwow = xorwow;
@@ -1423,12 +1369,36 @@ var generator = function generator() {
   return result;
 };
 
-var pluralize = createCommonjsModule(function (module, exports) {
+var deutung = createCommonjsModule(function (module, exports) {
+(function (global, factory) {
+	factory();
+}(commonjsGlobal, (function () { var compiler = function compiler(grammar, replacementsArray) {
+  var regex = /::\.|[^ ]*::/;
+  var string = grammar;
+
+  return replacementsArray.reduce(function (result, replacement) {
+    return result.replace(regex, replacement);
+  }, string);
+};
+
+var commonjsGlobal$$1 = typeof window !== 'undefined' ? window : typeof commonjsGlobal !== 'undefined' ? commonjsGlobal : typeof self !== 'undefined' ? self : {};
+
+function commonjsRequire$$1 () {
+	throw new Error('Dynamic requires are not currently supported by rollup-plugin-commonjs');
+}
+
+
+
+function createCommonjsModule$$1(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var pluralize = createCommonjsModule$$1(function (module, exports) {
 /* global define */
 
 (function (root, pluralize) {
   /* istanbul ignore else */
-  if (typeof commonjsRequire === 'function' && 'object' === 'object' && 'object' === 'object') {
+  if (typeof commonjsRequire$$1 === 'function' && 'object' === 'object' && 'object' === 'object') {
     // Node.
     module.exports = pluralize();
   } else if (typeof undefined === 'function' && undefined.amd) {
@@ -1440,7 +1410,7 @@ var pluralize = createCommonjsModule(function (module, exports) {
     // Browser global.
     root.pluralize = pluralize();
   }
-})(commonjsGlobal, function () {
+})(commonjsGlobal$$1, function () {
   // Rule storage - pluralize and singularize need to be run sequentially,
   // while other rules can be optimized using an object for instant lookups.
   var pluralRules = [];
@@ -1916,9 +1886,1185 @@ var pluralize = createCommonjsModule(function (module, exports) {
 });
 });
 
-var global$1 = typeof global !== "undefined" ? global :
+var alea = createCommonjsModule$$1(function (module) {
+// A port of an algorithm by Johannes Baagøe <baagoe@baagoe.com>, 2010
+// http://baagoe.com/en/RandomMusings/javascript/
+// https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
+// Original work is under MIT license -
+
+// Copyright (C) 2010 by Johannes Baagøe <baagoe@baagoe.org>
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+
+
+(function(global, module, define) {
+
+function Alea(seed) {
+  var me = this, mash = Mash();
+
+  me.next = function() {
+    var t = 2091639 * me.s0 + me.c * 2.3283064365386963e-10; // 2^-32
+    me.s0 = me.s1;
+    me.s1 = me.s2;
+    return me.s2 = t - (me.c = t | 0);
+  };
+
+  // Apply the seeding algorithm from Baagoe.
+  me.c = 1;
+  me.s0 = mash(' ');
+  me.s1 = mash(' ');
+  me.s2 = mash(' ');
+  me.s0 -= mash(seed);
+  if (me.s0 < 0) { me.s0 += 1; }
+  me.s1 -= mash(seed);
+  if (me.s1 < 0) { me.s1 += 1; }
+  me.s2 -= mash(seed);
+  if (me.s2 < 0) { me.s2 += 1; }
+  mash = null;
+}
+
+function copy(f, t) {
+  t.c = f.c;
+  t.s0 = f.s0;
+  t.s1 = f.s1;
+  t.s2 = f.s2;
+  return t;
+}
+
+function impl(seed, opts) {
+  var xg = new Alea(seed),
+      state = opts && opts.state,
+      prng = xg.next;
+  prng.int32 = function() { return (xg.next() * 0x100000000) | 0; };
+  prng.double = function() {
+    return prng() + (prng() * 0x200000 | 0) * 1.1102230246251565e-16; // 2^-53
+  };
+  prng.quick = prng;
+  if (state) {
+    if (typeof(state) == 'object') copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+function Mash() {
+  var n = 0xefc8249d;
+
+  var mash = function(data) {
+    data = data.toString();
+    for (var i = 0; i < data.length; i++) {
+      n += data.charCodeAt(i);
+      var h = 0.02519603282416938 * n;
+      n = h >>> 0;
+      h -= n;
+      h *= n;
+      n = h >>> 0;
+      h -= n;
+      n += h * 0x100000000; // 2^32
+    }
+    return (n >>> 0) * 2.3283064365386963e-10; // 2^-32
+  };
+
+  return mash;
+}
+
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.alea = impl;
+}
+
+})(
+  commonjsGlobal$$1,
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var xor128 = createCommonjsModule$$1(function (module) {
+// A Javascript implementaion of the "xor128" prng algorithm by
+// George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
+
+(function(global, module, define) {
+
+function XorGen(seed) {
+  var me = this, strseed = '';
+
+  me.x = 0;
+  me.y = 0;
+  me.z = 0;
+  me.w = 0;
+
+  // Set up generator function.
+  me.next = function() {
+    var t = me.x ^ (me.x << 11);
+    me.x = me.y;
+    me.y = me.z;
+    me.z = me.w;
+    return me.w ^= (me.w >>> 19) ^ t ^ (t >>> 8);
+  };
+
+  if (seed === (seed | 0)) {
+    // Integer seed.
+    me.x = seed;
+  } else {
+    // String seed.
+    strseed += seed;
+  }
+
+  // Mix in string seed, then discard an initial batch of 64 values.
+  for (var k = 0; k < strseed.length + 64; k++) {
+    me.x ^= strseed.charCodeAt(k) | 0;
+    me.next();
+  }
+}
+
+function copy(f, t) {
+  t.x = f.x;
+  t.y = f.y;
+  t.z = f.z;
+  t.w = f.w;
+  return t;
+}
+
+function impl(seed, opts) {
+  var xg = new XorGen(seed),
+      state = opts && opts.state,
+      prng = function() { return (xg.next() >>> 0) / 0x100000000; };
+  prng.double = function() {
+    do {
+      var top = xg.next() >>> 11,
+          bot = (xg.next() >>> 0) / 0x100000000,
+          result = (top + bot) / (1 << 21);
+    } while (result === 0);
+    return result;
+  };
+  prng.int32 = xg.next;
+  prng.quick = prng;
+  if (state) {
+    if (typeof(state) == 'object') copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.xor128 = impl;
+}
+
+})(
+  commonjsGlobal$$1,
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var xorwow = createCommonjsModule$$1(function (module) {
+// A Javascript implementaion of the "xorwow" prng algorithm by
+// George Marsaglia.  See http://www.jstatsoft.org/v08/i14/paper
+
+(function(global, module, define) {
+
+function XorGen(seed) {
+  var me = this, strseed = '';
+
+  // Set up generator function.
+  me.next = function() {
+    var t = (me.x ^ (me.x >>> 2));
+    me.x = me.y; me.y = me.z; me.z = me.w; me.w = me.v;
+    return (me.d = (me.d + 362437 | 0)) +
+       (me.v = (me.v ^ (me.v << 4)) ^ (t ^ (t << 1))) | 0;
+  };
+
+  me.x = 0;
+  me.y = 0;
+  me.z = 0;
+  me.w = 0;
+  me.v = 0;
+
+  if (seed === (seed | 0)) {
+    // Integer seed.
+    me.x = seed;
+  } else {
+    // String seed.
+    strseed += seed;
+  }
+
+  // Mix in string seed, then discard an initial batch of 64 values.
+  for (var k = 0; k < strseed.length + 64; k++) {
+    me.x ^= strseed.charCodeAt(k) | 0;
+    if (k == strseed.length) {
+      me.d = me.x << 10 ^ me.x >>> 4;
+    }
+    me.next();
+  }
+}
+
+function copy(f, t) {
+  t.x = f.x;
+  t.y = f.y;
+  t.z = f.z;
+  t.w = f.w;
+  t.v = f.v;
+  t.d = f.d;
+  return t;
+}
+
+function impl(seed, opts) {
+  var xg = new XorGen(seed),
+      state = opts && opts.state,
+      prng = function() { return (xg.next() >>> 0) / 0x100000000; };
+  prng.double = function() {
+    do {
+      var top = xg.next() >>> 11,
+          bot = (xg.next() >>> 0) / 0x100000000,
+          result = (top + bot) / (1 << 21);
+    } while (result === 0);
+    return result;
+  };
+  prng.int32 = xg.next;
+  prng.quick = prng;
+  if (state) {
+    if (typeof(state) == 'object') copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.xorwow = impl;
+}
+
+})(
+  commonjsGlobal$$1,
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var xorshift7 = createCommonjsModule$$1(function (module) {
+// A Javascript implementaion of the "xorshift7" algorithm by
+// François Panneton and Pierre L'ecuyer:
+// "On the Xorgshift Random Number Generators"
+// http://saluc.engr.uconn.edu/refs/crypto/rng/panneton05onthexorshift.pdf
+
+(function(global, module, define) {
+
+function XorGen(seed) {
+  var me = this;
+
+  // Set up generator function.
+  me.next = function() {
+    // Update xor generator.
+    var X = me.x, i = me.i, t, v;
+    t = X[i]; t ^= (t >>> 7); v = t ^ (t << 24);
+    t = X[(i + 1) & 7]; v ^= t ^ (t >>> 10);
+    t = X[(i + 3) & 7]; v ^= t ^ (t >>> 3);
+    t = X[(i + 4) & 7]; v ^= t ^ (t << 7);
+    t = X[(i + 7) & 7]; t = t ^ (t << 13); v ^= t ^ (t << 9);
+    X[i] = v;
+    me.i = (i + 1) & 7;
+    return v;
+  };
+
+  function init(me, seed) {
+    var j, w, X = [];
+
+    if (seed === (seed | 0)) {
+      // Seed state array using a 32-bit integer.
+      w = X[0] = seed;
+    } else {
+      // Seed state using a string.
+      seed = '' + seed;
+      for (j = 0; j < seed.length; ++j) {
+        X[j & 7] = (X[j & 7] << 15) ^
+            (seed.charCodeAt(j) + X[(j + 1) & 7] << 13);
+      }
+    }
+    // Enforce an array length of 8, not all zeroes.
+    while (X.length < 8) X.push(0);
+    for (j = 0; j < 8 && X[j] === 0; ++j);
+    if (j == 8) w = X[7] = -1; else w = X[j];
+
+    me.x = X;
+    me.i = 0;
+
+    // Discard an initial 256 values.
+    for (j = 256; j > 0; --j) {
+      me.next();
+    }
+  }
+
+  init(me, seed);
+}
+
+function copy(f, t) {
+  t.x = f.x.slice();
+  t.i = f.i;
+  return t;
+}
+
+function impl(seed, opts) {
+  if (seed == null) seed = +(new Date);
+  var xg = new XorGen(seed),
+      state = opts && opts.state,
+      prng = function() { return (xg.next() >>> 0) / 0x100000000; };
+  prng.double = function() {
+    do {
+      var top = xg.next() >>> 11,
+          bot = (xg.next() >>> 0) / 0x100000000,
+          result = (top + bot) / (1 << 21);
+    } while (result === 0);
+    return result;
+  };
+  prng.int32 = xg.next;
+  prng.quick = prng;
+  if (state) {
+    if (state.x) copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.xorshift7 = impl;
+}
+
+})(
+  commonjsGlobal$$1,
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var xor4096 = createCommonjsModule$$1(function (module) {
+// A Javascript implementaion of Richard Brent's Xorgens xor4096 algorithm.
+//
+// This fast non-cryptographic random number generator is designed for
+// use in Monte-Carlo algorithms. It combines a long-period xorshift
+// generator with a Weyl generator, and it passes all common batteries
+// of stasticial tests for randomness while consuming only a few nanoseconds
+// for each prng generated.  For background on the generator, see Brent's
+// paper: "Some long-period random number generators using shifts and xors."
+// http://arxiv.org/pdf/1004.3115v1.pdf
+//
+// Usage:
+//
+// var xor4096 = require('xor4096');
+// random = xor4096(1);                        // Seed with int32 or string.
+// assert.equal(random(), 0.1520436450538547); // (0, 1) range, 53 bits.
+// assert.equal(random.int32(), 1806534897);   // signed int32, 32 bits.
+//
+// For nonzero numeric keys, this impelementation provides a sequence
+// identical to that by Brent's xorgens 3 implementaion in C.  This
+// implementation also provides for initalizing the generator with
+// string seeds, or for saving and restoring the state of the generator.
+//
+// On Chrome, this prng benchmarks about 2.1 times slower than
+// Javascript's built-in Math.random().
+
+(function(global, module, define) {
+
+function XorGen(seed) {
+  var me = this;
+
+  // Set up generator function.
+  me.next = function() {
+    var w = me.w,
+        X = me.X, i = me.i, t, v;
+    // Update Weyl generator.
+    me.w = w = (w + 0x61c88647) | 0;
+    // Update xor generator.
+    v = X[(i + 34) & 127];
+    t = X[i = ((i + 1) & 127)];
+    v ^= v << 13;
+    t ^= t << 17;
+    v ^= v >>> 15;
+    t ^= t >>> 12;
+    // Update Xor generator array state.
+    v = X[i] = v ^ t;
+    me.i = i;
+    // Result is the combination.
+    return (v + (w ^ (w >>> 16))) | 0;
+  };
+
+  function init(me, seed) {
+    var t, v, i, j, w, X = [], limit = 128;
+    if (seed === (seed | 0)) {
+      // Numeric seeds initialize v, which is used to generates X.
+      v = seed;
+      seed = null;
+    } else {
+      // String seeds are mixed into v and X one character at a time.
+      seed = seed + '\0';
+      v = 0;
+      limit = Math.max(limit, seed.length);
+    }
+    // Initialize circular array and weyl value.
+    for (i = 0, j = -32; j < limit; ++j) {
+      // Put the unicode characters into the array, and shuffle them.
+      if (seed) v ^= seed.charCodeAt((j + 32) % seed.length);
+      // After 32 shuffles, take v as the starting w value.
+      if (j === 0) w = v;
+      v ^= v << 10;
+      v ^= v >>> 15;
+      v ^= v << 4;
+      v ^= v >>> 13;
+      if (j >= 0) {
+        w = (w + 0x61c88647) | 0;     // Weyl.
+        t = (X[j & 127] ^= (v + w));  // Combine xor and weyl to init array.
+        i = (0 == t) ? i + 1 : 0;     // Count zeroes.
+      }
+    }
+    // We have detected all zeroes; make the key nonzero.
+    if (i >= 128) {
+      X[(seed && seed.length || 0) & 127] = -1;
+    }
+    // Run the generator 512 times to further mix the state before using it.
+    // Factoring this as a function slows the main generator, so it is just
+    // unrolled here.  The weyl generator is not advanced while warming up.
+    i = 127;
+    for (j = 4 * 128; j > 0; --j) {
+      v = X[(i + 34) & 127];
+      t = X[i = ((i + 1) & 127)];
+      v ^= v << 13;
+      t ^= t << 17;
+      v ^= v >>> 15;
+      t ^= t >>> 12;
+      X[i] = v ^ t;
+    }
+    // Storing state as object members is faster than using closure variables.
+    me.w = w;
+    me.X = X;
+    me.i = i;
+  }
+
+  init(me, seed);
+}
+
+function copy(f, t) {
+  t.i = f.i;
+  t.w = f.w;
+  t.X = f.X.slice();
+  return t;
+}
+
+function impl(seed, opts) {
+  if (seed == null) seed = +(new Date);
+  var xg = new XorGen(seed),
+      state = opts && opts.state,
+      prng = function() { return (xg.next() >>> 0) / 0x100000000; };
+  prng.double = function() {
+    do {
+      var top = xg.next() >>> 11,
+          bot = (xg.next() >>> 0) / 0x100000000,
+          result = (top + bot) / (1 << 21);
+    } while (result === 0);
+    return result;
+  };
+  prng.int32 = xg.next;
+  prng.quick = prng;
+  if (state) {
+    if (state.X) copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.xor4096 = impl;
+}
+
+})(
+  commonjsGlobal$$1,                                     // window object or global
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var tychei = createCommonjsModule$$1(function (module) {
+// A Javascript implementaion of the "Tyche-i" prng algorithm by
+// Samuel Neves and Filipe Araujo.
+// See https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
+
+(function(global, module, define) {
+
+function XorGen(seed) {
+  var me = this, strseed = '';
+
+  // Set up generator function.
+  me.next = function() {
+    var b = me.b, c = me.c, d = me.d, a = me.a;
+    b = (b << 25) ^ (b >>> 7) ^ c;
+    c = (c - d) | 0;
+    d = (d << 24) ^ (d >>> 8) ^ a;
+    a = (a - b) | 0;
+    me.b = b = (b << 20) ^ (b >>> 12) ^ c;
+    me.c = c = (c - d) | 0;
+    me.d = (d << 16) ^ (c >>> 16) ^ a;
+    return me.a = (a - b) | 0;
+  };
+
+  /* The following is non-inverted tyche, which has better internal
+   * bit diffusion, but which is about 25% slower than tyche-i in JS.
+  me.next = function() {
+    var a = me.a, b = me.b, c = me.c, d = me.d;
+    a = (me.a + me.b | 0) >>> 0;
+    d = me.d ^ a; d = d << 16 ^ d >>> 16;
+    c = me.c + d | 0;
+    b = me.b ^ c; b = b << 12 ^ d >>> 20;
+    me.a = a = a + b | 0;
+    d = d ^ a; me.d = d = d << 8 ^ d >>> 24;
+    me.c = c = c + d | 0;
+    b = b ^ c;
+    return me.b = (b << 7 ^ b >>> 25);
+  }
+  */
+
+  me.a = 0;
+  me.b = 0;
+  me.c = 2654435769 | 0;
+  me.d = 1367130551;
+
+  if (seed === Math.floor(seed)) {
+    // Integer seed.
+    me.a = (seed / 0x100000000) | 0;
+    me.b = seed | 0;
+  } else {
+    // String seed.
+    strseed += seed;
+  }
+
+  // Mix in string seed, then discard an initial batch of 64 values.
+  for (var k = 0; k < strseed.length + 20; k++) {
+    me.b ^= strseed.charCodeAt(k) | 0;
+    me.next();
+  }
+}
+
+function copy(f, t) {
+  t.a = f.a;
+  t.b = f.b;
+  t.c = f.c;
+  t.d = f.d;
+  return t;
+}
+
+function impl(seed, opts) {
+  var xg = new XorGen(seed),
+      state = opts && opts.state,
+      prng = function() { return (xg.next() >>> 0) / 0x100000000; };
+  prng.double = function() {
+    do {
+      var top = xg.next() >>> 11,
+          bot = (xg.next() >>> 0) / 0x100000000,
+          result = (top + bot) / (1 << 21);
+    } while (result === 0);
+    return result;
+  };
+  prng.int32 = xg.next;
+  prng.quick = prng;
+  if (state) {
+    if (typeof(state) == 'object') copy(state, xg);
+    prng.state = function() { return copy(xg, {}); };
+  }
+  return prng;
+}
+
+if (module && module.exports) {
+  module.exports = impl;
+} else if (define && define.amd) {
+  define(function() { return impl; });
+} else {
+  this.tychei = impl;
+}
+
+})(
+  commonjsGlobal$$1,
+  ('object') == 'object' && module,    // present in node.js
+  (typeof undefined) == 'function' && undefined   // present with an AMD loader
+);
+});
+
+var empty = {};
+
+
+var empty$1 = Object.freeze({
+	default: empty
+});
+
+var require$$0 = ( empty$1 && empty ) || empty$1;
+
+var seedrandom = createCommonjsModule$$1(function (module) {
+/*
+Copyright 2014 David Bau.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
+(function (pool, math) {
+//
+// The following constants are related to IEEE 754 limits.
+//
+var global = this,
+    width = 256,        // each RC4 output is 0 <= x < 256
+    chunks = 6,         // at least six RC4 outputs for each double
+    digits = 52,        // there are 52 significant digits in a double
+    rngname = 'random', // rngname: name for Math.random and Math.seedrandom
+    startdenom = math.pow(width, chunks),
+    significance = math.pow(2, digits),
+    overflow = significance * 2,
+    mask = width - 1,
+    nodecrypto;         // node.js crypto module, initialized at the bottom.
+
+//
+// seedrandom()
+// This is the seedrandom function described above.
+//
+function seedrandom(seed, options, callback) {
+  var key = [];
+  options = (options == true) ? { entropy: true } : (options || {});
+
+  // Flatten the seed string or build one from local entropy if needed.
+  var shortseed = mixkey(flatten(
+    options.entropy ? [seed, tostring(pool)] :
+    (seed == null) ? autoseed() : seed, 3), key);
+
+  // Use the seed to initialize an ARC4 generator.
+  var arc4 = new ARC4(key);
+
+  // This function returns a random double in [0, 1) that contains
+  // randomness in every bit of the mantissa of the IEEE 754 value.
+  var prng = function() {
+    var n = arc4.g(chunks),             // Start with a numerator n < 2 ^ 48
+        d = startdenom,                 //   and denominator d = 2 ^ 48.
+        x = 0;                          //   and no 'extra last byte'.
+    while (n < significance) {          // Fill up all significant digits by
+      n = (n + x) * width;              //   shifting numerator and
+      d *= width;                       //   denominator and generating a
+      x = arc4.g(1);                    //   new least-significant-byte.
+    }
+    while (n >= overflow) {             // To avoid rounding up, before adding
+      n /= 2;                           //   last byte, shift everything
+      d /= 2;                           //   right using integer math until
+      x >>>= 1;                         //   we have exactly the desired bits.
+    }
+    return (n + x) / d;                 // Form the number within [0, 1).
+  };
+
+  prng.int32 = function() { return arc4.g(4) | 0; };
+  prng.quick = function() { return arc4.g(4) / 0x100000000; };
+  prng.double = prng;
+
+  // Mix the randomness into accumulated entropy.
+  mixkey(tostring(arc4.S), pool);
+
+  // Calling convention: what to return as a function of prng, seed, is_math.
+  return (options.pass || callback ||
+      function(prng, seed, is_math_call, state) {
+        if (state) {
+          // Load the arc4 state from the given state if it has an S array.
+          if (state.S) { copy(state, arc4); }
+          // Only provide the .state method if requested via options.state.
+          prng.state = function() { return copy(arc4, {}); };
+        }
+
+        // If called as a method of Math (Math.seedrandom()), mutate
+        // Math.random because that is how seedrandom.js has worked since v1.0.
+        if (is_math_call) { math[rngname] = prng; return seed; }
+
+        // Otherwise, it is a newer calling convention, so return the
+        // prng directly.
+        else return prng;
+      })(
+  prng,
+  shortseed,
+  'global' in options ? options.global : (this == math),
+  options.state);
+}
+math['seed' + rngname] = seedrandom;
+
+//
+// ARC4
+//
+// An ARC4 implementation.  The constructor takes a key in the form of
+// an array of at most (width) integers that should be 0 <= x < (width).
+//
+// The g(count) method returns a pseudorandom integer that concatenates
+// the next (count) outputs from ARC4.  Its return value is a number x
+// that is in the range 0 <= x < (width ^ count).
+//
+function ARC4(key) {
+  var t, keylen = key.length,
+      me = this, i = 0, j = me.i = me.j = 0, s = me.S = [];
+
+  // The empty key [] is treated as [0].
+  if (!keylen) { key = [keylen++]; }
+
+  // Set up S using the standard key scheduling algorithm.
+  while (i < width) {
+    s[i] = i++;
+  }
+  for (i = 0; i < width; i++) {
+    s[i] = s[j = mask & (j + key[i % keylen] + (t = s[i]))];
+    s[j] = t;
+  }
+
+  // The "g" method returns the next (count) outputs as one number.
+  (me.g = function(count) {
+    // Using instance members instead of closure state nearly doubles speed.
+    var t, r = 0,
+        i = me.i, j = me.j, s = me.S;
+    while (count--) {
+      t = s[i = mask & (i + 1)];
+      r = r * width + s[mask & ((s[i] = s[j = mask & (j + t)]) + (s[j] = t))];
+    }
+    me.i = i; me.j = j;
+    return r;
+    // For robust unpredictability, the function call below automatically
+    // discards an initial batch of values.  This is called RC4-drop[256].
+    // See http://google.com/search?q=rsa+fluhrer+response&btnI
+  })(width);
+}
+
+//
+// copy()
+// Copies internal state of ARC4 to or from a plain object.
+//
+function copy(f, t) {
+  t.i = f.i;
+  t.j = f.j;
+  t.S = f.S.slice();
+  return t;
+}
+
+//
+// flatten()
+// Converts an object tree to nested arrays of strings.
+//
+function flatten(obj, depth) {
+  var result = [], typ = (typeof obj), prop;
+  if (depth && typ == 'object') {
+    for (prop in obj) {
+      try { result.push(flatten(obj[prop], depth - 1)); } catch (e) {}
+    }
+  }
+  return (result.length ? result : typ == 'string' ? obj : obj + '\0');
+}
+
+//
+// mixkey()
+// Mixes a string seed into a key that is an array of integers, and
+// returns a shortened string seed that is equivalent to the result key.
+//
+function mixkey(seed, key) {
+  var stringseed = seed + '', smear, j = 0;
+  while (j < stringseed.length) {
+    key[mask & j] =
+      mask & ((smear ^= key[mask & j] * 19) + stringseed.charCodeAt(j++));
+  }
+  return tostring(key);
+}
+
+//
+// autoseed()
+// Returns an object for autoseeding, using window.crypto and Node crypto
+// module if available.
+//
+function autoseed() {
+  try {
+    var out;
+    if (nodecrypto && (out = nodecrypto.randomBytes)) {
+      // The use of 'out' to remember randomBytes makes tight minified code.
+      out = out(width);
+    } else {
+      out = new Uint8Array(width);
+      (global.crypto || global.msCrypto).getRandomValues(out);
+    }
+    return tostring(out);
+  } catch (e) {
+    var browser = global.navigator,
+        plugins = browser && browser.plugins;
+    return [+new Date, global, plugins, global.screen, tostring(pool)];
+  }
+}
+
+//
+// tostring()
+// Converts an array of charcodes to a string
+//
+function tostring(a) {
+  return String.fromCharCode.apply(0, a);
+}
+
+//
+// When seedrandom.js is loaded, we immediately mix a few bits
+// from the built-in RNG into the entropy pool.  Because we do
+// not want to interfere with deterministic PRNG state later,
+// seedrandom will not call math.random on its own again after
+// initialization.
+//
+mixkey(math.random(), pool);
+
+//
+// Nodejs and AMD support: export the implementation as a module using
+// either convention.
+//
+if (('object') == 'object' && module.exports) {
+  module.exports = seedrandom;
+  // When in node.js, try using crypto package for autoseeding.
+  try {
+    nodecrypto = require$$0;
+  } catch (ex) {}
+} else if ((typeof undefined) == 'function' && undefined.amd) {
+  undefined(function() { return seedrandom; });
+}
+
+// End anonymous scope, and pass initial values.
+})(
+  [],     // pool: entropy pool starts empty
+  Math    // math: package containing random, pow, and seedrandom
+);
+});
+
+// A library of seedable RNGs implemented in Javascript.
+//
+// Usage:
+//
+// var seedrandom = require('seedrandom');
+// var random = seedrandom(1); // or any seed.
+// var x = random();       // 0 <= x < 1.  Every bit is random.
+// var x = random.quick(); // 0 <= x < 1.  32 bits of randomness.
+
+// alea, a 53-bit multiply-with-carry generator by Johannes Baagøe.
+// Period: ~2^116
+// Reported to pass all BigCrush tests.
+
+
+// xor128, a pure xor-shift generator by George Marsaglia.
+// Period: 2^128-1.
+// Reported to fail: MatrixRank and LinearComp.
+
+
+// xorwow, George Marsaglia's 160-bit xor-shift combined plus weyl.
+// Period: 2^192-2^32
+// Reported to fail: CollisionOver, SimpPoker, and LinearComp.
+
+
+// xorshift7, by François Panneton and Pierre L'ecuyer, takes
+// a different approach: it adds robustness by allowing more shifts
+// than Marsaglia's original three.  It is a 7-shift generator
+// with 256 bits, that passes BigCrush with no systmatic failures.
+// Period 2^256-1.
+// No systematic BigCrush failures reported.
+
+
+// xor4096, by Richard Brent, is a 4096-bit xor-shift with a
+// very long period that also adds a Weyl generator. It also passes
+// BigCrush with no systematic failures.  Its long period may
+// be useful if you have many generators and need to avoid
+// collisions.
+// Period: 2^4128-2^32.
+// No systematic BigCrush failures reported.
+
+
+// Tyche-i, by Samuel Neves and Filipe Araujo, is a bit-shifting random
+// number generator derived from ChaCha, a modern stream cipher.
+// https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
+// Period: ~2^127
+// No systematic BigCrush failures reported.
+
+
+// The original ARC4-based prng included in this library.
+// Period: ~2^1600
+
+
+seedrandom.alea = alea;
+seedrandom.xor128 = xor128;
+seedrandom.xorwow = xorwow;
+seedrandom.xorshift7 = xorshift7;
+seedrandom.xor4096 = xor4096;
+seedrandom.tychei = tychei;
+
+var seedrandom$2 = seedrandom;
+
+var between = function between(str, seed) {
+  var options = str.split('-').map(Number);
+  return getRandomInt(options[0], options[1], seed);
+};
+
+var capitalize = function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
+var checkIfAlreadyGenerated = function checkIfAlreadyGenerated(model1, model2) {
+  var simsAllowed = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+  var similarities = Object.keys(model1).reduce(function (sims, key) {
+    if (key === 'type') return sims;
+    return model1[key] === model2[key] ? sims += 1 : sims;
+  }, 0);
+
+  return similarities >= simsAllowed;
+};
+
+var getRandomInt = function getRandomInt(min, max, seed) {
+  var rng = seed ? seedrandom$2(seed) : seedrandom$2();
+  return Math.floor(rng() * (max - min)) + min;
+};
+
+var modifier = function modifier(str) {
+  var fnHash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var fns = str.split('|');
+
+  var pipe = function pipe(input, fnArray) {
+    var modified = fnHash[fnArray[0]] ? fnHash[fnArray[0]].call(null, input) : input;
+    return fnArray.length === 1 ? modified : pipe(modified, fnArray.slice(1));
+  };
+
+  return function () {
+    var input = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    return pipe(input, fns);
+  };
+};
+
+var pluralize$1 = function pluralize$$1(str) {
+  return pluralize(str);
+};
+
+var possessive = function possessive(str) {
+  return str + '\'s';
+};
+
+var sample = function sample(collection, seed) {
+  if (typeof collection === 'string') return collection;
+  var index = getRandomInt(0, collection.length, seed);
+  return collection[index];
+};
+
+var uppercase = function uppercase(str) {
+  return str.toUpperCase();
+};
+
+var fns = {
+  between: between,
+  capitalize: capitalize,
+  checkIfAlreadyGenerated: checkIfAlreadyGenerated,
+  modifier: modifier,
+  pluralize: pluralize$1,
+  possessive: possessive,
+  sample: sample,
+  uppercase: uppercase
+};
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var sample$1 = fns.sample;
+
+var Model = function Model(schema) {
+  var fnHash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var seed = arguments[2];
+
+  var keys = Object.keys(schema);
+  return keys.reduce(function (state, key) {
+    if (schema[key][0] === '|') {
+      var _schema$key$slice$spl = schema[key].slice(1).split(':'),
+          _schema$key$slice$spl2 = _slicedToArray(_schema$key$slice$spl, 2),
+          fn = _schema$key$slice$spl2[0],
+          input = _schema$key$slice$spl2[1];
+
+      state[key] = fnHash[fn] ? fnHash[fn](input, seed) : schema[key];
+    } else {
+      state[key] = sample$1(schema[key], seed);
+    }
+
+    return state;
+  }, {});
+};
+
+function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+// --------------------------------------------------------------
+var modeler = function modeler(toParseArray) {
+  var modelerOptions = {
+    modCha: ['model', 'character', 'property', 'modifier'],
+    mod: ['model', 'property', 'modifier'],
+    cha: ['model', 'character', 'property'],
+    gen: ['model', 'property']
+  };
+
+  return toParseArray.map(function (model) {
+    if (model.type === 'helper' || model.type === 'grammar') return model;
+
+    var keys = void 0;
+    if (model.type === 'modifiedModel') {
+      keys = model.toParse.length === 4 ? modelerOptions.modCha : modelerOptions.mod;
+    } else {
+      keys = model.toParse.length === 3 ? modelerOptions.cha : modelerOptions.gen;
+    }
+
+    return keys.reduce(function (result, key, index) {
+      result[key] = model.toParse[index];
+      return Object.assign({}, result, { type: 'model' });
+    }, {});
+  });
+};
+// --------------------------------------------------------------
+var regexer = function regexer(grammar) {
+  var regex = /::\.|[^ ]*::/g;
+  var result = grammar.match(regex);
+  return result === null ? [] : result;
+};
+// --------------------------------------------------------------
+var propType = function propType(props) {
+  switch (true) {
+    case props[0][0] === '|':
+      return 'helper';
+    case props[0][0] === '!':
+      return 'grammar';
+    case props[props.length - 1].includes('|'):
+      return 'modifiedModel';
+    default:
+      return 'model';
+  }
+};
+// --------------------------------------------------------------
+var parser = function parser(regexArray) {
+  var returnValue = function returnValue(type, toParse) {
+    switch (type) {
+      case 'helper':
+        return { type: type, helper: toParse[0], input: toParse[1] };
+      case 'grammar':
+        return { type: type, grammar: toParse[0] };
+      default:
+        return { type: type, toParse: toParse };
+    }
+  };
+
+  return regexArray.map(function (item) {
+    var props = item.slice(2, -2).split('.');
+    var type = propType(props);
+    if (type === 'helper') return returnValue(type, props[0].slice(1).split(':'));
+    if (type === 'grammar') {
+      var option = [props[0].slice(1)].concat(_toConsumableArray(props.slice(1))).join('.');
+      return returnValue(type, [option]);
+    }
+
+    var _props$pop$split = props.pop().split('|'),
+        _props$pop$split2 = _toArray(_props$pop$split),
+        property = _props$pop$split2[0],
+        modifiers = _props$pop$split2.slice(1);
+
+    if (type === 'modifiedModel') return returnValue(type, props.concat(property, [modifiers]));
+    return returnValue(type, props.concat(property));
+  });
+};
+// --------------------------------------------------------------
+var grammarExpander = function grammarExpander(entry) {
+  var grammars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var regex = /::\.|[^ ]*::/g;
+
+  return entry.replace(regex, function (match) {
+    if (match[2] !== '!') return match;
+
+    var grammar = match.slice(3, -2).split('.');
+
+    var result = grammar.reduce(function (result, pointer) {
+      return result[pointer] ? result[pointer] : new Error('The grammar: ' + grammar + ' does not appear to exist');
+    }, grammars);
+
+    if (result instanceof Error) return result;
+    return result.match(regex) === null ? result : grammarExpander(result, grammars);
+  });
+};
+
+var fns$1 = {
+  grammarExpander: grammarExpander,
+  modeler: modeler,
+  parser: parser,
+  propType: propType,
+  regexer: regexer
+};
+
+var grammarExpander$1 = fns$1.grammarExpander;
+var regexer$1 = fns$1.regexer;
+var parser$1 = fns$1.parser;
+var modeler$1 = fns$1.modeler;
+
+
+var Parser = function Parser(entry, grammars) {
+  var expandedGrammar = grammarExpander$1(entry, grammars);
+  var toModel = regexer$1(expandedGrammar);
+  toModel = parser$1(toModel);
+  toModel = modeler$1(toModel);
+
+  return {
+    toModel: toModel,
+    expandedGrammar: expandedGrammar
+  };
+};
+
+var global$1 = typeof commonjsGlobal !== "undefined" ? commonjsGlobal :
             typeof self !== "undefined" ? self :
-            typeof window !== "undefined" ? window : {}
+            typeof window !== "undefined" ? window : {};
 
 // shim for using process in browser
 // based off https://github.com/defunctzombie/node-process/blob/master/browser.js
@@ -2478,7 +3624,7 @@ Buffer.from = function (value, encodingOrOffset, length) {
 if (Buffer.TYPED_ARRAY_SUPPORT) {
   Buffer.prototype.__proto__ = Uint8Array.prototype;
   Buffer.__proto__ = Uint8Array;
-  
+
 }
 
 function assertSize (size) {
@@ -4134,9 +5280,9 @@ var bufferEs6 = Object.freeze({
 	isBuffer: isBuffer
 });
 
-var inherits$1;
+var inherits;
 if (typeof Object.create === 'function'){
-  inherits$1 = function inherits(ctor, superCtor) {
+  inherits = function inherits(ctor, superCtor) {
     // implementation from standard node.js 'util' module
     ctor.super_ = superCtor;
     ctor.prototype = Object.create(superCtor.prototype, {
@@ -4149,7 +5295,7 @@ if (typeof Object.create === 'function'){
     });
   };
 } else {
-  inherits$1 = function inherits(ctor, superCtor) {
+  inherits = function inherits(ctor, superCtor) {
     ctor.super_ = superCtor;
     var TempCtor = function () {};
     TempCtor.prototype = superCtor.prototype;
@@ -4157,7 +5303,7 @@ if (typeof Object.create === 'function'){
     ctor.prototype.constructor = ctor;
   };
 }
-var inherits$2 = inherits$1;
+var inherits$1 = inherits;
 
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -4730,7 +5876,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 var util = {
-  inherits: inherits$2,
+  inherits: inherits$1,
   _extend: _extend,
   log: log,
   isBuffer: isBuffer$1,
@@ -4752,7 +5898,7 @@ var util = {
   deprecate: deprecate,
   format: format,
   debuglog: debuglog
-}
+};
 
 
 var util$1 = Object.freeze({
@@ -4776,7 +5922,7 @@ var util$1 = Object.freeze({
 	isPrimitive: isPrimitive,
 	isBuffer: isBuffer$1,
 	log: log,
-	inherits: inherits$2,
+	inherits: inherits$1,
 	_extend: _extend,
 	default: util
 });
@@ -5037,9 +6183,9 @@ var empty$3 = Object.freeze({
 	default: empty$2
 });
 
-var promisify = createCommonjsModule(function (module) {
-module.exports = fn => {
-  return function() {
+var promisify = createCommonjsModule$$1(function (module) {
+module.exports = (fn) => {
+  return function () {
     const length = arguments.length;
     const args = new Array(length);
 
@@ -5064,20 +6210,20 @@ module.exports = fn => {
 
 var fs = ( empty$3 && empty$2 ) || empty$3;
 
-var fs_1 = createCommonjsModule(function (module) {
+var fs_1 = createCommonjsModule$$1(function (module) {
 // Adater module exposing all `fs` methods with promises instead of callbacks.
 
-const isCallbackMethod = key => {
+const isCallbackMethod = (key) => {
   return [
-    typeof fs[key] === "function",
+    typeof fs[key] === 'function',
     !key.match(/Sync$/),
     !key.match(/^[A-Z]/),
     !key.match(/^create/),
-    !key.match(/^(un)?watch/)
+    !key.match(/^(un)?watch/),
   ].every(Boolean);
 };
 
-const adaptMethod = name => {
+const adaptMethod = (name) => {
   const original = fs[name];
   return promisify(original);
 };
@@ -5085,14 +6231,14 @@ const adaptMethod = name => {
 const adaptAllMethods = () => {
   const adapted = {};
 
-  Object.keys(fs).forEach(key => {
+  Object.keys(fs).forEach((key) => {
     if (isCallbackMethod(key)) {
-      if (key === "exists") {
+      if (key === 'exists') {
         // fs.exists() does not follow standard
         // Node callback conventions, and has
         // no error object in the callback
         adapted.exists = () => {
-          throw new Error("fs.exists() is deprecated");
+          throw new Error('fs.exists() is deprecated');
         };
       } else {
         adapted[key] = adaptMethod(key);
@@ -5108,57 +6254,57 @@ const adaptAllMethods = () => {
 module.exports = adaptAllMethods();
 });
 
-var validate = createCommonjsModule(function (module) {
-const prettyPrintTypes = types => {
-  const addArticle = str => {
-    const vowels = ["a", "e", "i", "o", "u"];
+var validate = createCommonjsModule$$1(function (module) {
+const prettyPrintTypes = (types) => {
+  const addArticle = (str) => {
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
     if (vowels.indexOf(str[0]) !== -1) {
       return `an ${str}`;
     }
     return `a ${str}`;
   };
 
-  return types.map(addArticle).join(" or ");
+  return types.map(addArticle).join(' or ');
 };
 
-const isArrayOfNotation = typeDefinition => {
+const isArrayOfNotation = (typeDefinition) => {
   return /array of /.test(typeDefinition);
 };
 
-const extractTypeFromArrayOfNotation = typeDefinition => {
+const extractTypeFromArrayOfNotation = (typeDefinition) => {
   // The notation is e.g. 'array of string'
-  return typeDefinition.split(" of ")[1];
+  return typeDefinition.split(' of ')[1];
 };
 
-const isValidTypeDefinition = typeStr => {
+const isValidTypeDefinition = (typeStr) => {
   if (isArrayOfNotation(typeStr)) {
     return isValidTypeDefinition(extractTypeFromArrayOfNotation(typeStr));
   }
 
   return [
-    "string",
-    "number",
-    "boolean",
-    "array",
-    "object",
-    "buffer",
-    "null",
-    "undefined",
-    "function"
-  ].some(validType => {
+    'string',
+    'number',
+    'boolean',
+    'array',
+    'object',
+    'buffer',
+    'null',
+    'undefined',
+    'function',
+  ].some((validType) => {
     return validType === typeStr;
   });
 };
 
-const detectType = value => {
+const detectType = (value) => {
   if (value === null) {
-    return "null";
+    return 'null';
   }
   if (Array.isArray(value)) {
-    return "array";
+    return 'array';
   }
   if (isBuffer(value)) {
-    return "buffer";
+    return 'buffer';
   }
 
   return typeof value;
@@ -5168,17 +6314,17 @@ const onlyUniqueValuesInArrayFilter = (value, index, self) => {
   return self.indexOf(value) === index;
 };
 
-const detectTypeDeep = value => {
+const detectTypeDeep = (value) => {
   let type = detectType(value);
   let typesInArray;
 
-  if (type === "array") {
+  if (type === 'array') {
     typesInArray = value
-      .map(element => {
+      .map((element) => {
         return detectType(element);
       })
       .filter(onlyUniqueValuesInArrayFilter);
-    type += ` of ${typesInArray.join(", ")}`;
+    type += ` of ${typesInArray.join(', ')}`;
   }
 
   return type;
@@ -5187,22 +6333,17 @@ const detectTypeDeep = value => {
 const validateArray = (argumentValue, typeToCheck) => {
   const allowedTypeInArray = extractTypeFromArrayOfNotation(typeToCheck);
 
-  if (detectType(argumentValue) !== "array") {
+  if (detectType(argumentValue) !== 'array') {
     return false;
   }
 
-  return argumentValue.every(element => {
+  return argumentValue.every((element) => {
     return detectType(element) === allowedTypeInArray;
   });
 };
 
-const validateArgument = (
-  methodName,
-  argumentName,
-  argumentValue,
-  argumentMustBe
-) => {
-  const isOneOfAllowedTypes = argumentMustBe.some(type => {
+const validateArgument = (methodName, argumentName, argumentValue, argumentMustBe) => {
+  const isOneOfAllowedTypes = argumentMustBe.some((type) => {
     if (!isValidTypeDefinition(type)) {
       throw new Error(`Unknown type "${type}"`);
     }
@@ -5215,27 +6356,19 @@ const validateArgument = (
   });
 
   if (!isOneOfAllowedTypes) {
-    throw new Error(
-      `Argument "${argumentName}" passed to ${
-        methodName
-      } must be ${prettyPrintTypes(argumentMustBe)}. Received ${detectTypeDeep(
-        argumentValue
-      )}`
-    );
+    throw new Error(`Argument "${argumentName}" passed to ${methodName} must be ${prettyPrintTypes(argumentMustBe)}. Received ${detectTypeDeep(argumentValue)}`);
   }
 };
 
 const validateOptions = (methodName, optionsObjName, obj, allowedOptions) => {
   if (obj !== undefined) {
-    validateArgument(methodName, optionsObjName, obj, ["object"]);
-    Object.keys(obj).forEach(key => {
+    validateArgument(methodName, optionsObjName, obj, ['object']);
+    Object.keys(obj).forEach((key) => {
       const argName = `${optionsObjName}.${key}`;
       if (allowedOptions[key] !== undefined) {
         validateArgument(methodName, argName, obj[key], allowedOptions[key]);
       } else {
-        throw new Error(
-          `Unknown argument "${argName}" passed to ${methodName}`
-        );
+        throw new Error(`Unknown argument "${argName}" passed to ${methodName}`);
       }
     });
   }
@@ -5243,19 +6376,19 @@ const validateOptions = (methodName, optionsObjName, obj, allowedOptions) => {
 
 module.exports = {
   argument: validateArgument,
-  options: validateOptions
+  options: validateOptions,
 };
 });
 
 var validate_1 = validate.argument;
 var validate_2 = validate.options;
 
-var mode = createCommonjsModule(function (module, exports) {
+var mode = createCommonjsModule$$1(function (module, exports) {
 // Logic for unix file mode operations.
 
-exports.normalizeFileMode = mode => {
+exports.normalizeFileMode = (mode) => {
   let modeAsString;
-  if (typeof mode === "number") {
+  if (typeof mode === 'number') {
     modeAsString = mode.toString(8);
   } else {
     modeAsString = mode;
@@ -5266,21 +6399,21 @@ exports.normalizeFileMode = mode => {
 
 var mode_1 = mode.normalizeFileMode;
 
-var list = createCommonjsModule(function (module, exports) {
+var list = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path) => {
   const methodSignature = `${methodName}(path)`;
-  validate.argument(methodSignature, "path", path, ["string", "undefined"]);
+  validate.argument(methodSignature, 'path', path, ['string', 'undefined']);
 };
 
 // ---------------------------------------------------------
 // Sync
 // ---------------------------------------------------------
 
-const listSync = path => {
+const listSync = (path) => {
   try {
     return fs_1.readdirSync(path);
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Doesn't exist. Return undefined instead of throwing.
       return undefined;
     }
@@ -5292,21 +6425,20 @@ const listSync = path => {
 // Async
 // ---------------------------------------------------------
 
-const listAsync = path => {
+const listAsync = (path) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .readdir(path)
-      .then(list => {
-        resolve(list);
-      })
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Doesn't exist. Return undefined instead of throwing.
-          resolve(undefined);
-        } else {
-          reject(err);
-        }
-      });
+    fs_1.readdir(path)
+    .then((list) => {
+      resolve(list);
+    })
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Doesn't exist. Return undefined instead of throwing.
+        resolve(undefined);
+      } else {
+        reject(err);
+      }
+    });
   });
 };
 
@@ -5325,34 +6457,30 @@ var list_3 = list.async;
 
 var pathUtil = ( path$1 && path ) || path$1;
 
-var remove = createCommonjsModule(function (module, exports) {
+var remove = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path) => {
   const methodSignature = `${methodName}([path])`;
-  validate.argument(methodSignature, "path", path, ["string", "undefined"]);
+  validate.argument(methodSignature, 'path', path, ['string', 'undefined']);
 };
 
 // ---------------------------------------------------------
 // Sync
 // ---------------------------------------------------------
 
-const removeSync = path => {
+const removeSync = (path) => {
   try {
     // Assume the path is a file and just try to remove it.
     fs_1.unlinkSync(path);
   } catch (err) {
-    if (
-      err.code === "EPERM" ||
-      err.code === "EISDIR" ||
-      err.code === "ENOTEMPTY"
-    ) {
+    if (err.code === 'EPERM' || err.code === 'EISDIR' || err.code === 'ENOTEMPTY') {
       // Must delete everything inside the directory first.
-      list.sync(path).forEach(filename => {
+      list.sync(path).forEach((filename) => {
         removeSync(pathUtil.join(path, filename));
       });
       // Everything inside directory has been removed,
       // it's safe now do go for the directory itself.
       fs_1.rmdirSync(path);
-    } else if (err.code === "ENOENT") {
+    } else if (err.code === 'ENOENT') {
       // File already doesn't exist. We're done.
     } else {
       // Something unexpected happened. Rethrow original error.
@@ -5367,21 +6495,23 @@ const removeSync = path => {
 
 const removeAsyncInternal = (path, retryCount) => {
   return new Promise((resolve, reject) => {
-    const retryInAWhileOrFail = err => {
+    const retryInAWhileOrFail = (err) => {
       if (retryCount === 3) {
         // Too many retries already. Fail.
         reject(err);
       } else {
         // Try the same action after some pause.
         setTimeout(() => {
-          removeAsyncInternal(path, retryCount + 1).then(resolve, reject);
+          removeAsyncInternal(path, retryCount + 1)
+          .then(resolve, reject);
         }, 100);
       }
     };
 
     const removeEverythingInsideDirectory = () => {
-      return list.async(path).then(filenamesInsideDir => {
-        const promises = filenamesInsideDir.map(filename => {
+      return list.async(path)
+      .then((filenamesInsideDir) => {
+        const promises = filenamesInsideDir.map((filename) => {
           return removeAsyncInternal(pathUtil.join(path, filename), 0);
         });
         return Promise.all(promises);
@@ -5389,50 +6519,41 @@ const removeAsyncInternal = (path, retryCount) => {
     };
 
     // Assume the path is a file and just try to remove it.
-    fs_1
-      .unlink(path)
-      .then(resolve)
-      .catch(err => {
-        if (err.code === "EBUSY") {
-          retryInAWhileOrFail(err);
-        } else if (
-          err.code === "EPERM" ||
-          err.code === "EISDIR" ||
-          err.code === "ENOTEMPTY"
-        ) {
-          // File deletion attempt failed. Probably it's not a file, it's a directory.
-          // So try to proceed with that assumption.
-          removeEverythingInsideDirectory()
-            .then(() => {
-              // Now go for the directory.
-              return fs_1.rmdir(path);
-            })
-            .then(resolve)
-            .catch(err2 => {
-              if (
-                err2.code === "EBUSY" ||
-                err2.code === "EPERM" ||
-                err2.code === "ENOTEMPTY"
-              ) {
-                // Failed again. This might be due to other processes reading
-                // something inside the directory. Let's take a nap and retry.
-                retryInAWhileOrFail(err2);
-              } else {
-                reject(err2);
-              }
-            });
-        } else if (err.code === "ENOENT") {
-          // File already doesn't exist. We're done.
-          resolve();
-        } else {
-          // Something unexpected happened. Rethrow original error.
-          reject(err);
-        }
-      });
+    fs_1.unlink(path)
+    .then(resolve)
+    .catch((err) => {
+      if (err.code === 'EBUSY') {
+        retryInAWhileOrFail(err);
+      } else if (err.code === 'EPERM' || err.code === 'EISDIR' || err.code === 'ENOTEMPTY') {
+        // File deletion attempt failed. Probably it's not a file, it's a directory.
+        // So try to proceed with that assumption.
+        removeEverythingInsideDirectory()
+        .then(() => {
+          // Now go for the directory.
+          return fs_1.rmdir(path);
+        })
+        .then(resolve)
+        .catch((err2) => {
+          if (err2.code === 'EBUSY' || err2.code === 'EPERM' || err2.code === 'ENOTEMPTY') {
+            // Failed again. This might be due to other processes reading
+            // something inside the directory. Let's take a nap and retry.
+            retryInAWhileOrFail(err2);
+          } else {
+            reject(err2);
+          }
+        });
+      } else if (err.code === 'ENOENT') {
+        // File already doesn't exist. We're done.
+        resolve();
+      } else {
+        // Something unexpected happened. Rethrow original error.
+        reject(err);
+      }
+    });
   });
 };
 
-const removeAsync = path => {
+const removeAsync = (path) => {
   return removeAsyncInternal(path, 0);
 };
 
@@ -5449,19 +6570,19 @@ var remove_1 = remove.validateInput;
 var remove_2 = remove.sync;
 var remove_3 = remove.async;
 
-var dir = createCommonjsModule(function (module, exports) {
+var dir = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, criteria) => {
   const methodSignature = `${methodName}(path, [criteria])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.options(methodSignature, "criteria", criteria, {
-    empty: ["boolean"],
-    mode: ["string", "number"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.options(methodSignature, 'criteria', criteria, {
+    empty: ['boolean'],
+    mode: ['string', 'number'],
   });
 };
 
-const getCriteriaDefaults = passedCriteria => {
+const getCriteriaDefaults = (passedCriteria) => {
   const criteria = passedCriteria || {};
-  if (typeof criteria.empty !== "boolean") {
+  if (typeof criteria.empty !== 'boolean') {
     criteria.empty = false;
   }
   if (criteria.mode !== undefined) {
@@ -5470,26 +6591,22 @@ const getCriteriaDefaults = passedCriteria => {
   return criteria;
 };
 
-const generatePathOccupiedByNotDirectoryError = path => {
-  return new Error(
-    `Path ${
-      path
-    } exists but is not a directory. Halting jetpack.dir() call for safety reasons.`
-  );
+const generatePathOccupiedByNotDirectoryError = (path) => {
+  return new Error(`Path ${path} exists but is not a directory. Halting jetpack.dir() call for safety reasons.`);
 };
 
 // ---------------------------------------------------------
 // Sync
 // ---------------------------------------------------------
 
-const checkWhatAlreadyOccupiesPathSync = path => {
+const checkWhatAlreadyOccupiesPathSync = (path) => {
   let stat;
 
   try {
     stat = fs_1.statSync(path);
   } catch (err) {
     // Detection if path already exists
-    if (err.code !== "ENOENT") {
+    if (err.code !== 'ENOENT') {
       throw err;
     }
   }
@@ -5507,12 +6624,12 @@ const createBrandNewDirectorySync = (path, opts) => {
   try {
     fs_1.mkdirSync(path, options.mode);
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Parent directory doesn't exist. Need to create it first.
       createBrandNewDirectorySync(pathUtil.dirname(path), options);
       // Now retry creating this directory.
       fs_1.mkdirSync(path, options.mode);
-    } else if (err.code === "EEXIST") {
+    } else if (err.code === 'EEXIST') {
       // The path already exists. We're fine.
     } else {
       throw err;
@@ -5532,7 +6649,7 @@ const checkExistingDirectoryFulfillsCriteriaSync = (path, stat, criteria) => {
     if (criteria.empty) {
       // Delete everything inside this directory
       const list = fs_1.readdirSync(path);
-      list.forEach(filename => {
+      list.forEach((filename) => {
         remove.sync(pathUtil.resolve(path, filename));
       });
     }
@@ -5556,49 +6673,47 @@ const dirSync = (path, passedCriteria) => {
 // Async
 // ---------------------------------------------------------
 
-const checkWhatAlreadyOccupiesPathAsync = path => {
+const checkWhatAlreadyOccupiesPathAsync = (path) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .stat(path)
-      .then(stat => {
-        if (stat.isDirectory()) {
-          resolve(stat);
-        } else {
-          reject(generatePathOccupiedByNotDirectoryError(path));
-        }
-      })
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Path doesn't exist
-          resolve(undefined);
-        } else {
-          // This is other error that nonexistent path, so end here.
-          reject(err);
-        }
-      });
+    fs_1.stat(path)
+    .then((stat) => {
+      if (stat.isDirectory()) {
+        resolve(stat);
+      } else {
+        reject(generatePathOccupiedByNotDirectoryError(path));
+      }
+    })
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Path doesn't exist
+        resolve(undefined);
+      } else {
+        // This is other error that nonexistent path, so end here.
+        reject(err);
+      }
+    });
   });
 };
 
 // Delete all files and directores inside given directory
-const emptyAsync = path => {
+const emptyAsync = (path) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .readdir(path)
-      .then(list => {
-        const doOne = index => {
-          if (index === list.length) {
-            resolve();
-          } else {
-            const subPath = pathUtil.resolve(path, list[index]);
-            remove.async(subPath).then(() => {
-              doOne(index + 1);
-            });
-          }
-        };
+    fs_1.readdir(path)
+    .then((list) => {
+      const doOne = (index) => {
+        if (index === list.length) {
+          resolve();
+        } else {
+          const subPath = pathUtil.resolve(path, list[index]);
+          remove.async(subPath).then(() => {
+            doOne(index + 1);
+          });
+        }
+      };
 
-        doOne(0);
-      })
-      .catch(reject);
+      doOne(0);
+    })
+    .catch(reject);
   });
 };
 
@@ -5620,8 +6735,8 @@ const checkExistingDirectoryFulfillsCriteriaAsync = (path, stat, criteria) => {
     };
 
     checkMode()
-      .then(checkEmptiness)
-      .then(resolve, reject);
+    .then(checkEmptiness)
+    .then(resolve, reject);
   });
 };
 
@@ -5629,34 +6744,33 @@ const createBrandNewDirectoryAsync = (path, opts) => {
   const options = opts || {};
 
   return new Promise((resolve, reject) => {
-    fs_1
-      .mkdir(path, options.mode)
-      .then(resolve)
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Parent directory doesn't exist. Need to create it first.
-          createBrandNewDirectoryAsync(pathUtil.dirname(path), options)
-            .then(() => {
-              // Now retry creating this directory.
-              return fs_1.mkdir(path, options.mode);
-            })
-            .then(resolve)
-            .catch(err2 => {
-              if (err2.code === "EEXIST") {
-                // Hmm, something other have already created the directory?
-                // No problem for us.
-                resolve();
-              } else {
-                reject(err2);
-              }
-            });
-        } else if (err.code === "EEXIST") {
-          // The path already exists. We're fine.
-          resolve();
-        } else {
-          reject(err);
-        }
-      });
+    fs_1.mkdir(path, options.mode)
+    .then(resolve)
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Parent directory doesn't exist. Need to create it first.
+        createBrandNewDirectoryAsync(pathUtil.dirname(path), options)
+        .then(() => {
+          // Now retry creating this directory.
+          return fs_1.mkdir(path, options.mode);
+        })
+        .then(resolve)
+        .catch((err2) => {
+          if (err2.code === 'EEXIST') {
+            // Hmm, something other have already created the directory?
+            // No problem for us.
+            resolve();
+          } else {
+            reject(err2);
+          }
+        });
+      } else if (err.code === 'EEXIST') {
+        // The path already exists. We're fine.
+        resolve();
+      } else {
+        reject(err);
+      }
+    });
   });
 };
 
@@ -5665,17 +6779,13 @@ const dirAsync = (path, passedCriteria) => {
     const criteria = getCriteriaDefaults(passedCriteria);
 
     checkWhatAlreadyOccupiesPathAsync(path)
-      .then(stat => {
-        if (stat !== undefined) {
-          return checkExistingDirectoryFulfillsCriteriaAsync(
-            path,
-            stat,
-            criteria
-          );
-        }
-        return createBrandNewDirectoryAsync(path, criteria);
-      })
-      .then(resolve, reject);
+    .then((stat) => {
+      if (stat !== undefined) {
+        return checkExistingDirectoryFulfillsCriteriaAsync(path, stat, criteria);
+      }
+      return createBrandNewDirectoryAsync(path, criteria);
+    })
+    .then(resolve, reject);
   });
 };
 
@@ -5696,32 +6806,29 @@ var dir_3 = dir.createSync;
 var dir_4 = dir.async;
 var dir_5 = dir.createAsync;
 
-var write$1 = createCommonjsModule(function (module, exports) {
+var write$1 = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, data, options) => {
   const methodSignature = `${methodName}(path, data, [options])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.argument(methodSignature, "data", data, [
-    "string",
-    "buffer",
-    "object",
-    "array"
-  ]);
-  validate.options(methodSignature, "options", options, {
-    atomic: ["boolean"],
-    jsonIndent: ["number"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.argument(methodSignature, 'data', data, ['string', 'buffer', 'object', 'array']);
+  validate.options(methodSignature, 'options', options, {
+    atomic: ['boolean'],
+    jsonIndent: ['number'],
   });
 };
 
 // Temporary file extensions used for atomic file overwriting.
-const newExt = ".__new__";
+const newExt = '.__new__';
 
 const serializeToJsonMaybe = (data, jsonIndent) => {
   let indent = jsonIndent;
-  if (typeof indent !== "number") {
+  if (typeof indent !== 'number') {
     indent = 2;
   }
 
-  if (typeof data === "object" && !isBuffer(data) && data !== null) {
+  if (typeof data === 'object'
+      && !isBuffer(data)
+      && data !== null) {
     return JSON.stringify(data, null, indent);
   }
 
@@ -5736,7 +6843,7 @@ const writeFileSync = (path, data, options) => {
   try {
     fs_1.writeFileSync(path, data, options);
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Means parent directory doesn't exist, so create it and try again.
       dir.createSync(pathUtil.dirname(path));
       fs_1.writeFileSync(path, data, options);
@@ -5772,25 +6879,23 @@ const writeSync = (path, data, options) => {
 
 const writeFileAsync = (path, data, options) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .writeFile(path, data, options)
-      .then(resolve)
-      .catch(err => {
-        // First attempt to write a file ended with error.
-        // Check if this is not due to nonexistent parent directory.
-        if (err.code === "ENOENT") {
-          // Parent directory doesn't exist, so create it and try again.
-          dir
-            .createAsync(pathUtil.dirname(path))
-            .then(() => {
-              return fs_1.writeFile(path, data, options);
-            })
-            .then(resolve, reject);
-        } else {
-          // Nope, some other error, throw it.
-          reject(err);
-        }
-      });
+    fs_1.writeFile(path, data, options)
+    .then(resolve)
+    .catch((err) => {
+      // First attempt to write a file ended with error.
+      // Check if this is not due to nonexistent parent directory.
+      if (err.code === 'ENOENT') {
+        // Parent directory doesn't exist, so create it and try again.
+        dir.createAsync(pathUtil.dirname(path))
+        .then(() => {
+          return fs_1.writeFile(path, data, options);
+        })
+        .then(resolve, reject);
+      } else {
+        // Nope, some other error, throw it.
+        reject(err);
+      }
+    });
   });
 };
 
@@ -5800,11 +6905,11 @@ const writeAtomicAsync = (path, data, options) => {
     // to touch it until we are sure our data has been saved correctly,
     // so write the data into temporary file...
     writeFileAsync(path + newExt, data, options)
-      .then(() => {
-        // ...next rename temp file to real path.
-        return fs_1.rename(path + newExt, path);
-      })
-      .then(resolve, reject);
+    .then(() => {
+      // ...next rename temp file to real path.
+      return fs_1.rename(path + newExt, path);
+    })
+    .then(resolve, reject);
   });
 };
 
@@ -5832,13 +6937,13 @@ var write_1 = write$1.validateInput;
 var write_2 = write$1.sync;
 var write_3 = write$1.async;
 
-var append = createCommonjsModule(function (module, exports) {
+var append = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, data, options) => {
   const methodSignature = `${methodName}(path, data, [options])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.argument(methodSignature, "data", data, ["string", "buffer"]);
-  validate.options(methodSignature, "options", options, {
-    mode: ["string", "number"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.argument(methodSignature, 'data', data, ['string', 'buffer']);
+  validate.options(methodSignature, 'options', options, {
+    mode: ['string', 'number'],
   });
 };
 
@@ -5850,7 +6955,7 @@ const appendSync = (path, data, options) => {
   try {
     fs_1.appendFileSync(path, data, options);
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Parent directory doesn't exist, so just pass the task to `write`,
       // which will create the folder and file.
       write$1.sync(path, data, options);
@@ -5866,18 +6971,17 @@ const appendSync = (path, data, options) => {
 
 const appendAsync = (path, data, options) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .appendFile(path, data, options)
-      .then(resolve)
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Parent directory doesn't exist, so just pass the task to `write`,
-          // which will create the folder and file.
-          write$1.async(path, data, options).then(resolve, reject);
-        } else {
-          reject(err);
-        }
-      });
+    fs_1.appendFile(path, data, options)
+    .then(resolve)
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Parent directory doesn't exist, so just pass the task to `write`,
+        // which will create the folder and file.
+        write$1.async(path, data, options).then(resolve, reject);
+      } else {
+        reject(err);
+      }
+    });
   });
 };
 
@@ -5894,18 +6998,18 @@ var append_1 = append.validateInput;
 var append_2 = append.sync;
 var append_3 = append.async;
 
-var file = createCommonjsModule(function (module, exports) {
+var file = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, criteria) => {
   const methodSignature = `${methodName}(path, [criteria])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.options(methodSignature, "criteria", criteria, {
-    content: ["string", "buffer", "object", "array"],
-    jsonIndent: ["number"],
-    mode: ["string", "number"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.options(methodSignature, 'criteria', criteria, {
+    content: ['string', 'buffer', 'object', 'array'],
+    jsonIndent: ['number'],
+    mode: ['string', 'number'],
   });
 };
 
-const getCriteriaDefaults = passedCriteria => {
+const getCriteriaDefaults = (passedCriteria) => {
   const criteria = passedCriteria || {};
   if (criteria.mode !== undefined) {
     criteria.mode = mode.normalizeFileMode(criteria.mode);
@@ -5913,26 +7017,22 @@ const getCriteriaDefaults = passedCriteria => {
   return criteria;
 };
 
-const generatePathOccupiedByNotFileError = path => {
-  return new Error(
-    `Path ${
-      path
-    } exists but is not a file. Halting jetpack.file() call for safety reasons.`
-  );
+const generatePathOccupiedByNotFileError = (path) => {
+  return new Error(`Path ${path} exists but is not a file. Halting jetpack.file() call for safety reasons.`);
 };
 
 // ---------------------------------------------------------
 // Sync
 // ---------------------------------------------------------
 
-const checkWhatAlreadyOccupiesPathSync = path => {
+const checkWhatAlreadyOccupiesPathSync = (path) => {
   let stat;
 
   try {
     stat = fs_1.statSync(path);
   } catch (err) {
     // Detection if path exists
-    if (err.code !== "ENOENT") {
+    if (err.code !== 'ENOENT') {
       throw err;
     }
   }
@@ -5951,7 +7051,7 @@ const checkExistingFileFulfillsCriteriaSync = (path, stat, criteria) => {
     if (criteria.content !== undefined) {
       write$1.sync(path, criteria.content, {
         mode: mode$$1,
-        jsonIndent: criteria.jsonIndent
+        jsonIndent: criteria.jsonIndent,
       });
       return true;
     }
@@ -5971,13 +7071,13 @@ const checkExistingFileFulfillsCriteriaSync = (path, stat, criteria) => {
 };
 
 const createBrandNewFileSync = (path, criteria) => {
-  let content = "";
+  let content = '';
   if (criteria.content !== undefined) {
     content = criteria.content;
   }
   write$1.sync(path, content, {
     mode: criteria.mode,
-    jsonIndent: criteria.jsonIndent
+    jsonIndent: criteria.jsonIndent,
   });
 };
 
@@ -5995,26 +7095,25 @@ const fileSync = (path, passedCriteria) => {
 // Async
 // ---------------------------------------------------------
 
-const checkWhatAlreadyOccupiesPathAsync = path => {
+const checkWhatAlreadyOccupiesPathAsync = (path) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .stat(path)
-      .then(stat => {
-        if (stat.isFile()) {
-          resolve(stat);
-        } else {
-          reject(generatePathOccupiedByNotFileError(path));
-        }
-      })
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Path doesn't exist.
-          resolve(undefined);
-        } else {
-          // This is other error. Must end here.
-          reject(err);
-        }
-      });
+    fs_1.stat(path)
+    .then((stat) => {
+      if (stat.isFile()) {
+        resolve(stat);
+      } else {
+        reject(generatePathOccupiedByNotFileError(path));
+      }
+    })
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Path doesn't exist.
+        resolve(undefined);
+      } else {
+        // This is other error. Must end here.
+        reject(err);
+      }
+    });
   });
 };
 
@@ -6024,15 +7123,14 @@ const checkExistingFileFulfillsCriteriaAsync = (path, stat, criteria) => {
   const checkContent = () => {
     return new Promise((resolve, reject) => {
       if (criteria.content !== undefined) {
-        write$1
-          .async(path, criteria.content, {
-            mode: mode$$1,
-            jsonIndent: criteria.jsonIndent
-          })
-          .then(() => {
-            resolve(true);
-          })
-          .catch(reject);
+        write$1.async(path, criteria.content, {
+          mode: mode$$1,
+          jsonIndent: criteria.jsonIndent,
+        })
+        .then(() => {
+          resolve(true);
+        })
+        .catch(reject);
       } else {
         resolve(false);
       }
@@ -6046,7 +7144,8 @@ const checkExistingFileFulfillsCriteriaAsync = (path, stat, criteria) => {
     return undefined;
   };
 
-  return checkContent().then(contentReplaced => {
+  return checkContent()
+  .then((contentReplaced) => {
     if (!contentReplaced) {
       return checkMode();
     }
@@ -6055,14 +7154,14 @@ const checkExistingFileFulfillsCriteriaAsync = (path, stat, criteria) => {
 };
 
 const createBrandNewFileAsync = (path, criteria) => {
-  let content = "";
+  let content = '';
   if (criteria.content !== undefined) {
     content = criteria.content;
   }
 
   return write$1.async(path, content, {
     mode: criteria.mode,
-    jsonIndent: criteria.jsonIndent
+    jsonIndent: criteria.jsonIndent,
   });
 };
 
@@ -6071,13 +7170,13 @@ const fileAsync = (path, passedCriteria) => {
     const criteria = getCriteriaDefaults(passedCriteria);
 
     checkWhatAlreadyOccupiesPathAsync(path)
-      .then(stat => {
-        if (stat !== undefined) {
-          return checkExistingFileFulfillsCriteriaAsync(path, stat, criteria);
-        }
-        return createBrandNewFileAsync(path, criteria);
-      })
-      .then(resolve, reject);
+    .then((stat) => {
+      if (stat !== undefined) {
+        return checkExistingFileFulfillsCriteriaAsync(path, stat, criteria);
+      }
+      return createBrandNewFileAsync(path, criteria);
+    })
+    .then(resolve, reject);
   });
 };
 
@@ -6621,7 +7720,7 @@ BufferList$1.prototype.concat = function (n) {
   return ret;
 };
 
-var string_decoder = createCommonjsModule(function (module, exports) {
+var string_decoder = createCommonjsModule$$1(function (module, exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6849,7 +7948,7 @@ var string_decoder_1 = string_decoder.StringDecoder;
 
 Readable$1.ReadableState = ReadableState;
 var debug = debuglog('stream');
-inherits$2(Readable$1, EventEmitter);
+inherits$1(Readable$1, EventEmitter);
 
 function prependListener(emitter, event, fn) {
   // Sadly this is not cacheable as some libraries bundle their own
@@ -7739,7 +8838,7 @@ function indexOf(xs, x) {
 
 
 Writable$1.WritableState = WritableState;
-inherits$2(Writable$1, EventEmitter);
+inherits$1(Writable$1, EventEmitter);
 
 function nop() {}
 
@@ -8211,7 +9310,7 @@ function CorkedRequest(state) {
   };
 }
 
-inherits$2(Duplex$1, Readable$1);
+inherits$1(Duplex$1, Readable$1);
 
 var keys = Object.keys(Writable$1.prototype);
 for (var v = 0; v < keys.length; v++) {
@@ -8292,7 +9391,7 @@ function onEndNT(self) {
 // the results of the previous transformed chunk were consumed.
 
 
-inherits$2(Transform$1, Duplex$1);
+inherits$1(Transform$1, Duplex$1);
 
 function TransformState(stream) {
   this.afterTransform = function (er, data) {
@@ -8419,7 +9518,7 @@ function done(stream, er) {
   return stream.push(null);
 }
 
-inherits$2(PassThrough$1, Transform$1);
+inherits$1(PassThrough$1, Transform$1);
 function PassThrough$1(options) {
   if (!(this instanceof PassThrough$1)) return new PassThrough$1(options);
 
@@ -8430,7 +9529,7 @@ PassThrough$1.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
 
-inherits$2(Stream$1, EventEmitter);
+inherits$1(Stream$1, EventEmitter);
 Stream$1.Readable = Readable$1;
 Stream$1.Writable = Writable$1;
 Stream$1.Duplex = Duplex$1;
@@ -8541,44 +9640,30 @@ var stream = Object.freeze({
 	Stream: Stream$1
 });
 
-var inspect$1 = createCommonjsModule(function (module, exports) {
-const supportedChecksumAlgorithms = ["md5", "sha1", "sha256", "sha512"];
+var inspect$1 = createCommonjsModule$$1(function (module, exports) {
+const supportedChecksumAlgorithms = ['md5', 'sha1', 'sha256', 'sha512'];
 
-const symlinkOptions = ["report", "follow"];
+const symlinkOptions = ['report', 'follow'];
 
 const validateInput = (methodName, path, options) => {
   const methodSignature = `${methodName}(path, [options])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.options(methodSignature, "options", options, {
-    checksum: ["string"],
-    mode: ["boolean"],
-    times: ["boolean"],
-    absolutePath: ["boolean"],
-    symlinks: ["string"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.options(methodSignature, 'options', options, {
+    checksum: ['string'],
+    mode: ['boolean'],
+    times: ['boolean'],
+    absolutePath: ['boolean'],
+    symlinks: ['string'],
   });
 
-  if (
-    options &&
-    options.checksum !== undefined &&
-    supportedChecksumAlgorithms.indexOf(options.checksum) === -1
-  ) {
-    throw new Error(
-      `Argument "options.checksum" passed to ${
-        methodSignature
-      } must have one of values: ${supportedChecksumAlgorithms.join(", ")}`
-    );
+  if (options && options.checksum !== undefined
+    && supportedChecksumAlgorithms.indexOf(options.checksum) === -1) {
+    throw new Error(`Argument "options.checksum" passed to ${methodSignature} must have one of values: ${supportedChecksumAlgorithms.join(', ')}`);
   }
 
-  if (
-    options &&
-    options.symlinks !== undefined &&
-    symlinkOptions.indexOf(options.symlinks) === -1
-  ) {
-    throw new Error(
-      `Argument "options.symlinks" passed to ${
-        methodSignature
-      } must have one of values: ${symlinkOptions.join(", ")}`
-    );
+  if (options && options.symlinks !== undefined
+    && symlinkOptions.indexOf(options.symlinks) === -1) {
+    throw new Error(`Argument "options.symlinks" passed to ${methodSignature} must have one of values: ${symlinkOptions.join(', ')}`);
   }
 };
 
@@ -8588,14 +9673,14 @@ const createInspectObj = (path, options, stat) => {
   obj.name = pathUtil.basename(path);
 
   if (stat.isFile()) {
-    obj.type = "file";
+    obj.type = 'file';
     obj.size = stat.size;
   } else if (stat.isDirectory()) {
-    obj.type = "dir";
+    obj.type = 'dir';
   } else if (stat.isSymbolicLink()) {
-    obj.type = "symlink";
+    obj.type = 'symlink';
   } else {
-    obj.type = "other";
+    obj.type = 'other';
   }
 
   if (options.mode) {
@@ -8623,13 +9708,13 @@ const fileChecksum = (path, algo) => {
   const hash = fs.createHash(algo);
   const data = fs_1.readFileSync(path);
   hash.update(data);
-  return hash.digest("hex");
+  return hash.digest('hex');
 };
 
 const addExtraFieldsSync = (path, inspectObj, options) => {
-  if (inspectObj.type === "file" && options.checksum) {
+  if (inspectObj.type === 'file' && options.checksum) {
     inspectObj[options.checksum] = fileChecksum(path, options.checksum);
-  } else if (inspectObj.type === "symlink") {
+  } else if (inspectObj.type === 'symlink') {
     inspectObj.pointsAt = fs_1.readlinkSync(path);
   }
 };
@@ -8639,7 +9724,7 @@ const inspectSync = (path, options) => {
   let stat;
   const opts = options || {};
 
-  if (opts.symlinks === "follow") {
+  if (opts.symlinks === 'follow') {
     statOperation = fs_1.statSync;
   }
 
@@ -8647,7 +9732,7 @@ const inspectSync = (path, options) => {
     stat = statOperation(path);
   } catch (err) {
     // Detection if path exists
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Doesn't exist. Return undefined instead of throwing.
       return undefined;
     }
@@ -8668,24 +9753,26 @@ const fileChecksumAsync = (path, algo) => {
   return new Promise((resolve, reject) => {
     const hash = fs.createHash(algo);
     const s = fs_1.createReadStream(path);
-    s.on("data", data => {
+    s.on('data', (data) => {
       hash.update(data);
     });
-    s.on("end", () => {
-      resolve(hash.digest("hex"));
+    s.on('end', () => {
+      resolve(hash.digest('hex'));
     });
-    s.on("error", reject);
+    s.on('error', reject);
   });
 };
 
 const addExtraFieldsAsync = (path, inspectObj, options) => {
-  if (inspectObj.type === "file" && options.checksum) {
-    return fileChecksumAsync(path, options.checksum).then(checksum => {
+  if (inspectObj.type === 'file' && options.checksum) {
+    return fileChecksumAsync(path, options.checksum)
+    .then((checksum) => {
       inspectObj[options.checksum] = checksum;
       return inspectObj;
     });
-  } else if (inspectObj.type === "symlink") {
-    return fs_1.readlink(path).then(linkPath => {
+  } else if (inspectObj.type === 'symlink') {
+    return fs_1.readlink(path)
+    .then((linkPath) => {
       inspectObj.pointsAt = linkPath;
       return inspectObj;
     });
@@ -8698,24 +9785,25 @@ const inspectAsync = (path, options) => {
     let statOperation = fs_1.lstat;
     const opts = options || {};
 
-    if (opts.symlinks === "follow") {
+    if (opts.symlinks === 'follow') {
       statOperation = fs_1.stat;
     }
 
     statOperation(path)
-      .then(stat => {
-        const inspectObj = createInspectObj(path, opts, stat);
-        addExtraFieldsAsync(path, inspectObj, opts).then(resolve, reject);
-      })
-      .catch(err => {
-        // Detection if path exists
-        if (err.code === "ENOENT") {
-          // Doesn't exist. Return undefined instead of throwing.
-          resolve(undefined);
-        } else {
-          reject(err);
-        }
-      });
+    .then((stat) => {
+      const inspectObj = createInspectObj(path, opts, stat);
+      addExtraFieldsAsync(path, inspectObj, opts)
+      .then(resolve, reject);
+    })
+    .catch((err) => {
+      // Detection if path exists
+      if (err.code === 'ENOENT') {
+        // Doesn't exist. Return undefined instead of throwing.
+        resolve(undefined);
+      } else {
+        reject(err);
+      }
+    });
   });
 };
 
@@ -8738,7 +9826,7 @@ var inspect_5 = inspect$1.async;
 
 var require$$0$2 = ( stream && Stream$1 ) || stream;
 
-var tree_walker = createCommonjsModule(function (module, exports) {
+var tree_walker = createCommonjsModule$$1(function (module, exports) {
 /* eslint no-underscore-dangle:0 */
 
 const Readable = require$$0$2.Readable;
@@ -8758,14 +9846,9 @@ const walkSync = (path, options, callback, currentLevel) => {
   }
 
   callback(path, item);
-  if (item && item.type === "dir" && currentLevel < options.maxLevelsDeep) {
-    list.sync(path).forEach(child => {
-      walkSync(
-        path + pathUtil.sep + child,
-        options,
-        callback,
-        currentLevel + 1
-      );
+  if (item && item.type === 'dir' && currentLevel < options.maxLevelsDeep) {
+    list.sync(path).forEach((child) => {
+      walkSync(path + pathUtil.sep + child, options, callback, currentLevel + 1);
     });
   }
 };
@@ -8783,16 +9866,16 @@ const walkStream = (path, options) => {
   let nextTreeNode = {
     path,
     parent: undefined,
-    level: 0
+    level: 0,
   };
   let running = false;
   let readSome;
 
-  const error = function(err) {
-    rs.emit("error", err);
+  const error = function (err) {
+    rs.emit('error', err);
   };
 
-  const findNextUnprocessedNode = node => {
+  const findNextUnprocessedNode = (node) => {
     if (node.nextSibling) {
       return node.nextSibling;
     } else if (node.parent) {
@@ -8801,7 +9884,7 @@ const walkStream = (path, options) => {
     return undefined;
   };
 
-  const pushAndContinueMaybe = data => {
+  const pushAndContinueMaybe = (data) => {
     const theyWantMore = rs.push(data);
     running = false;
     if (!nextTreeNode) {
@@ -8821,43 +9904,37 @@ const walkStream = (path, options) => {
 
     running = true;
 
-    inspect$1
-      .async(theNode.path, options.inspectOptions)
-      .then(inspected => {
-        theNode.inspected = inspected;
-        if (
-          inspected &&
-          inspected.type === "dir" &&
-          theNode.level < options.maxLevelsDeep
-        ) {
-          list
-            .async(theNode.path)
-            .then(childrenNames => {
-              const children = childrenNames.map(name => {
-                return {
-                  name,
-                  path: theNode.path + pathUtil.sep + name,
-                  parent: theNode,
-                  level: theNode.level + 1
-                };
-              });
-              children.forEach((child, index) => {
-                child.nextSibling = children[index + 1];
-              });
+    inspect$1.async(theNode.path, options.inspectOptions)
+    .then((inspected) => {
+      theNode.inspected = inspected;
+      if (inspected && inspected.type === 'dir' && theNode.level < options.maxLevelsDeep) {
+        list.async(theNode.path)
+        .then((childrenNames) => {
+          const children = childrenNames.map((name) => {
+            return {
+              name,
+              path: theNode.path + pathUtil.sep + name,
+              parent: theNode,
+              level: theNode.level + 1,
+            };
+          });
+          children.forEach((child, index) => {
+            child.nextSibling = children[index + 1];
+          });
 
-              nextTreeNode = children[0] || findNextUnprocessedNode(theNode);
-              pushAndContinueMaybe({ path: theNode.path, item: inspected });
-            })
-            .catch(error);
-        } else {
-          nextTreeNode = findNextUnprocessedNode(theNode);
+          nextTreeNode = children[0] || findNextUnprocessedNode(theNode);
           pushAndContinueMaybe({ path: theNode.path, item: inspected });
-        }
-      })
-      .catch(error);
+        })
+        .catch(error);
+      } else {
+        nextTreeNode = findNextUnprocessedNode(theNode);
+        pushAndContinueMaybe({ path: theNode.path, item: inspected });
+      }
+    })
+    .catch(error);
   };
 
-  rs._read = function() {
+  rs._read = function () {
     if (!running) {
       readSome();
     }
@@ -9610,7 +10687,7 @@ function parse (pattern, isSub) {
           // to do safely.  For now, this is safe and works.
           var cs = pattern.substring(classStart + 1, i);
           try {
-            
+
           } catch (er) {
             // not a valid class!
             var sp = this.parse(cs, SUBPARSE);
@@ -10068,27 +11145,25 @@ function regExpEscape (s) {
   return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 }
 
-var matcher = createCommonjsModule(function (module, exports) {
+var matcher = createCommonjsModule$$1(function (module, exports) {
 const Minimatch = minimatch_1.Minimatch;
 
 const convertPatternToAbsolutePath = (basePath, pattern) => {
   // All patterns without slash are left as they are, if pattern contain
   // any slash we need to turn it into absolute path.
-  const hasSlash = pattern.indexOf("/") !== -1;
+  const hasSlash = (pattern.indexOf('/') !== -1);
   const isAbsolute = /^!?\//.test(pattern);
   const isNegated = /^!/.test(pattern);
   let separator;
 
   if (!isAbsolute && hasSlash) {
     // Throw out meaningful characters from the beginning ("!", "./").
-    const patternWithoutFirstCharacters = pattern
-      .replace(/^!/, "")
-      .replace(/^\.\//, "");
+    const patternWithoutFirstCharacters = pattern.replace(/^!/, '').replace(/^\.\//, '');
 
     if (/\/$/.test(basePath)) {
-      separator = "";
+      separator = '';
     } else {
-      separator = "/";
+      separator = '/';
     }
 
     if (isNegated) {
@@ -10103,26 +11178,25 @@ const convertPatternToAbsolutePath = (basePath, pattern) => {
 exports.create = (basePath, patterns) => {
   let normalizedPatterns;
 
-  if (typeof patterns === "string") {
+  if (typeof patterns === 'string') {
     normalizedPatterns = [patterns];
   } else {
     normalizedPatterns = patterns;
   }
 
-  const matchers = normalizedPatterns
-    .map(pattern => {
-      return convertPatternToAbsolutePath(basePath, pattern);
-    })
-    .map(pattern => {
-      return new Minimatch(pattern, {
-        matchBase: true,
-        nocomment: true,
-        dot: true
-      });
+  const matchers = normalizedPatterns.map((pattern) => {
+    return convertPatternToAbsolutePath(basePath, pattern);
+  })
+  .map((pattern) => {
+    return new Minimatch(pattern, {
+      matchBase: true,
+      nocomment: true,
+      dot: true,
     });
+  });
 
-  const performMatch = absolutePath => {
-    let mode = "matching";
+  const performMatch = (absolutePath) => {
+    let mode = 'matching';
     let weHaveMatch = false;
     let currentMatcher;
     let i;
@@ -10131,7 +11205,7 @@ exports.create = (basePath, patterns) => {
       currentMatcher = matchers[i];
 
       if (currentMatcher.negate) {
-        mode = "negation";
+        mode = 'negation';
         if (i === 0) {
           // There are only negated patterns in the set,
           // so make everything matching by default and
@@ -10140,16 +11214,12 @@ exports.create = (basePath, patterns) => {
         }
       }
 
-      if (
-        mode === "negation" &&
-        weHaveMatch &&
-        !currentMatcher.match(absolutePath)
-      ) {
+      if (mode === 'negation' && weHaveMatch && !currentMatcher.match(absolutePath)) {
         // One negation match is enought to know we can reject this one.
         return false;
       }
 
-      if (mode === "matching" && !weHaveMatch) {
+      if (mode === 'matching' && !weHaveMatch) {
         weHaveMatch = currentMatcher.match(absolutePath);
       }
     }
@@ -10163,20 +11233,20 @@ exports.create = (basePath, patterns) => {
 
 var matcher_1 = matcher.create;
 
-var find = createCommonjsModule(function (module, exports) {
+var find = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, options) => {
   const methodSignature = `${methodName}([path], options)`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.options(methodSignature, "options", options, {
-    matching: ["string", "array of string"],
-    files: ["boolean"],
-    directories: ["boolean"],
-    recursive: ["boolean"],
-    symlinks: ["boolean"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.options(methodSignature, 'options', options, {
+    matching: ['string', 'array of string'],
+    files: ['boolean'],
+    directories: ['boolean'],
+    recursive: ['boolean'],
+    symlinks: ['boolean'],
   });
 };
 
-const normalizeOptions = options => {
+const normalizeOptions = (options) => {
   const opts = options || {};
   // defaults:
   if (opts.files === undefined) {
@@ -10195,22 +11265,20 @@ const normalizeOptions = options => {
 };
 
 const processFoundObjects = (foundObjects, cwd) => {
-  return foundObjects.map(inspectObj => {
+  return foundObjects.map((inspectObj) => {
     return pathUtil.relative(cwd, inspectObj.absolutePath);
   });
 };
 
-const generatePathDoesntExistError = path => {
+const generatePathDoesntExistError = (path) => {
   const err = new Error(`Path you want to find stuff in doesn't exist ${path}`);
-  err.code = "ENOENT";
+  err.code = 'ENOENT';
   return err;
 };
 
-const generatePathNotDirectoryError = path => {
-  const err = new Error(
-    `Path you want to find stuff in must be a directory ${path}`
-  );
-  err.code = "ENOTDIR";
+const generatePathNotDirectoryError = (path) => {
+  const err = new Error(`Path you want to find stuff in must be a directory ${path}`);
+  err.code = 'ENOTDIR';
   return err;
 };
 
@@ -10227,26 +11295,20 @@ const findSync = (path, options) => {
     maxLevelsDeep = 1;
   }
 
-  tree_walker.sync(
-    path,
-    {
-      maxLevelsDeep,
-      inspectOptions: {
-        absolutePath: true
-      }
+  tree_walker.sync(path, {
+    maxLevelsDeep,
+    inspectOptions: {
+      absolutePath: true,
     },
-    (itemPath, item) => {
-      if (itemPath !== path && matchesAnyOfGlobs(itemPath)) {
-        if (
-          (item.type === "file" && options.files === true) ||
-          (item.type === "dir" && options.directories === true) ||
-          (item.type === "symlink" && options.symlinks === true)
-        ) {
-          foundInspectObjects.push(item);
-        }
+  }, (itemPath, item) => {
+    if (itemPath !== path && matchesAnyOfGlobs(itemPath)) {
+      if ((item.type === 'file' && options.files === true)
+        || (item.type === 'dir' && options.directories === true)
+        || (item.type === 'symlink' && options.symlinks === true)) {
+        foundInspectObjects.push(item);
       }
     }
-  );
+  });
 
   return processFoundObjects(foundInspectObjects, options.cwd);
 };
@@ -10255,7 +11317,7 @@ const findSyncInit = (path, options) => {
   const entryPointInspect = inspect$1.sync(path);
   if (entryPointInspect === undefined) {
     throw generatePathDoesntExistError(path);
-  } else if (entryPointInspect.type !== "dir") {
+  } else if (entryPointInspect.type !== 'dir') {
     throw generatePathNotDirectoryError(path);
   }
 
@@ -10276,38 +11338,36 @@ const findAsync = (path, options) => {
       maxLevelsDeep = 1;
     }
 
-    const walker = tree_walker
-      .stream(path, {
-        maxLevelsDeep,
-        inspectOptions: {
-          absolutePath: true
+    const walker = tree_walker.stream(path, {
+      maxLevelsDeep,
+      inspectOptions: {
+        absolutePath: true,
+      },
+    })
+    .on('readable', () => {
+      const data = walker.read();
+      if (data && data.path !== path && matchesAnyOfGlobs(data.path)) {
+        const item = data.item;
+        if ((item.type === 'file' && options.files === true)
+          || (item.type === 'dir' && options.directories === true)
+          || (item.type === 'symlink' && options.symlinks === true)) {
+          foundInspectObjects.push(item);
         }
-      })
-      .on("readable", () => {
-        const data = walker.read();
-        if (data && data.path !== path && matchesAnyOfGlobs(data.path)) {
-          const item = data.item;
-          if (
-            (item.type === "file" && options.files === true) ||
-            (item.type === "dir" && options.directories === true) ||
-            (item.type === "symlink" && options.symlinks === true)
-          ) {
-            foundInspectObjects.push(item);
-          }
-        }
-      })
-      .on("error", reject)
-      .on("end", () => {
-        resolve(processFoundObjects(foundInspectObjects, options.cwd));
-      });
+      }
+    })
+    .on('error', reject)
+    .on('end', () => {
+      resolve(processFoundObjects(foundInspectObjects, options.cwd));
+    });
   });
 };
 
 const findAsyncInit = (path, options) => {
-  return inspect$1.async(path).then(entryPointInspect => {
+  return inspect$1.async(path)
+  .then((entryPointInspect) => {
     if (entryPointInspect === undefined) {
       throw generatePathDoesntExistError(path);
-    } else if (entryPointInspect.type !== "dir") {
+    } else if (entryPointInspect.type !== 'dir') {
       throw generatePathNotDirectoryError(path);
     }
     return findAsync(path, normalizeOptions(options));
@@ -10327,46 +11387,30 @@ var find_1 = find.validateInput;
 var find_2 = find.sync;
 var find_3 = find.async;
 
-var inspect_tree = createCommonjsModule(function (module, exports) {
+var inspect_tree = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, options) => {
   const methodSignature = `${methodName}(path, [options])`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.options(methodSignature, "options", options, {
-    checksum: ["string"],
-    relativePath: ["boolean"],
-    symlinks: ["string"]
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.options(methodSignature, 'options', options, {
+    checksum: ['string'],
+    relativePath: ['boolean'],
+    symlinks: ['string'],
   });
 
-  if (
-    options &&
-    options.checksum !== undefined &&
-    inspect$1.supportedChecksumAlgorithms.indexOf(options.checksum) === -1
-  ) {
-    throw new Error(
-      `Argument "options.checksum" passed to ${
-        methodSignature
-      } must have one of values: ${inspect$1.supportedChecksumAlgorithms.join(
-        ", "
-      )}`
-    );
+  if (options && options.checksum !== undefined
+    && inspect$1.supportedChecksumAlgorithms.indexOf(options.checksum) === -1) {
+    throw new Error(`Argument "options.checksum" passed to ${methodSignature} must have one of values: ${inspect$1.supportedChecksumAlgorithms.join(', ')}`);
   }
 
-  if (
-    options &&
-    options.symlinks !== undefined &&
-    inspect$1.symlinkOptions.indexOf(options.symlinks) === -1
-  ) {
-    throw new Error(
-      `Argument "options.symlinks" passed to ${
-        methodSignature
-      } must have one of values: ${inspect$1.symlinkOptions.join(", ")}`
-    );
+  if (options && options.symlinks !== undefined
+    && inspect$1.symlinkOptions.indexOf(options.symlinks) === -1) {
+    throw new Error(`Argument "options.symlinks" passed to ${methodSignature} must have one of values: ${inspect$1.symlinkOptions.join(', ')}`);
   }
 };
 
 const generateTreeNodeRelativePath = (parent, path) => {
   if (!parent) {
-    return ".";
+    return '.';
   }
   return `${parent.relativePath}/${pathUtil.basename(path)}`;
 };
@@ -10375,10 +11419,10 @@ const generateTreeNodeRelativePath = (parent, path) => {
 // checksums and names of all its children inside.
 const checksumOfDir = (inspectList, algo) => {
   const hash = fs.createHash(algo);
-  inspectList.forEach(inspectObj => {
+  inspectList.forEach((inspectObj) => {
     hash.update(inspectObj.name + inspectObj[algo]);
   });
-  return hash.digest("hex");
+  return hash.digest('hex');
 };
 
 // ---------------------------------------------------------
@@ -10393,25 +11437,18 @@ const inspectTreeNodeSync = (path, options, parent) => {
       treeBranch.relativePath = generateTreeNodeRelativePath(parent, path);
     }
 
-    if (treeBranch.type === "dir") {
+    if (treeBranch.type === 'dir') {
       treeBranch.size = 0;
-      treeBranch.children = list.sync(path).map(filename => {
+      treeBranch.children = list.sync(path).map((filename) => {
         const subBranchPath = pathUtil.join(path, filename);
-        const treeSubBranch = inspectTreeNodeSync(
-          subBranchPath,
-          options,
-          treeBranch
-        );
+        const treeSubBranch = inspectTreeNodeSync(subBranchPath, options, treeBranch);
         // Add together all childrens' size to get directory combined size.
         treeBranch.size += treeSubBranch.size || 0;
         return treeSubBranch;
       });
 
       if (options.checksum) {
-        treeBranch[options.checksum] = checksumOfDir(
-          treeBranch.children,
-          options.checksum
-        );
+        treeBranch[options.checksum] = checksumOfDir(treeBranch.children, options.checksum);
       }
     }
   }
@@ -10430,28 +11467,25 @@ const inspectTreeSync = (path, options) => {
 
 const inspectTreeNodeAsync = (path, options, parent) => {
   return new Promise((resolve, reject) => {
-    const inspectAllChildren = treeBranch => {
+    const inspectAllChildren = (treeBranch) => {
       return new Promise((resolve2, reject2) => {
-        list.async(path).then(children => {
-          const doNext = index => {
+        list.async(path).then((children) => {
+          const doNext = (index) => {
             if (index === children.length) {
               if (options.checksum) {
                 // We are done, but still have to calculate checksum of whole directory.
-                treeBranch[options.checksum] = checksumOfDir(
-                  treeBranch.children,
-                  options.checksum
-                );
+                treeBranch[options.checksum] = checksumOfDir(treeBranch.children, options.checksum);
               }
               resolve2();
             } else {
               const subPath = pathUtil.join(path, children[index]);
               inspectTreeNodeAsync(subPath, options, treeBranch)
-                .then(treeSubBranch => {
-                  children[index] = treeSubBranch;
-                  treeBranch.size += treeSubBranch.size || 0;
-                  doNext(index + 1);
-                })
-                .catch(reject2);
+              .then((treeSubBranch) => {
+                children[index] = treeSubBranch;
+                treeBranch.size += treeSubBranch.size || 0;
+                doNext(index + 1);
+              })
+              .catch(reject2);
             }
           };
 
@@ -10463,32 +11497,28 @@ const inspectTreeNodeAsync = (path, options, parent) => {
       });
     };
 
-    inspect$1
-      .async(path, options)
-      .then(treeBranch => {
-        if (!treeBranch) {
-          // Given path doesn't exist. We are done.
+    inspect$1.async(path, options)
+    .then((treeBranch) => {
+      if (!treeBranch) {
+        // Given path doesn't exist. We are done.
+        resolve(treeBranch);
+      } else {
+        if (options.relativePath) {
+          treeBranch.relativePath = generateTreeNodeRelativePath(parent, path);
+        }
+
+        if (treeBranch.type !== 'dir') {
           resolve(treeBranch);
         } else {
-          if (options.relativePath) {
-            treeBranch.relativePath = generateTreeNodeRelativePath(
-              parent,
-              path
-            );
-          }
-
-          if (treeBranch.type !== "dir") {
+          inspectAllChildren(treeBranch)
+          .then(() => {
             resolve(treeBranch);
-          } else {
-            inspectAllChildren(treeBranch)
-              .then(() => {
-                resolve(treeBranch);
-              })
-              .catch(reject);
-          }
+          })
+          .catch(reject);
         }
-      })
-      .catch(reject);
+      }
+    })
+    .catch(reject);
   });
 };
 
@@ -10510,27 +11540,27 @@ var inspect_tree_1 = inspect_tree.validateInput;
 var inspect_tree_2 = inspect_tree.sync;
 var inspect_tree_3 = inspect_tree.async;
 
-var exists = createCommonjsModule(function (module, exports) {
+var exists = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path) => {
   const methodSignature = `${methodName}(path)`;
-  validate.argument(methodSignature, "path", path, ["string"]);
+  validate.argument(methodSignature, 'path', path, ['string']);
 };
 
 // ---------------------------------------------------------
 // Sync
 // ---------------------------------------------------------
 
-const existsSync = path => {
+const existsSync = (path) => {
   try {
     const stat = fs_1.statSync(path);
     if (stat.isDirectory()) {
-      return "dir";
+      return 'dir';
     } else if (stat.isFile()) {
-      return "file";
+      return 'file';
     }
-    return "other";
+    return 'other';
   } catch (err) {
-    if (err.code !== "ENOENT") {
+    if (err.code !== 'ENOENT') {
       throw err;
     }
   }
@@ -10542,21 +11572,21 @@ const existsSync = path => {
 // Async
 // ---------------------------------------------------------
 
-const existsAsync = path => {
+const existsAsync = (path) => {
   return new Promise((resolve, reject) => {
     fs_1.stat(path, (err, stat) => {
       if (err) {
-        if (err.code === "ENOENT") {
+        if (err.code === 'ENOENT') {
           resolve(false);
         } else {
           reject(err);
         }
       } else if (stat.isDirectory()) {
-        resolve("dir");
+        resolve('dir');
       } else if (stat.isFile()) {
-        resolve("file");
+        resolve('file');
       } else {
-        resolve("other");
+        resolve('other');
       }
     });
   });
@@ -10575,14 +11605,14 @@ var exists_1 = exists.validateInput;
 var exists_2 = exists.sync;
 var exists_3 = exists.async;
 
-var copy = createCommonjsModule(function (module, exports) {
+var copy = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, from, to, options) => {
   const methodSignature = `${methodName}(from, to, [options])`;
-  validate.argument(methodSignature, "from", from, ["string"]);
-  validate.argument(methodSignature, "to", to, ["string"]);
-  validate.options(methodSignature, "options", options, {
-    overwrite: ["boolean", "function"],
-    matching: ["string", "array of string"]
+  validate.argument(methodSignature, 'from', from, ['string']);
+  validate.argument(methodSignature, 'to', to, ['string']);
+  validate.options(methodSignature, 'options', options, {
+    overwrite: ['boolean', 'function'],
+    matching: ['string', 'array of string'],
   });
 };
 
@@ -10604,30 +11634,27 @@ const parseOptions = (options, from) => {
   return parsedOptions;
 };
 
-const generateNoSourceError = path => {
+const generateNoSourceError = (path) => {
   const err = new Error(`Path to copy doesn't exist ${path}`);
-  err.code = "ENOENT";
+  err.code = 'ENOENT';
   return err;
 };
 
-const generateDestinationExistsError = path => {
+const generateDestinationExistsError = (path) => {
   const err = new Error(`Destination path already exists ${path}`);
-  err.code = "EEXIST";
+  err.code = 'EEXIST';
   return err;
 };
 
 const inspectOptions = {
   mode: true,
-  symlinks: "report",
+  symlinks: 'report',
   times: true,
-  absolutePath: true
+  absolutePath: true,
 };
 
-const shouldThrowDestinationExistsError = context => {
-  return (
-    typeof context.opts.overwrite !== "function" &&
-    context.opts.overwrite !== true
-  );
+const shouldThrowDestinationExistsError = (context) => {
+  return typeof context.opts.overwrite !== 'function' && context.opts.overwrite !== true;
 };
 
 // ---------------------------------------------------------
@@ -10644,8 +11671,8 @@ const checksBeforeCopyingSync = (from, to, opts) => {
   }
 };
 
-const canOverwriteItSync = context => {
-  if (typeof context.opts.overwrite === "function") {
+const canOverwriteItSync = (context) => {
+  if (typeof context.opts.overwrite === 'function') {
     const destInspectData = inspect$1.sync(context.destPath, inspectOptions);
     return context.opts.overwrite(context.srcInspectData, destInspectData);
   }
@@ -10655,11 +11682,11 @@ const canOverwriteItSync = context => {
 const copyFileSync = (srcPath, destPath, mode$$1, context) => {
   const data = fs_1.readFileSync(srcPath);
   try {
-    fs_1.writeFileSync(destPath, data, { mode: mode$$1, flag: "wx" });
+    fs_1.writeFileSync(destPath, data, { mode: mode$$1, flag: 'wx' });
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       write$1.sync(destPath, data, { mode: mode$$1 });
-    } else if (err.code === "EEXIST") {
+    } else if (err.code === 'EEXIST') {
       if (canOverwriteItSync(context)) {
         fs_1.writeFileSync(destPath, data, { mode: mode$$1 });
       } else if (shouldThrowDestinationExistsError(context)) {
@@ -10678,7 +11705,7 @@ const copySymlinkSync = (from, to) => {
   } catch (err) {
     // There is already file/symlink with this name on destination location.
     // Must erase it manually, otherwise system won't allow us to place symlink there.
-    if (err.code === "EEXIST") {
+    if (err.code === 'EEXIST') {
       fs_1.unlinkSync(to);
       // Retry...
       fs_1.symlinkSync(symlinkPointsAt, to);
@@ -10691,11 +11718,11 @@ const copySymlinkSync = (from, to) => {
 const copyItemSync = (srcPath, srcInspectData, destPath, opts) => {
   const context = { srcPath, destPath, srcInspectData, opts };
   const mode$$1 = mode.normalizeFileMode(srcInspectData.mode);
-  if (srcInspectData.type === "dir") {
+  if (srcInspectData.type === 'dir') {
     dir.createSync(destPath, { mode: mode$$1 });
-  } else if (srcInspectData.type === "file") {
+  } else if (srcInspectData.type === 'file') {
     copyFileSync(srcPath, destPath, mode$$1, context);
-  } else if (srcInspectData.type === "symlink") {
+  } else if (srcInspectData.type === 'symlink') {
     copySymlinkSync(srcPath, destPath);
   }
 };
@@ -10719,33 +11746,29 @@ const copySync = (from, to, options) => {
 // ---------------------------------------------------------
 
 const checksBeforeCopyingAsync = (from, to, opts) => {
-  return exists
-    .async(from)
-    .then(srcPathExists => {
-      if (!srcPathExists) {
-        throw generateNoSourceError(from);
-      } else {
-        return exists.async(to);
-      }
-    })
-    .then(destPathExists => {
-      if (destPathExists && !opts.overwrite) {
-        throw generateDestinationExistsError(to);
-      }
-    });
+  return exists.async(from)
+  .then((srcPathExists) => {
+    if (!srcPathExists) {
+      throw generateNoSourceError(from);
+    } else {
+      return exists.async(to);
+    }
+  })
+  .then((destPathExists) => {
+    if (destPathExists && !opts.overwrite) {
+      throw generateDestinationExistsError(to);
+    }
+  });
 };
 
-const canOverwriteItAsync = context => {
+const canOverwriteItAsync = (context) => {
   return new Promise((resolve, reject) => {
-    if (typeof context.opts.overwrite === "function") {
-      inspect$1
-        .async(context.destPath, inspectOptions)
-        .then(destInspectData => {
-          resolve(
-            context.opts.overwrite(context.srcInspectData, destInspectData)
-          );
-        })
-        .catch(reject);
+    if (typeof context.opts.overwrite === 'function') {
+      inspect$1.async(context.destPath, inspectOptions)
+      .then((destInspectData) => {
+        resolve(context.opts.overwrite(context.srcInspectData, destInspectData));
+      })
+      .catch(reject);
     } else {
       resolve(context.opts.overwrite === true);
     }
@@ -10756,78 +11779,73 @@ const copyFileAsync = (srcPath, destPath, mode$$1, context, runOptions) => {
   return new Promise((resolve, reject) => {
     const runOpts = runOptions || {};
 
-    let flags = "wx";
+    let flags = 'wx';
     if (runOpts.overwrite) {
-      flags = "w";
+      flags = 'w';
     }
 
     const readStream = fs_1.createReadStream(srcPath);
     const writeStream = fs_1.createWriteStream(destPath, { mode: mode$$1, flags });
 
-    readStream.on("error", reject);
+    readStream.on('error', reject);
 
-    writeStream.on("error", err => {
+    writeStream.on('error', (err) => {
       // Force read stream to close, since write stream errored
       // read stream serves us no purpose.
       readStream.resume();
 
-      if (err.code === "ENOENT") {
+      if (err.code === 'ENOENT') {
         // Some parent directory doesn't exits. Create it and retry.
-        dir
-          .createAsync(pathUtil.dirname(destPath))
-          .then(() => {
-            copyFileAsync(srcPath, destPath, mode$$1, context).then(
-              resolve,
-              reject
-            );
-          })
-          .catch(reject);
-      } else if (err.code === "EEXIST") {
+        dir.createAsync(pathUtil.dirname(destPath))
+        .then(() => {
+          copyFileAsync(srcPath, destPath, mode$$1, context)
+          .then(resolve, reject);
+        })
+        .catch(reject);
+      } else if (err.code === 'EEXIST') {
         canOverwriteItAsync(context)
-          .then(canOverwite => {
-            if (canOverwite) {
-              copyFileAsync(srcPath, destPath, mode$$1, context, {
-                overwrite: true
-              }).then(resolve, reject);
-            } else if (shouldThrowDestinationExistsError(context)) {
-              reject(generateDestinationExistsError(destPath));
-            } else {
-              resolve();
-            }
-          })
-          .catch(reject);
+        .then((canOverwite) => {
+          if (canOverwite) {
+            copyFileAsync(srcPath, destPath, mode$$1, context, { overwrite: true })
+            .then(resolve, reject);
+          } else if (shouldThrowDestinationExistsError(context)) {
+            reject(generateDestinationExistsError(destPath));
+          } else {
+            resolve();
+          }
+        })
+        .catch(reject);
       } else {
         reject(err);
       }
     });
 
-    writeStream.on("finish", resolve);
+    writeStream.on('finish', resolve);
 
     readStream.pipe(writeStream);
   });
 };
 
 const copySymlinkAsync = (from, to) => {
-  return fs_1.readlink(from).then(symlinkPointsAt => {
+  return fs_1.readlink(from)
+  .then((symlinkPointsAt) => {
     return new Promise((resolve, reject) => {
-      fs_1
-        .symlink(symlinkPointsAt, to)
-        .then(resolve)
-        .catch(err => {
-          if (err.code === "EEXIST") {
-            // There is already file/symlink with this name on destination location.
-            // Must erase it manually, otherwise system won't allow us to place symlink there.
-            fs_1
-              .unlink(to)
-              .then(() => {
-                // Retry...
-                return fs_1.symlink(symlinkPointsAt, to);
-              })
-              .then(resolve, reject);
-          } else {
-            reject(err);
-          }
-        });
+      fs_1.symlink(symlinkPointsAt, to)
+      .then(resolve)
+      .catch((err) => {
+        if (err.code === 'EEXIST') {
+          // There is already file/symlink with this name on destination location.
+          // Must erase it manually, otherwise system won't allow us to place symlink there.
+          fs_1.unlink(to)
+          .then(() => {
+            // Retry...
+            return fs_1.symlink(symlinkPointsAt, to);
+          })
+          .then(resolve, reject);
+        } else {
+          reject(err);
+        }
+      });
     });
   });
 };
@@ -10835,11 +11853,11 @@ const copySymlinkAsync = (from, to) => {
 const copyItemAsync = (srcPath, srcInspectData, destPath, opts) => {
   const context = { srcPath, destPath, srcInspectData, opts };
   const mode$$1 = mode.normalizeFileMode(srcInspectData.mode);
-  if (srcInspectData.type === "dir") {
+  if (srcInspectData.type === 'dir') {
     return dir.createAsync(destPath, { mode: mode$$1 });
-  } else if (srcInspectData.type === "file") {
+  } else if (srcInspectData.type === 'file') {
     return copyFileAsync(srcPath, destPath, mode$$1, context);
-  } else if (srcInspectData.type === "symlink") {
+  } else if (srcInspectData.type === 'symlink') {
     return copySymlinkAsync(srcPath, destPath);
   }
   // Ha! This is none of supported file system entities. What now?
@@ -10852,39 +11870,38 @@ const copyAsync = (from, to, options) => {
     const opts = parseOptions(options, from);
 
     checksBeforeCopyingAsync(from, to, opts)
-      .then(() => {
-        let allFilesDelivered = false;
-        let filesInProgress = 0;
+    .then(() => {
+      let allFilesDelivered = false;
+      let filesInProgress = 0;
 
-        const stream = tree_walker
-          .stream(from, { inspectOptions })
-          .on("readable", () => {
-            const item = stream.read();
-            if (item) {
-              const rel = pathUtil.relative(from, item.path);
-              const destPath = pathUtil.resolve(to, rel);
-              if (opts.allowedToCopy(item.path, item.item, destPath)) {
-                filesInProgress += 1;
-                copyItemAsync(item.path, item.item, destPath, opts)
-                  .then(() => {
-                    filesInProgress -= 1;
-                    if (allFilesDelivered && filesInProgress === 0) {
-                      resolve();
-                    }
-                  })
-                  .catch(reject);
+      const stream = tree_walker.stream(from, { inspectOptions })
+      .on('readable', () => {
+        const item = stream.read();
+        if (item) {
+          const rel = pathUtil.relative(from, item.path);
+          const destPath = pathUtil.resolve(to, rel);
+          if (opts.allowedToCopy(item.path, item.item, destPath)) {
+            filesInProgress += 1;
+            copyItemAsync(item.path, item.item, destPath, opts)
+            .then(() => {
+              filesInProgress -= 1;
+              if (allFilesDelivered && filesInProgress === 0) {
+                resolve();
               }
-            }
-          })
-          .on("error", reject)
-          .on("end", () => {
-            allFilesDelivered = true;
-            if (allFilesDelivered && filesInProgress === 0) {
-              resolve();
-            }
-          });
+            })
+            .catch(reject);
+          }
+        }
       })
-      .catch(reject);
+      .on('error', reject)
+      .on('end', () => {
+        allFilesDelivered = true;
+        if (allFilesDelivered && filesInProgress === 0) {
+          resolve();
+        }
+      });
+    })
+    .catch(reject);
   });
 };
 
@@ -10901,16 +11918,16 @@ var copy_1 = copy.validateInput;
 var copy_2 = copy.sync;
 var copy_3 = copy.async;
 
-var move = createCommonjsModule(function (module, exports) {
+var move = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, from, to) => {
   const methodSignature = `${methodName}(from, to)`;
-  validate.argument(methodSignature, "from", from, ["string"]);
-  validate.argument(methodSignature, "to", to, ["string"]);
+  validate.argument(methodSignature, 'from', from, ['string']);
+  validate.argument(methodSignature, 'to', to, ['string']);
 };
 
-const generateSourceDoesntExistError = path => {
+const generateSourceDoesntExistError = (path) => {
   const err = new Error(`Path to move doesn't exist ${path}`);
-  err.code = "ENOENT";
+  err.code = 'ENOENT';
   return err;
 };
 
@@ -10922,7 +11939,7 @@ const moveSync = (from, to) => {
   try {
     fs_1.renameSync(from, to);
   } catch (err) {
-    if (err.code !== "ENOENT") {
+    if (err.code !== 'ENOENT') {
       // We can't make sense of this error. Rethrow it.
       throw err;
     } else {
@@ -10945,52 +11962,50 @@ const moveSync = (from, to) => {
 // Async
 // ---------------------------------------------------------
 
-const ensureDestinationPathExistsAsync = to => {
+const ensureDestinationPathExistsAsync = (to) => {
   return new Promise((resolve, reject) => {
     const destDir = pathUtil.dirname(to);
-    exists
-      .async(destDir)
-      .then(dstExists => {
-        if (!dstExists) {
-          dir.createAsync(destDir).then(resolve, reject);
-        } else {
-          // Hah, no idea.
-          reject();
-        }
-      })
-      .catch(reject);
+    exists.async(destDir)
+    .then((dstExists) => {
+      if (!dstExists) {
+        dir.createAsync(destDir)
+        .then(resolve, reject);
+      } else {
+        // Hah, no idea.
+        reject();
+      }
+    })
+    .catch(reject);
   });
 };
 
 const moveAsync = (from, to) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .rename(from, to)
-      .then(resolve)
-      .catch(err => {
-        if (err.code !== "ENOENT") {
-          // Something unknown. Rethrow original error.
-          reject(err);
-        } else {
-          // Ok, source or destination path doesn't exist.
-          // Must do more investigation.
-          exists
-            .async(from)
-            .then(srcExists => {
-              if (!srcExists) {
-                reject(generateSourceDoesntExistError(from));
-              } else {
-                ensureDestinationPathExistsAsync(to)
-                  .then(() => {
-                    // Retry the attempt
-                    return fs_1.rename(from, to);
-                  })
-                  .then(resolve, reject);
-              }
+    fs_1.rename(from, to)
+    .then(resolve)
+    .catch((err) => {
+      if (err.code !== 'ENOENT') {
+        // Something unknown. Rethrow original error.
+        reject(err);
+      } else {
+        // Ok, source or destination path doesn't exist.
+        // Must do more investigation.
+        exists.async(from)
+        .then((srcExists) => {
+          if (!srcExists) {
+            reject(generateSourceDoesntExistError(from));
+          } else {
+            ensureDestinationPathExistsAsync(to)
+            .then(() => {
+              // Retry the attempt
+              return fs_1.rename(from, to);
             })
-            .catch(reject);
-        }
-      });
+            .then(resolve, reject);
+          }
+        })
+        .catch(reject);
+      }
+    });
   });
 };
 
@@ -11007,25 +12022,18 @@ var move_1 = move.validateInput;
 var move_2 = move.sync;
 var move_3 = move.async;
 
-var read$1 = createCommonjsModule(function (module, exports) {
+var read$1 = createCommonjsModule$$1(function (module, exports) {
 /* eslint no-console:1 */
 
-const supportedReturnAs = ["utf8", "buffer", "json", "jsonWithDates"];
+const supportedReturnAs = ['utf8', 'buffer', 'json', 'jsonWithDates'];
 
 const validateInput = (methodName, path, returnAs) => {
   const methodSignature = `${methodName}(path, returnAs)`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.argument(methodSignature, "returnAs", returnAs, [
-    "string",
-    "undefined"
-  ]);
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.argument(methodSignature, 'returnAs', returnAs, ['string', 'undefined']);
 
   if (returnAs && supportedReturnAs.indexOf(returnAs) === -1) {
-    throw new Error(
-      `Argument "returnAs" passed to ${
-        methodSignature
-      } must have one of values: ${supportedReturnAs.join(", ")}`
-    );
+    throw new Error(`Argument "returnAs" passed to ${methodSignature} must have one of values: ${supportedReturnAs.join(', ')}`);
   }
 };
 
@@ -11033,7 +12041,7 @@ const validateInput = (methodName, path, returnAs) => {
 // which is called to serialize date to JSON.
 const jsonDateParser = (key, value) => {
   const reISO = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*))(?:Z|(\+|-)([\d|:]*))?$/;
-  if (typeof value === "string") {
+  if (typeof value === 'string') {
     if (reISO.exec(value)) {
       return new Date(value);
     }
@@ -11042,9 +12050,7 @@ const jsonDateParser = (key, value) => {
 };
 
 const makeNicerJsonParsingError = (path, err) => {
-  const nicerError = new Error(
-    `JSON parsing failed while reading ${path} [${err}]`
-  );
+  const nicerError = new Error(`JSON parsing failed while reading ${path} [${err}]`);
   nicerError.originalError = err;
   return nicerError;
 };
@@ -11054,18 +12060,18 @@ const makeNicerJsonParsingError = (path, err) => {
 // ---------------------------------------------------------
 
 const readSync = (path, returnAs) => {
-  const retAs = returnAs || "utf8";
+  const retAs = returnAs || 'utf8';
   let data;
 
-  let encoding = "utf8";
-  if (retAs === "buffer") {
+  let encoding = 'utf8';
+  if (retAs === 'buffer') {
     encoding = null;
   }
 
   try {
     data = fs_1.readFileSync(path, { encoding });
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // If file doesn't exist return undefined instead of throwing.
       return undefined;
     }
@@ -11074,9 +12080,9 @@ const readSync = (path, returnAs) => {
   }
 
   try {
-    if (retAs === "json") {
+    if (retAs === 'json') {
       data = JSON.parse(data);
-    } else if (retAs === "jsonWithDates") {
+    } else if (retAs === 'jsonWithDates') {
       data = JSON.parse(data, jsonDateParser);
     }
   } catch (err) {
@@ -11092,37 +12098,36 @@ const readSync = (path, returnAs) => {
 
 const readAsync = (path, returnAs) => {
   return new Promise((resolve, reject) => {
-    const retAs = returnAs || "utf8";
-    let encoding = "utf8";
-    if (retAs === "buffer") {
+    const retAs = returnAs || 'utf8';
+    let encoding = 'utf8';
+    if (retAs === 'buffer') {
       encoding = null;
     }
 
-    fs_1
-      .readFile(path, { encoding })
-      .then(data => {
-        // Make final parsing of the data before returning.
-        try {
-          if (retAs === "json") {
-            resolve(JSON.parse(data));
-          } else if (retAs === "jsonWithDates") {
-            resolve(JSON.parse(data, jsonDateParser));
-          } else {
-            resolve(data);
-          }
-        } catch (err) {
-          reject(makeNicerJsonParsingError(path, err));
-        }
-      })
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // If file doesn't exist return undefined instead of throwing.
-          resolve(undefined);
+    fs_1.readFile(path, { encoding })
+    .then((data) => {
+      // Make final parsing of the data before returning.
+      try {
+        if (retAs === 'json') {
+          resolve(JSON.parse(data));
+        } else if (retAs === 'jsonWithDates') {
+          resolve(JSON.parse(data, jsonDateParser));
         } else {
-          // Otherwise throw
-          reject(err);
+          resolve(data);
         }
-      });
+      } catch (err) {
+        reject(makeNicerJsonParsingError(path, err));
+      }
+    })
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // If file doesn't exist return undefined instead of throwing.
+        resolve(undefined);
+      } else {
+        // Otherwise throw
+        reject(err);
+      }
+    });
   });
 };
 
@@ -11139,11 +12144,11 @@ var read_1 = read$1.validateInput;
 var read_2 = read$1.sync;
 var read_3 = read$1.async;
 
-var rename = createCommonjsModule(function (module, exports) {
+var rename = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, path, newName) => {
   const methodSignature = `${methodName}(path, newName)`;
-  validate.argument(methodSignature, "path", path, ["string"]);
-  validate.argument(methodSignature, "newName", newName, ["string"]);
+  validate.argument(methodSignature, 'path', path, ['string']);
+  validate.argument(methodSignature, 'newName', newName, ['string']);
 };
 
 // ---------------------------------------------------------
@@ -11177,11 +12182,11 @@ var rename_1 = rename.validateInput;
 var rename_2 = rename.sync;
 var rename_3 = rename.async;
 
-var symlink = createCommonjsModule(function (module, exports) {
+var symlink = createCommonjsModule$$1(function (module, exports) {
 const validateInput = (methodName, symlinkValue, path) => {
   const methodSignature = `${methodName}(symlinkValue, path)`;
-  validate.argument(methodSignature, "symlinkValue", symlinkValue, ["string"]);
-  validate.argument(methodSignature, "path", path, ["string"]);
+  validate.argument(methodSignature, 'symlinkValue', symlinkValue, ['string']);
+  validate.argument(methodSignature, 'path', path, ['string']);
 };
 
 // ---------------------------------------------------------
@@ -11192,7 +12197,7 @@ const symlinkSync = (symlinkValue, path) => {
   try {
     fs_1.symlinkSync(symlinkValue, path);
   } catch (err) {
-    if (err.code === "ENOENT") {
+    if (err.code === 'ENOENT') {
       // Parent directories don't exist. Just create them and rety.
       dir.createSync(pathUtil.dirname(path));
       fs_1.symlinkSync(symlinkValue, path);
@@ -11208,22 +12213,20 @@ const symlinkSync = (symlinkValue, path) => {
 
 const symlinkAsync = (symlinkValue, path) => {
   return new Promise((resolve, reject) => {
-    fs_1
-      .symlink(symlinkValue, path)
-      .then(resolve)
-      .catch(err => {
-        if (err.code === "ENOENT") {
-          // Parent directories don't exist. Just create them and rety.
-          dir
-            .createAsync(pathUtil.dirname(path))
-            .then(() => {
-              return fs_1.symlink(symlinkValue, path);
-            })
-            .then(resolve, reject);
-        } else {
-          reject(err);
-        }
-      });
+    fs_1.symlink(symlinkValue, path)
+    .then(resolve)
+    .catch((err) => {
+      if (err.code === 'ENOENT') {
+        // Parent directories don't exist. Just create them and rety.
+        dir.createAsync(pathUtil.dirname(path))
+        .then(() => {
+          return fs_1.symlink(symlinkValue, path);
+        })
+        .then(resolve, reject);
+      } else {
+        reject(err);
+      }
+    });
   });
 };
 
@@ -11250,15 +12253,15 @@ var streams = {
 
 var util$2 = ( util$1 && util ) || util$1;
 
-var jetpack = createCommonjsModule(function (module) {
+var jetpack = createCommonjsModule$$1(function (module) {
 /* eslint no-param-reassign:0 */
 
-const jetpackContext = cwdPath => {
+const jetpackContext = (cwdPath) => {
   const getCwdPath = () => {
     return cwdPath || process.cwd();
   };
 
-  const cwd$$1 = function() {
+  const cwd$$1 = function () {
     // return current CWD if no arguments specified...
     if (arguments.length === 0) {
       return getCwdPath();
@@ -11271,17 +12274,17 @@ const jetpackContext = cwdPath => {
   };
 
   // resolves path to inner CWD path of this jetpack instance
-  const resolvePath = path => {
+  const resolvePath = (path) => {
     return pathUtil.resolve(getCwdPath(), path);
   };
 
-  const getPath = function() {
+  const getPath = function () {
     // add CWD base path as first element of arguments array
     Array.prototype.unshift.call(arguments, getCwdPath());
     return pathUtil.resolve.apply(null, arguments);
   };
 
-  const normalizeOptions = options => {
+  const normalizeOptions = (options) => {
     const opts = options || {};
     opts.cwd = getCwdPath();
     return opts;
@@ -11294,20 +12297,20 @@ const jetpackContext = cwdPath => {
     path: getPath,
 
     append: (path, data, options) => {
-      append.validateInput("append", path, data, options);
+      append.validateInput('append', path, data, options);
       append.sync(resolvePath(path), data, options);
     },
     appendAsync: (path, data, options) => {
-      append.validateInput("appendAsync", path, data, options);
+      append.validateInput('appendAsync', path, data, options);
       return append.async(resolvePath(path), data, options);
     },
 
     copy: (from, to, options) => {
-      copy.validateInput("copy", from, to, options);
+      copy.validateInput('copy', from, to, options);
       copy.sync(resolvePath(from), resolvePath(to), options);
     },
     copyAsync: (from, to, options) => {
-      copy.validateInput("copyAsync", from, to, options);
+      copy.validateInput('copyAsync', from, to, options);
       return copy.async(resolvePath(from), resolvePath(to), options);
     },
 
@@ -11319,39 +12322,41 @@ const jetpackContext = cwdPath => {
     },
 
     dir: (path, criteria) => {
-      dir.validateInput("dir", path, criteria);
+      dir.validateInput('dir', path, criteria);
       const normalizedPath = resolvePath(path);
       dir.sync(normalizedPath, criteria);
       return cwd$$1(normalizedPath);
     },
     dirAsync: (path, criteria) => {
-      dir.validateInput("dirAsync", path, criteria);
+      dir.validateInput('dirAsync', path, criteria);
       return new Promise((resolve, reject) => {
         const normalizedPath = resolvePath(path);
-        dir.async(normalizedPath, criteria).then(() => {
+        dir.async(normalizedPath, criteria)
+        .then(() => {
           resolve(cwd$$1(normalizedPath));
         }, reject);
       });
     },
 
-    exists: path => {
-      exists.validateInput("exists", path);
+    exists: (path) => {
+      exists.validateInput('exists', path);
       return exists.sync(resolvePath(path));
     },
-    existsAsync: path => {
-      exists.validateInput("existsAsync", path);
+    existsAsync: (path) => {
+      exists.validateInput('existsAsync', path);
       return exists.async(resolvePath(path));
     },
 
     file: (path, criteria) => {
-      file.validateInput("file", path, criteria);
+      file.validateInput('file', path, criteria);
       file.sync(resolvePath(path), criteria);
       return api;
     },
     fileAsync: (path, criteria) => {
-      file.validateInput("fileAsync", path, criteria);
+      file.validateInput('fileAsync', path, criteria);
       return new Promise((resolve, reject) => {
-        file.async(resolvePath(path), criteria).then(() => {
+        file.async(resolvePath(path), criteria)
+        .then(() => {
           resolve(api);
         }, reject);
       });
@@ -11360,106 +12365,106 @@ const jetpackContext = cwdPath => {
     find: (startPath, options) => {
       // startPath is optional parameter, if not specified move rest of params
       // to proper places and default startPath to CWD.
-      if (typeof options === "undefined" && typeof startPath === "object") {
+      if (typeof options === 'undefined' && typeof startPath === 'object') {
         options = startPath;
-        startPath = ".";
+        startPath = '.';
       }
-      find.validateInput("find", startPath, options);
+      find.validateInput('find', startPath, options);
       return find.sync(resolvePath(startPath), normalizeOptions(options));
     },
     findAsync: (startPath, options) => {
       // startPath is optional parameter, if not specified move rest of params
       // to proper places and default startPath to CWD.
-      if (typeof options === "undefined" && typeof startPath === "object") {
+      if (typeof options === 'undefined' && typeof startPath === 'object') {
         options = startPath;
-        startPath = ".";
+        startPath = '.';
       }
-      find.validateInput("findAsync", startPath, options);
+      find.validateInput('findAsync', startPath, options);
       return find.async(resolvePath(startPath), normalizeOptions(options));
     },
 
     inspect: (path, fieldsToInclude) => {
-      inspect$1.validateInput("inspect", path, fieldsToInclude);
+      inspect$1.validateInput('inspect', path, fieldsToInclude);
       return inspect$1.sync(resolvePath(path), fieldsToInclude);
     },
     inspectAsync: (path, fieldsToInclude) => {
-      inspect$1.validateInput("inspectAsync", path, fieldsToInclude);
+      inspect$1.validateInput('inspectAsync', path, fieldsToInclude);
       return inspect$1.async(resolvePath(path), fieldsToInclude);
     },
 
     inspectTree: (path, options) => {
-      inspect_tree.validateInput("inspectTree", path, options);
+      inspect_tree.validateInput('inspectTree', path, options);
       return inspect_tree.sync(resolvePath(path), options);
     },
     inspectTreeAsync: (path, options) => {
-      inspect_tree.validateInput("inspectTreeAsync", path, options);
+      inspect_tree.validateInput('inspectTreeAsync', path, options);
       return inspect_tree.async(resolvePath(path), options);
     },
 
-    list: path => {
-      list.validateInput("list", path);
-      return list.sync(resolvePath(path || "."));
+    list: (path) => {
+      list.validateInput('list', path);
+      return list.sync(resolvePath(path || '.'));
     },
-    listAsync: path => {
-      list.validateInput("listAsync", path);
-      return list.async(resolvePath(path || "."));
+    listAsync: (path) => {
+      list.validateInput('listAsync', path);
+      return list.async(resolvePath(path || '.'));
     },
 
     move: (from, to) => {
-      move.validateInput("move", from, to);
+      move.validateInput('move', from, to);
       move.sync(resolvePath(from), resolvePath(to));
     },
     moveAsync: (from, to) => {
-      move.validateInput("moveAsync", from, to);
+      move.validateInput('moveAsync', from, to);
       return move.async(resolvePath(from), resolvePath(to));
     },
 
     read: (path, returnAs) => {
-      read$1.validateInput("read", path, returnAs);
+      read$1.validateInput('read', path, returnAs);
       return read$1.sync(resolvePath(path), returnAs);
     },
     readAsync: (path, returnAs) => {
-      read$1.validateInput("readAsync", path, returnAs);
+      read$1.validateInput('readAsync', path, returnAs);
       return read$1.async(resolvePath(path), returnAs);
     },
 
-    remove: path => {
-      remove.validateInput("remove", path);
+    remove: (path) => {
+      remove.validateInput('remove', path);
       // If path not specified defaults to CWD
-      remove.sync(resolvePath(path || "."));
+      remove.sync(resolvePath(path || '.'));
     },
-    removeAsync: path => {
-      remove.validateInput("removeAsync", path);
+    removeAsync: (path) => {
+      remove.validateInput('removeAsync', path);
       // If path not specified defaults to CWD
-      return remove.async(resolvePath(path || "."));
+      return remove.async(resolvePath(path || '.'));
     },
 
     rename: (path, newName) => {
-      rename.validateInput("rename", path, newName);
+      rename.validateInput('rename', path, newName);
       rename.sync(resolvePath(path), newName);
     },
     renameAsync: (path, newName) => {
-      rename.validateInput("renameAsync", path, newName);
+      rename.validateInput('renameAsync', path, newName);
       return rename.async(resolvePath(path), newName);
     },
 
     symlink: (symlinkValue, path) => {
-      symlink.validateInput("symlink", symlinkValue, path);
+      symlink.validateInput('symlink', symlinkValue, path);
       symlink.sync(symlinkValue, resolvePath(path));
     },
     symlinkAsync: (symlinkValue, path) => {
-      symlink.validateInput("symlinkAsync", symlinkValue, path);
+      symlink.validateInput('symlinkAsync', symlinkValue, path);
       return symlink.async(symlinkValue, resolvePath(path));
     },
 
     write: (path, data, options) => {
-      write$1.validateInput("write", path, data, options);
+      write$1.validateInput('write', path, data, options);
       write$1.sync(resolvePath(path), data, options);
     },
     writeAsync: (path, data, options) => {
-      write$1.validateInput("writeAsync", path, data, options);
+      write$1.validateInput('writeAsync', path, data, options);
       return write$1.async(resolvePath(path), data, options);
-    }
+    },
   };
 
   if (util$2.inspect.custom !== undefined) {
@@ -11479,8 +12484,82 @@ module.exports = jetpackContext;
 
 var main = jetpack();
 
-var deutung = createCommonjsModule(function (module, exports) {
-!function(r,e){module.exports=e(pluralize,seedrandom$2,main);}(commonjsGlobal,function(r,e,t){r=r&&r.hasOwnProperty("default")?r.default:r, e=e&&e.hasOwnProperty("default")?e.default:e, t=t&&t.hasOwnProperty("default")?t.default:t;var n=function(r,e){var t=/::\.|[^ ]*::/,n=r;return e.reduce(function(r,e){return r.replace(t,e)},n)},i=function(r,t,n){var i=n?e(n):e();return Math.floor(i()*(t-r))+r},o={between:function(r,e){var t=r.split("-").map(Number);return i(t[0],t[1],e)},capitalize:function(r){return r[0].toUpperCase()+r.slice(1)},checkIfAlreadyGenerated:function(r,e){var t=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0;return Object.keys(r).reduce(function(t,n){return"type"===n?t:r[n]===e[n]?t+=1:t},0)>=t},modifier:function(r){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=r.split("|");return function(){return function r(t,n){var i=e[n[0]]?e[n[0]].call(null,t):t;return 1===n.length?i:r(i,n.slice(1))}(arguments.length>0&&void 0!==arguments[0]?arguments[0]:"",t)}},pluralize:function(e){return r(e)},possessive:function(r){return r+"'s"},sample:function(r,e){return"string"==typeof r?r:r[i(0,r.length,e)]},uppercase:function(r){return r.toUpperCase()}},a=function(){return function(r,e){if(Array.isArray(r))return r;if(Symbol.iterator in Object(r))return function(r,e){var t=[],n=!0,i=!1,o=void 0;try{for(var a,u=r[Symbol.iterator]();!(n=(a=u.next()).done)&&(t.push(a.value), !e||t.length!==e);n=!0);}catch(r){i=!0, o=r;}finally{try{!n&&u.return&&u.return();}finally{if(i)throw o}}return t}(r,e);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),u=o.sample,c=function(r){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=arguments[2];return Object.keys(r).reduce(function(n,i){if("|"===r[i][0]){var o=r[i].slice(1).split(":"),c=a(o,2),l=c[0],s=c[1];n[i]=e[l]?e[l](s,t):r[i];}else n[i]=u(r[i],t);return n},{})};var l=function(r){switch(!0){case"|"===r[0][0]:return"helper";case"!"===r[0][0]:return"grammar";case r[r.length-1].includes("|"):return"modifiedModel";default:return"model"}},s=function r(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n=/::\.|[^ ]*::/g;return e.replace(n,function(e){if("!"!==e[2])return e;var i=e.slice(3,-2).split("."),o=i.reduce(function(r,e){return r[e]?r[e]:new Error("The grammar: "+i+" does not appear to exist")},t);return o instanceof Error?o:null===o.match(n)?o:r(o,t)})},f=function(r){var e=r.match(/::\.|[^ ]*::/g);return null===e?[]:e},p=function(r){var e=function(r,e){switch(r){case"helper":return{type:r,helper:e[0],input:e[1]};case"grammar":return{type:r,grammar:e[0]};default:return{type:r,toParse:e}}};return r.map(function(r){var t=r.slice(2,-2).split("."),n=l(t);if("helper"===n)return e(n,t[0].slice(1).split(":"));if("grammar"===n){var i=[t[0].slice(1)].concat(function(r){if(Array.isArray(r)){for(var e=0,t=Array(r.length);e<r.length;e++)t[e]=r[e];return t}return Array.from(r)}(t.slice(1))).join(".");return e(n,[i])}var o,a=t.pop().split("|"),u=(o=a, Array.isArray(o)?o:Array.from(o)),c=u[0],s=u.slice(1);return e(n,"modifiedModel"===n?t.concat(c,[s]):t.concat(c))})},d=function(r){var e={modCha:["model","character","property","modifier"],mod:["model","property","modifier"],cha:["model","character","property"],gen:["model","property"]};return r.map(function(r){return"helper"===r.type||"grammar"===r.type?r:("modifiedModel"===r.type?4===r.toParse.length?e.modCha:e.mod:3===r.toParse.length?e.cha:e.gen).reduce(function(e,t,n){return e[t]=r.toParse[n], Object.assign({},e,{type:"model"})},{})})},m=function(r,e){var t=s(r,e),n=f(t);return n=p(n), {toModel:n=d(n),expandedGrammar:t}};function h(r,e){for(var t=0,n=r.length-1;n>=0;n--){var i=r[n];"."===i?r.splice(n,1):".."===i?(r.splice(n,1), t++):t&&(r.splice(n,1), t--);}if(e)for(;t--;t)r.unshift("..");return r}var v=/^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/,g=function(r){return v.exec(r).slice(1)};function y(){for(var r="",e=!1,t=arguments.length-1;t>=-1&&!e;t--){var n=t>=0?arguments[t]:"/";if("string"!=typeof n)throw new TypeError("Arguments to path.resolve must be strings");n&&(r=n+"/"+r, e="/"===n.charAt(0));}return(e?"/":"")+(r=h(E(r.split("/"),function(r){return!!r}),!e).join("/"))||"."}function b(r){var e=j(r),t="/"===M(r,-1);return(r=h(E(r.split("/"),function(r){return!!r}),!e).join("/"))||e||(r="."), r&&t&&(r+="/"), (e?"/":"")+r}function j(r){return"/"===r.charAt(0)}function A(){return b(E(Array.prototype.slice.call(arguments,0),function(r,e){if("string"!=typeof r)throw new TypeError("Arguments to path.join must be strings");return r}).join("/"))}function w(r,e){function t(r){for(var e=0;e<r.length&&""===r[e];e++);for(var t=r.length-1;t>=0&&""===r[t];t--);return e>t?[]:r.slice(e,t-e+1)}r=y(r).substr(1), e=y(e).substr(1);for(var n=t(r.split("/")),i=t(e.split("/")),o=Math.min(n.length,i.length),a=o,u=0;u<o;u++)if(n[u]!==i[u]){a=u;break}var c=[];for(u=a;u<n.length;u++)c.push("..");return(c=c.concat(i.slice(a))).join("/")}function O(r){var e=g(r),t=e[0],n=e[1];return t||n?(n&&(n=n.substr(0,n.length-1)), t+n):"."}function x(r,e){var t=g(r)[2];return e&&t.substr(-1*e.length)===e&&(t=t.substr(0,t.length-e.length)), t}function k(r){return g(r)[3]}var z={extname:k,basename:x,dirname:O,sep:"/",delimiter:":",relative:w,join:A,isAbsolute:j,normalize:b,resolve:y};function E(r,e){if(r.filter)return r.filter(e);for(var t=[],n=0;n<r.length;n++)e(r[n],n,r)&&t.push(r[n]);return t}var M="b"==="ab".substr(-1)?function(r,e,t){return r.substr(e,t)}:function(r,e,t){return e<0&&(e=r.length+e), r.substr(e,t)},P=Object.freeze({resolve:y,normalize:b,isAbsolute:j,join:A,relative:w,sep:"/",delimiter:":",dirname:O,basename:x,extname:k,default:z}),C=P&&z||P,T=function(r){return t.find(C.resolve(""+r),{matching:"*.json"}).reduce(function(r,e){var n=t.read(e,"json");return["model","grammar"].forEach(function(e){n[e]&&Object.keys(n[e]).forEach(function(t){r[e][t]?r[e][t]=[].concat(r[e][t],n[e][t]):r[e][t]=n[e][t];});}), n.entry&&(r.entry=n.entry), Object.assign({},r)},{model:{},grammar:{},entry:null})};return function(r){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},t=e.seed,i=e.state?e.state:{},a=e.modifiers?e.modifiers:{},u="string"==typeof r?T(r):r;i="string"==typeof i?T(i):i, a=Object.assign({},o,a);var l=u.grammar,s=m(u.entry,l),f=s.expandedGrammar,p=s.toModel.map(function(r){if("helper"===r.type)return a[r.helper](r.input);var e=i[r.character]||c(u.model[r.model],a,t);r.character&&(i[r.character]=e);var n=e[r.property];return r.modifier&&(n=r.modifier.reduce(function(r,e){return(0, a[e])(r,t)},n)), n});return{compiled:n(f,p),state:i}}});
+var loader = function loader(location) {
+  var snippetFiles = main.find(path.resolve('' + location), {
+    matching: '*.json'
+  });
+
+  var specs = snippetFiles.reduce(function (sp, filename) {
+    var snippet = main.read(filename, 'json');
+    var cats = ['model', 'grammar'];
+
+    cats.forEach(function (cat) {
+      if (snippet[cat]) {
+        Object.keys(snippet[cat]).forEach(function (key) {
+          if (sp[cat][key]) {
+            sp[cat][key] = [].concat(sp[cat][key], snippet[cat][key]);
+          } else {
+            sp[cat][key] = snippet[cat][key];
+          }
+        });
+      }
+    });
+    if (snippet.entry) sp.entry = snippet.entry;
+
+    return Object.assign({}, sp);
+  }, {
+    model: {},
+    grammar: {},
+    entry: null
+  });
+
+  return specs;
+};
+
+var Generator = function Generator(jsonSchemaLocation) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var seed = options.seed;
+  var state = options.state ? options.state : {};
+  var modifiers = options.modifiers ? options.modifiers : {};
+
+  var schema = typeof jsonSchemaLocation === 'string' ? loader(jsonSchemaLocation) : jsonSchemaLocation;
+  state = typeof state === 'string' ? loader(state) : state;
+
+  modifiers = Object.assign({}, fns, modifiers);
+  var grammars = schema.grammar;
+
+  var _Parser = Parser(schema.entry, grammars),
+      expandedGrammar = _Parser.expandedGrammar,
+      toModel = _Parser.toModel;
+
+  var models = toModel.map(function (model) {
+    if (model.type === 'helper') {
+      return modifiers[model.helper](model.input);
+    }
+
+    var character = state[model.character] || Model(schema.model[model.model], modifiers, seed);
+    if (model.character) state[model.character] = character;
+
+    var property = character[model.property];
+
+    if (model.modifier) {
+      property = model.modifier.reduce(function (result, modifier) {
+        var modifierFn = modifiers[modifier];
+        return modifierFn(result, seed);
+      }, property);
+    }
+
+    return property;
+  });
+
+  var compiled = compiler(expandedGrammar, models);
+  return { compiled: compiled, state: state };
+};
+
+module.exports = Generator;
+
+})));
 });
 
 var general = {
@@ -11490,7 +12569,7 @@ var general = {
 var genre = {
   "genre-0": "::game.S.title:: is one of the tightest, tensest ::game.S.genre:: games available.",
   "genre-1": "::game.S.title|possessive:: unique approach to ::game.S.genre:: spawned a genre now a staple of the game industry.",
-  "genre-2": "It is omne of the best ::game.S.genre:: games of all time"
+  "genre-2": "It is one of the best ::game.S.genre:: games of all time."
 };
 
 var mobile = {
@@ -11536,9 +12615,8 @@ var generator$1 = function generator(_ref) {
   }, '');
 
   var schema = { model: model$$1, grammar: grammar, entry: entry };
-  console.log({ schema: schema });
 
-  return deutung(schema);
+  return deutung(schema, { seed: seed }).compiled;
 };
 
 var parsedUrl = urlFns.parseUrl();
@@ -11555,22 +12633,21 @@ if (isHomePage) {
 
   var Title = Markov();
 
-  var list$3 = [];
+  var list = [];
   for (var i = number; i > 0; i--) {
     var seed = siteName + i;
-    var title$1 = Title.create({ seed: seed, amount: 2 });
+    var title = Title.create({ seed: seed, amount: 2 });
 
-    var _systemsGenerator = generator({ seed: seed, title: title$1 }),
+    var _systemsGenerator = generator({ seed: seed, title: title }),
         systems$1 = _systemsGenerator.systems,
         releaseDate = _systemsGenerator.releaseDate,
         consoleType = _systemsGenerator.consoleType;
 
-    var text = generator$1({ seed: seed, title: title$1, platform: systems$1, type: consoleType });
-
-    console.log({ text: text });
+    var text = generator$1({ seed: seed, title: title, platform: systems$1, type: consoleType });
 
     var item = {
-      title: title$1,
+      title: title,
+      text: text,
       releases: systems$1.reduce(function (str, console, i) {
         return i === 0 ? '' + console : str + ', ' + console;
       }, ''),
@@ -11578,9 +12655,9 @@ if (isHomePage) {
       number: i
     };
 
-    list$3.push(item);
+    list.push(item);
   }
-  paintListPage({ container: container, list: list$3, title: siteName, amount: number });
+  paintListPage({ container: container, list: list, title: siteName, amount: number });
   setTimeout(function () {
     document.querySelector("ul").scrollIntoView({ behavior: 'smooth' });
   }, 100);

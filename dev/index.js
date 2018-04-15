@@ -26,10 +26,9 @@ if (isHomePage) {
 
     let text = textGenerator({seed, title, platform: systems, type: consoleType});
 
-    console.log({text})
-
     let item = {
       title,
+      text,
       releases: systems.reduce((str, console, i) => {
         return i === 0 ? `${console}` : `${str}, ${console}`;
       }, ''),
