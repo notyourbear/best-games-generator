@@ -6,6 +6,8 @@ import general from './schema/general';
 import genre from './schema/genre';
 import mobile from './schema/mobile';
 import singlePlatform from './schema/singlePlatform';
+import difficulty from './schema/difficulty';
+
 
 import game from './model/game';
 
@@ -14,9 +16,9 @@ const generator = ({title, platform, type, seed}) => {
   model.game.title = title;
   model.game.platform = platform;
 
-  const grammar =  Object.assign({}, general, genre, mobile, singlePlatform);
+  const grammar =  Object.assign({}, general, genre, mobile, singlePlatform, difficulty);
 
-  const options = ['genre', 'general'];
+  const options = ['genre', 'general', 'difficulty'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 

@@ -6,9 +6,7 @@ const grammar = {
   'art-2': 'the ::adjective.evocative:: made it a standout of the ::game.Primary.platform::.',
   'platform-1': "::game.Primary.title:: was, in some ways, the last hurrah on the ::game.Primary.platform::.",
   'ability-1': '::game.Primary.title|possessive:: ::noun.ability:: lies in its near-instantaneous reward loop.',
-  'difficulty-1': "::game.Primary.difficulty::, ::game.Primary.title:: constantly tempts you into playing it just a little longer.",
   'difficulty-2': '::game.Primary.title:: may very well be the ::noun.pinnacle:: of ::game.Primary.difficulty:: ::game.Primary.genre::',
-  'genre-1': 'One of the best ::game.Primary.genre:: games of all time, ::game.Primary.title:: came remarkably close to giving players the experience they were watching on screens.'
 }
 
 export default grammar

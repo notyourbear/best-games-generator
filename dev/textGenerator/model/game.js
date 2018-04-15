@@ -1,6 +1,14 @@
 const model = {
   game: {
-    genre: ['superhero', 'horror', 'racing']
+    genre: [
+      'superhero',
+      'horror',
+      'racing',
+      'metroidvania',
+      'action',
+      'strategy',
+      'rpg'
+    ]
   }
 };
 

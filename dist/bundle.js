@@ -12563,13 +12563,17 @@ module.exports = Generator;
 });
 
 var general = {
-  "general-0": "::game.S.title:: birthed some of the greatest games of all time"
+  "general-0": "::game.S.title:: birthed some of the greatest games of all time.",
+  "general-1": "For every game sparking conversations about games as high art, another's there to remind us they can be weird.",
+  "general-2": "::game.S.title:: constantly tempts you into playing it just a little longer"
 };
 
 var genre = {
   "genre-0": "::game.S.title:: is one of the tightest, tensest ::game.S.genre:: games available.",
   "genre-1": "::game.S.title|possessive:: unique approach to ::game.S.genre:: spawned a genre now a staple of the game industry.",
-  "genre-2": "It is one of the best ::game.S.genre:: games of all time."
+  "genre-2": "It is one of the best ::game.S.genre:: games of all time.",
+  "genre-3": "Its gameplay helped pave the way for other games to experiment with the genre, leading to a renaissance of ::game.S.genre:: games",
+  "genre-4": "It doesn't hurt that, upon release, players considered it one of the finest ::game.S.genre:: games ever made."
 };
 
 var mobile = {
@@ -12580,12 +12584,16 @@ var singlePlatform = {
   "singlePlatform-0": "::game.S.title:: pushed the ::game.S.platform:: to its limits.",
   "singlePlatform-1": "::game.S.title:: was a standout of weird ::game.S.platform:: releases.",
   "singlePlatform-2": "::game.S.title:: was in someways the last hurrah on the ::game.S.platform::",
-  "singlePlatform-3": "::game.S.title:: was a must-own for ::game.S.genre::-lovers on the ::game.S.platform::"
+  "singlePlatform-3": "::game.S.title:: was a must-own for ::game.S.genre::-lovers on the ::game.S.platform::."
+};
+
+var difficulty = {
+  "difficulty-0": "::game.S.title:: helped popularize difficulty as a selling point."
 };
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing']
+    genre: ['superhero', 'horror', 'racing', 'metroidvania', 'action', 'strategy', 'rpg']
   }
 };
 
@@ -12599,9 +12607,9 @@ var generator$1 = function generator(_ref) {
   model$$1.game.title = title;
   model$$1.game.platform = platform;
 
-  var grammar = Object.assign({}, general, genre, mobile, singlePlatform);
+  var grammar = Object.assign({}, general, genre, mobile, singlePlatform, difficulty);
 
-  var options = ['genre', 'general'];
+  var options = ['genre', 'general', 'difficulty'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
