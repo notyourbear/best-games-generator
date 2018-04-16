@@ -12565,7 +12565,12 @@ module.exports = Generator;
 var general = {
   "general-0": "::game.S.title:: birthed some of the greatest games of all time.",
   "general-1": "For every game sparking conversations about games as high art, another's there to remind us they can be weird.",
-  "general-2": "::game.S.title:: constantly tempts you into playing it just a little longer"
+  "general-3": "The game maintains a cult following and spawned a sequel iterating on the bizarre approach to level design that made ::game.S.title:: a memorable journey.",
+  "general-4": "It's great dumb fun.",
+  "general-5": "::game.S.title:: was bombastic, scary and stunning.",
+  "general-6": "Better than its film counterpart, ::game.S.title:: is a notable exception to the consensus that film-based games are needless cash tie-ins.",
+  "general-7": "::game.S.title:: was able to grab awards from the Academy of Interactive Arts & Sciences, as well as nominations for its design from the Game Developers Choice Awards.",
+  "general-8": "In Stockholm, the game was recently used to design and test urban planning."
 };
 
 var genre = {
@@ -12573,27 +12578,45 @@ var genre = {
   "genre-1": "::game.S.title|possessive:: unique approach to ::game.S.genre:: spawned a genre now a staple of the game industry.",
   "genre-2": "It is one of the best ::game.S.genre:: games of all time.",
   "genre-3": "Its gameplay helped pave the way for other games to experiment with the genre, leading to a renaissance of ::game.S.genre:: games",
-  "genre-4": "It doesn't hurt that, upon release, players considered it one of the finest ::game.S.genre:: games ever made."
+  "genre-4": "It doesn't hurt that, upon release, players considered it one of the finest ::game.S.genre:: games ever made.",
+  "genre-5": "It helped popularize the ::game.S.genre:: genre in America, which now has a strong cult following.",
+  "genre-6": "One of the all time best ::game.S.genre:: games, TimeSplitters is simple dumb fun.",
+  "genre-7": "Unparalleled in its depth and complexity, ::game.S.title:: raised the mark for all other ::game.S.genre:: games."
 };
 
 var mobile = {
-  "mobile-0": "::game.S.title:: is another example of a mobile game done near-perfectly."
+  "mobile-0": "::game.S.title:: is another example of a mobile game done near-perfectly.",
+  "mobile-1": "When :game.S.title:: released on mobile devices in ::game.S.releaseDate::, it differentiated itself from other mobile games with its acclaimed presentation, depth and amount of content."
 };
 
 var singlePlatform = {
   "singlePlatform-0": "::game.S.title:: pushed the ::game.S.platform:: to its limits.",
   "singlePlatform-1": "::game.S.title:: was a standout of weird ::game.S.platform:: releases.",
   "singlePlatform-2": "::game.S.title:: was in someways the last hurrah on the ::game.S.platform::",
-  "singlePlatform-3": "::game.S.title:: was a must-own for ::game.S.genre::-lovers on the ::game.S.platform::."
+  "singlePlatform-3": "::game.S.title:: was a must-own for ::game.S.genre::-lovers on the ::game.S.platform::.",
+  "singlePlatform-4": "::game.S.title|possessive:: tight gameplay made it a standout of the then-aging ::game.S.platform::."
 };
 
 var difficulty = {
-  "difficulty-0": "::game.S.title:: helped popularize difficulty as a selling point."
+  "difficulty-0": "::game.S.title:: helped popularize difficulty as a selling point.",
+  "difficulty-1": "A game easy to pick up and instantly find satisfaction with, ::game.S.title:: constantly tempts you into playing it just a little longer with dangerously addictive gameplay.",
+  "difficulty-2": "::game.S.title:: may very well be the magnum opus of ultra-difficult ::game.S.genre|pluralize::.",
+  "difficulty-3": "Requiring skill and fast responses, ::game.S.title|possessive:: fun-but-precise gameplay makes it easy to pick up and play but a task to master.",
+  "difficulty-4": "::game.S.title:: taps into the part of the brain craving \"just one more go,\" leading to numerous lost days in its world."
+};
+
+var features = {
+  "features-0": "Featuring a then-novel concept, ::game.S.title:: let players choose the character they wanted to be and how they wanted to play."
+};
+
+var artStyle = {
+  "artStyle-0": "Nearly hypnotic, the game's gorgeous art-style make for a game as much a joy to look at as it is to play.",
+  "artStyle-1": "It's rare for a game released in ::game.S.releaseDate:: to still look great, and yet ::game.S.title:: looks half its age."
 };
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing', 'metroidvania', 'action', 'strategy', 'rpg']
+    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim']
   }
 };
 
@@ -12607,9 +12630,9 @@ var generator$1 = function generator(_ref) {
   model$$1.game.title = title;
   model$$1.game.platform = platform;
 
-  var grammar = Object.assign({}, general, genre, mobile, singlePlatform, difficulty);
+  var grammar = Object.assign({}, general, genre, mobile, singlePlatform, difficulty, features, artStyle);
 
-  var options = ['genre', 'general', 'difficulty'];
+  var options = ['genre', 'general', 'difficulty', 'features', 'artStyle'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
