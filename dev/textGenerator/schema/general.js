@@ -7,4 +7,9 @@ export default {
   "general-6": "Better than its film counterpart, ::game.S.title:: is a notable exception to the consensus that film-based games are needless cash tie-ins.",
   "general-7": "::game.S.title:: was able to grab awards from the Academy of Interactive Arts & Sciences, as well as nominations for its design from the Game Developers Choice Awards.",
   "general-8": "In Stockholm, the game was recently used to design and test urban planning.",
+  "general-9": "::game.S.title:: abandoned the mission-to-mission structure of earlier games, allowing players to explore and interact with its Victorian-styled world, creating a more engaging, accessible, immersive sim.",
+  "general-10": "Changing the world with every playthrough, ::game.S.title|possessive:: only objective is to explore — but at your leisure.",
+  "general-11": "There's no princess to save or enemy to kill. It's simply a meditative experience through imaginary worlds, an experience only possible in games.",
+  "general-12": "::game.S.title:: is the Occam's Razor of video games.",
+  "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away.",
 }

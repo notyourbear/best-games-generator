@@ -9,16 +9,19 @@ import singlePlatform from './schema/singlePlatform';
 import difficulty from './schema/difficulty';
 import features from './schema/features';
 import artStyle from './schema/artStyle';
+import review from './schema/review';
 
 import game from './model/game';
+import site from './model/site';
 
 const generator = ({title, platform, type, seed}) => {
-  const model = Object.assign({}, game);
+  const model = Object.assign({}, game, site);
   model.game.title = title;
   model.game.platform = platform;
 
   const grammar =  Object.assign({},
     general,
+    review,
     genre,
     mobile,
     singlePlatform,
@@ -26,11 +29,14 @@ const generator = ({title, platform, type, seed}) => {
     features,
     artStyle);
 
-  const options = ['genre', 'general', 'difficulty', 'features', 'artStyle'];
+  const options = ['genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
-  const entry = options.reduce((string, option, i) => {
+  let amount = fns.between({seed: seed, array: [3,5]});
+  let descriptors = fns.sample({array: options, seed, amount: amount});
+
+  const entry = descriptors.reduce((string, option, i) => {
     const keyes = Object.keys(grammar);
     const matches = keyes.filter(key => key.match(option, 'g'));
     const sampled = fns.sample({array: matches, seed});

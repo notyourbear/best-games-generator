@@ -1,4 +1,6 @@
 import urlFns from './urlFunctions';
+import fns from './fns';
+
 import paintHomePage from './templatingFns/homepage/paint';
 import paintListPage from  './templatingFns/listpage/paint';
 import formEvent from './templatingFns/formEvent';
@@ -21,7 +23,8 @@ if (isHomePage) {
   let list = [];
   for (let i = number; i > 0; i--) {
     let seed = siteName+i;
-    let title = Title.create({seed, amount: 2});
+    let amount = fns.between({array: [1,4], seed});
+    let title = Title.create({seed, amount});
     let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
     let text = textGenerator({seed, title, platform: systems, type: consoleType});

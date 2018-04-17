@@ -17,7 +17,10 @@ const model = {
       'split-screen co-op',
       'simulation',
       'action-role playing',
-      'city-sim'
+      'city-sim',
+      'flight simulator',
+      'grand strategy',
+      'real time strategy'
     ]
   }
 };

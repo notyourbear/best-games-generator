@@ -1,9 +1,18 @@
 import seedrandom from 'seedrandom';
 
-const sample = ({ array, seed }) => {
+const sample = ({ array, seed, amount }) => {
   const rng = seed ? seedrandom(seed) : seedrandom();
-  const index = Math.floor(rng() * array.length);
-  return array[index];
+  let amountLeft = amount || 1;
+  let results = [];
+  let options = array.slice();
+  while (amountLeft > 0) {
+    amountLeft--;
+    let index = Math.floor(rng() * options.length);
+    let option = options.splice(index, 1);
+    results = results.concat(option);
+  }
+
+  return results.length === 1 ? results[0] : results;
 }
 
 const arrayMaker = ({input}) => input.split(' ');
