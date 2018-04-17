@@ -108,6 +108,25 @@ const getPart = ({array, state, seed}) => {
   return value;
 }
 
+const between = ({array, seed}) => {
+  const [start, end] = array;
+  const opts = [];
+  for(let i = start; i < end; i++) {
+    opts.push(i);
+  }
+
+  return sample({array: opts, seed});
+}
+
+const platformCentric = ({ title }) => {
+  switch (true) {
+  case title.includes('64'): return ['N64'];
+  case title.includes('Super'): return ['SNES'];
+  case title.includes(' U'): return ['Wii U'];
+  default: return false;
+  }
+}
+
 export default {
   sample,
   getPart,
@@ -115,5 +134,7 @@ export default {
   arrayMaker,
   createChain,
   getItem,
-  switcher
+  switcher,
+  between,
+  platformCentric
 }

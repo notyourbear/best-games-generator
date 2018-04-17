@@ -1,4 +1,4 @@
-import fns from './fns.js';
+import fns from '../fns.js';
 import titles from './titles.js';
 
 const populateState = ({array, state}) => {

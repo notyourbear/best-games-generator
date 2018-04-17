@@ -1,6 +1,6 @@
 import Deutung from 'deutung';
 
-import fns from '../systemsGenerator/fns';
+import fns from '../fns';
 
 import general from './schema/general';
 import genre from './schema/genre';

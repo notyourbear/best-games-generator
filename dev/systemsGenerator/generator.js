@@ -1,5 +1,5 @@
 import systemSchema from './systems.js';
-import fns from './fns.js';
+import fns from '../fns.js';
 
 const generator = (obj = {}) => {
   let {amount, seed, title} = obj;
