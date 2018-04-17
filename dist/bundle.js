@@ -12671,8 +12671,7 @@ var generator$1 = function generator(_ref) {
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
-  var amount = fns.between({ seed: seed, array: [3, 5] });
-  var descriptors = fns.sample({ array: options, seed: seed, amount: amount });
+  var descriptors = fns.sample({ array: options, seed: seed, amount: 3 });
 
   var entry = descriptors.reduce(function (string, option, i) {
     var keyes = Object.keys(grammar);

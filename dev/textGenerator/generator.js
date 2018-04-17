@@ -19,7 +19,7 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   model.game.title = title;
   model.game.platform = platform;
   model.game.releaseDate = releaseDate;
-  
+
   const grammar =  Object.assign({},
     general,
     review,
@@ -34,8 +34,7 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
-  let amount = fns.between({seed: seed, array: [3,5]});
-  let descriptors = fns.sample({array: options, seed, amount: amount});
+  let descriptors = fns.sample({array: options, seed, amount: 3});
 
   const entry = descriptors.reduce((string, option, i) => {
     const keyes = Object.keys(grammar);
