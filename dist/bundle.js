@@ -12656,12 +12656,14 @@ var model$1 = {
 var generator$1 = function generator(_ref) {
   var title = _ref.title,
       platform = _ref.platform,
+      releaseDate = _ref.releaseDate,
       type = _ref.type,
       seed = _ref.seed;
 
   var model$$1 = Object.assign({}, model, model$1);
   model$$1.game.title = title;
   model$$1.game.platform = platform;
+  model$$1.game.releaseDate = releaseDate;
 
   var grammar = Object.assign({}, general, review, genre, mobile, singlePlatform, difficulty, features, artStyle);
 
@@ -12711,7 +12713,7 @@ if (isHomePage) {
         releaseDate = _systemsGenerator.releaseDate,
         consoleType = _systemsGenerator.consoleType;
 
-    var text = generator$1({ seed: seed, title: title, platform: systems$1, type: consoleType });
+    var text = generator$1({ seed: seed, title: title, releaseDate: releaseDate, platform: systems$1, type: consoleType });
 
     var item = {
       title: title,

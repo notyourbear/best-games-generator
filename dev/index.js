@@ -27,7 +27,7 @@ if (isHomePage) {
     let title = Title.create({seed, amount});
     let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
-    let text = textGenerator({seed, title, platform: systems, type: consoleType});
+    let text = textGenerator({seed, title, releaseDate, platform: systems, type: consoleType});
 
     let item = {
       title,

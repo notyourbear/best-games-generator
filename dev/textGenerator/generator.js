@@ -14,11 +14,12 @@ import review from './schema/review';
 import game from './model/game';
 import site from './model/site';
 
-const generator = ({title, platform, type, seed}) => {
+const generator = ({title, platform, releaseDate, type, seed}) => {
   const model = Object.assign({}, game, site);
   model.game.title = title;
   model.game.platform = platform;
-
+  model.game.releaseDate = releaseDate;
+  
   const grammar =  Object.assign({},
     general,
     review,
