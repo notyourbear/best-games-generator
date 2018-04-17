@@ -120,7 +120,7 @@ const getPart = ({array, state, seed}) => {
 const between = ({array, seed}) => {
   const [start, end] = array;
   const opts = [];
-  for(let i = start; i < end; i++) {
+  for(let i = start; i <= end; i++) {
     opts.push(i);
   }
 

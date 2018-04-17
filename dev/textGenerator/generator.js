@@ -10,6 +10,7 @@ import difficulty from './schema/difficulty';
 import features from './schema/features';
 import artStyle from './schema/artStyle';
 import review from './schema/review';
+import plot from './schema/plot';
 
 import game from './model/game';
 import site from './model/site';
@@ -27,10 +28,11 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
     mobile,
     singlePlatform,
     difficulty,
+    plot,
     features,
     artStyle);
 
-  const options = ['genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
+  const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 

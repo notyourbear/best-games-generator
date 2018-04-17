@@ -4,9 +4,11 @@ const model = {
       'Game Informer',
       'Polygon',
       'GameSpot',
-      'Waypoint',
+      'WayPoint',
       'Giant Bomb',
-      'IGN'
+      'IGN',
+      'Electronic Gaming Monthly',
+      'The Guardian'
     ]
   }
 };

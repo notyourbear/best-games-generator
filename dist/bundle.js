@@ -1150,7 +1150,7 @@ var between = function between(_ref7) {
       end = _array[1];
 
   var opts = [];
-  for (var i = start; i < end; i++) {
+  for (var i = start; i <= end; i++) {
     opts.push(i);
   }
 
@@ -12588,7 +12588,7 @@ var genre = {
   "genre-0": "::game.S.title:: is one of the tightest, tensest ::game.S.genre:: games available.",
   "genre-1": "::game.S.title|possessive:: unique approach to ::game.S.genre:: spawned a genre now a staple of the game industry.",
   "genre-2": "It is one of the best ::game.S.genre:: games of all time.",
-  "genre-3": "Its gameplay helped pave the way for other games to experiment with the genre, leading to a renaissance of ::game.S.genre:: games",
+  "genre-3": "Its gameplay helped pave the way for other games to experiment with the genre, leading to a renaissance of ::game.S.genre:: games.",
   "genre-4": "It doesn't hurt that, upon release, players considered it one of the finest ::game.S.genre:: games ever made.",
   "genre-5": "It helped popularize the ::game.S.genre:: genre in America, which now has a strong cult following.",
   "genre-6": "One of the all time best ::game.S.genre:: games, TimeSplitters is simple dumb fun.",
@@ -12596,7 +12596,8 @@ var genre = {
   "genre-8": "::game.S.title:: revolutionized the ::game.S.genre:: genre with how many real world variables it threw at players.",
   "genre-9": "::game.S.title|possessive:: accessibility, gameplay, and systems made it easier to enjoy than most other ::game.S.genre:: games that had shipped before.",
   "genre-10": "::game.S.title:: challanged everything you'd commonly expect from a ::game.s.genre:: experience.",
-  "genre-11": "::game.S.title:: felt like a ::game.s.genre:: game on steroids."
+  "genre-11": "::game.S.title:: felt like a ::game.s.genre:: game on steroids.",
+  "genre-12": "::game.S.title:: is a more cartoony ::game.S.genre:: than others of its kind, something it leans into with its world and puzzle design."
 };
 
 var mobile = {
@@ -12616,7 +12617,7 @@ var singlePlatform = {
 var difficulty = {
   "difficulty-0": "::game.S.title:: helped popularize difficulty as a selling point.",
   "difficulty-1": "A game easy to pick up and instantly find satisfaction with, ::game.S.title:: constantly tempts you into playing it just a little longer with dangerously addictive gameplay.",
-  "difficulty-2": "::game.S.title:: may very well be the magnum opus of ultra-difficult ::game.S.genre|pluralize::.",
+  "difficulty-2": "::game.S.title:: may very well be the magnum opus of ultra-difficult ::game.S.genre:: games.",
   "difficulty-3": "Requiring skill and fast responses, ::game.S.title|possessive:: fun-but-precise gameplay makes it easy to pick up and play but a task to master.",
   "difficulty-4": "::game.S.title:: taps into the part of the brain craving \"just one more go,\" leading to numerous lost days in its world.",
   "difficulty-5": "::game.S.title:: tries to marry two audiences: fans of weird humor and fans of difficult ::game.S.genre:: games.",
@@ -12624,7 +12625,13 @@ var difficulty = {
 };
 
 var features = {
-  "features-0": "Featuring a then-novel concept, ::game.S.title:: let players choose the character they wanted to be and how they wanted to play."
+  "features-0": "Featuring a then-novel concept, ::game.S.title:: let players choose the character they wanted to be and how they wanted to play.",
+  "features-1": "Its innovative use of varied gameplay is an early example of a game pushing its gameplay beyond one schtick.",
+  "features-2": "::game.S.title:: is a rare example of a ::game.S.genre:: game incentivizing exploration.",
+  "features-3": "Impossibly big, ::game.S.title:: gave players a world to lose themselves in.",
+  "features-4": "Pitting two players against each other with only a sword — success in ::game.S.title:: relies equally on skill and luck.",
+  "features-5": "::game.S.title:: combined visual novel elements to flesh out its lore and backstory, a move many saw as groundbreaking for the genre.",
+  "features-6": "Tasking up to four players with breaking out of a castle, players were invited to utilize the interactive environment and items in the world to progress — something notable and revolutionary in ::game.S.releaseDate::."
 };
 
 var artStyle = {
@@ -12638,7 +12645,13 @@ var review = {
   "review-1": "The game is a \"relaxing adventure\" that never takes advantage of its players, according to ::site.title::.",
   "review-2": "As ::site.title|possessive:: review put it, it \"is as beautiful as it is engaging.\"",
   "review-3": "Upon the game's release, many loved the abilities that allowed for worlds to be traversed in different ways other than just running and jumping, but were put off by the lack of polish and issues with the camera.",
-  "review-4": "\"::game.S.title:: is unflinchingly ambitious in a way that few games are,\" according to ::site.title::."
+  "review-4": "\"::game.S.title:: is unflinchingly ambitious in a way that few games are,\" according to ::site.title::.",
+  "review-5": "When it released, ::site.title:: said the game \"grabbed the gaming world with its color and imaginative design.\""
+};
+
+var plot = {
+  "plot-0": "::game.S.title:: tells a wholesome story about friendship and how, even from different planets, we can find common ground.",
+  "plot-1": "Equal parts John Huston and John Woo, it tells a story of love, addiction and tragedy, all tied together into a game."
 };
 
 var model = {
@@ -12649,7 +12662,7 @@ var model = {
 
 var model$1 = {
   site: {
-    title: ['Game Informer', 'Polygon', 'GameSpot', 'Waypoint', 'Giant Bomb', 'IGN']
+    title: ['Game Informer', 'Polygon', 'GameSpot', 'WayPoint', 'Giant Bomb', 'IGN', 'Electronic Gaming Monthly', 'The Guardian']
   }
 };
 
@@ -12665,9 +12678,9 @@ var generator$1 = function generator(_ref) {
   model$$1.game.platform = platform;
   model$$1.game.releaseDate = releaseDate;
 
-  var grammar = Object.assign({}, general, review, genre, mobile, singlePlatform, difficulty, features, artStyle);
+  var grammar = Object.assign({}, general, review, genre, mobile, singlePlatform, difficulty, plot, features, artStyle);
 
-  var options = ['genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
+  var options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
