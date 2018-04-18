@@ -34,7 +34,7 @@
     "rollup-plugin-uglify": "^3.0.0"
   },
   "dependencies": {
-    "deutung": "^1.0.5",
+    "deutung": "^1.0.8",
     "seedrandom": "^2.4.3"
   }
 }

@@ -9,7 +9,7 @@ export default {
   "genre-7": "Unparalleled in its depth and complexity, ::game.S.title:: raised the mark for all other ::game.S.genre:: games.",
   "genre-8": "::game.S.title:: revolutionized the ::game.S.genre:: genre with how many real world variables it threw at players.",
   "genre-9": "::game.S.title|possessive:: accessibility, gameplay, and systems made it easier to enjoy than most other ::game.S.genre:: games that had shipped before.",
-  "genre-10": "::game.S.title:: challanged everything you'd commonly expect from a ::game.s.genre:: experience.",
-  "genre-11": "::game.S.title:: felt like a ::game.s.genre:: game on steroids.",
+  "genre-10": "::game.S.title:: challanged everything you'd commonly expect from ::game.s.genre|articlize:: experience.",
+  "genre-11": "::game.S.title:: felt like ::game.s.genre|articlize:: game on steroids.",
   "genre-12": "::game.S.title:: is a more cartoony ::game.S.genre:: than others of its kind, something it leans into with its world and puzzle design.",
 }

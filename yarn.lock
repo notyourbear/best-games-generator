@@ -253,6 +253,10 @@ arrify@^1.0.0, arrify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
+articles@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/articles/-/articles-0.2.2.tgz#cc6b429f8cfa811f41e7a08505abbb4e45503197"
+
 asn1.js@^4.0.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.10.1.tgz#b9c2bf5805f1e64aadeed6df3a2bfafb5a73f5a0"
@@ -1492,10 +1496,11 @@ detect-newline@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
 
-deutung@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/deutung/-/deutung-1.0.5.tgz#56aa0cc33f7cb3eb271c581797677b71bc318de8"
+deutung@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/deutung/-/deutung-1.0.8.tgz#21f280b639a00bd5a4195981e8cad144bce71409"
   dependencies:
+    articles "^0.2.2"
     fs-jetpack "^1.2.0"
     pluralize "^7.0.0"
     seedrandom "^2.4.3"

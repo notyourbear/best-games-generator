@@ -19,7 +19,7 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   const model = Object.assign({}, game, site);
   model.game.title = title;
   model.game.platform = platform;
-  model.game.releaseDate = releaseDate;
+  model.game.releaseDate = '' + releaseDate;
 
   const grammar =  Object.assign({},
     general,
