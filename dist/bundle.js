@@ -1392,7 +1392,10 @@ var general = {
   "general-10": "Changing the world with every playthrough, ::game.S.title|possessive:: only objective is to explore — but at your leisure.",
   "general-11": "There's no princess to save or enemy to kill. It's simply a meditative experience through imaginary worlds, an experience only possible in games.",
   "general-12": "::game.S.title:: is the Occam's Razor of video games.",
-  "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away."
+  "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away.",
+  "general-14": "::game.S.title:: drove home the idea that games didn't necessarily need clear-cut objectives.",
+  "general-15": "::game.S.title:: exhibited remarkable attention to detail.",
+  "general-16": "It took no time for ::game.S.title:: to surpass all expectations."
 };
 
 var genre = {
@@ -1406,9 +1409,16 @@ var genre = {
   "genre-7": "Unparalleled in its depth and complexity, ::game.S.title:: raised the mark for all other ::game.S.genre:: games.",
   "genre-8": "::game.S.title:: revolutionized the ::game.S.genre:: genre with how many real world variables it threw at players.",
   "genre-9": "::game.S.title|possessive:: accessibility, gameplay, and systems made it easier to enjoy than most other ::game.S.genre:: games that had shipped before.",
-  "genre-10": "::game.S.title:: challanged everything you'd commonly expect from ::game.s.genre|articlize:: experience.",
+  "genre-10": "::game.S.title:: challenged everything you'd commonly expect from ::game.s.genre|articlize:: experience.",
   "genre-11": "::game.S.title:: felt like ::game.s.genre|articlize:: game on steroids.",
-  "genre-12": "::game.S.title:: is a more cartoony ::game.S.genre:: than others of its kind, something it leans into with its world and puzzle design."
+  "genre-12": "::game.S.title:: is a more cartoony ::game.S.genre:: than others of its kind, something it leans into with its world and puzzle design.",
+  "genre-13": "Though not the first of its type, ::game.S.title:: revolutionized the ::game.S.genre:: genre with how many real world variables it threw at players.",
+  "genre-14": "::game.S.title:: is one of the best classic ::game.S.genre:: games.",
+  "genre-15": "::game.S.title|possessive:: simple approach made it one of the best games in its genre.",
+  "genre-16": "Combined with one of the more memorable stories told in games, ::game.S.title: is often considered the best :game.S.genre:: game.",
+  "genre-17": "Adding numerous new moves and mechanics that changed gameplay significantly, ::game.S.title:: was a successful attempt to update a once-stale ::game.S.genre::.",
+  "genre-18": "Developed by only one person, ::game.S.title:: was one of ::game.S.releaseDate|possessive:: most talked-about games for its lighthearted approach to ::game.S.genre::.",
+  "genre-19": "Its success not only changed how ::game.S.genre:: games were played, but also how the world looked at skateboarding."
 };
 
 var mobile = {
@@ -1422,17 +1432,20 @@ var singlePlatform = {
   "singlePlatform-2": "::game.S.title:: was in someways the last hurrah on the ::game.S.platform::",
   "singlePlatform-3": "::game.S.title:: was a must-own for ::game.S.genre::-lovers on the ::game.S.platform::.",
   "singlePlatform-4": "::game.S.title|possessive:: tight gameplay made it a standout of the then-aging ::game.S.platform::.",
-  "singlePlatform-5": "When released in ::game.S.releaseDate::, ::game.S.title:: set a new world record as the fastest-selling ::game.S.platform:: game, resonating quickly with players."
+  "singlePlatform-5": "When released in ::game.S.releaseDate::, ::game.S.title:: set a new world record as the fastest-selling ::game.S.platform:: game, resonating quickly with players.",
+  "singlePlatform-6": "Making use of the ::game.S.platform|possessive:: internal clock for realistic passages of time, players were free to live out a new life, filling days with numerous side activities.",
+  "singlePlatform-7": "::game.S.title:: was one of the only ::game.S.platform:: games to utilize motion controls."
 };
 
 var difficulty = {
   "difficulty-0": "::game.S.title:: helped popularize difficulty as a selling point.",
   "difficulty-1": "A game easy to pick up and instantly find satisfaction with, ::game.S.title:: constantly tempts you into playing it just a little longer with dangerously addictive gameplay.",
   "difficulty-2": "::game.S.title:: may very well be the magnum opus of ultra-difficult ::game.S.genre:: games.",
-  "difficulty-3": "Requiring skill and fast responses, ::game.S.title|possessive:: fun-but-precise gameplay makes it easy to pick up and play but a task to master.",
-  "difficulty-4": "::game.S.title:: taps into the part of the brain craving \"just one more go,\" leading to numerous lost days in its world.",
-  "difficulty-5": "::game.S.title:: tries to marry two audiences: fans of weird humor and fans of difficult ::game.S.genre:: games.",
-  "difficulty-6": "::game.S.title:: does away with ::game.S.genre:: conventions in favor of more approachable alternatives, making it a good first step into the genre."
+  "difficulty-3": "Requiring skill and fast responses, ::game.S.title|possessive:: fun-but-precise gameplay made it easy to pick up and play but a task to master.",
+  "difficulty-4": "::game.S.title:: tapped into the part of the brain craving \"just one more go,\" leading to numerous lost days in its world.",
+  "difficulty-5": "::game.S.title:: tried to marry two audiences: fans of weird humor and fans of difficult ::game.S.genre:: games.",
+  "difficulty-6": "::game.S.title:: did away with ::game.S.genre:: conventions in favor of more approachable alternatives, making it a good first step into the genre.",
+  "difficulty-7": "::game.S.title:: emphasized real(ish) combat focused on skill — especially when death is usually one hit away."
 };
 
 var features = {
@@ -1442,13 +1455,30 @@ var features = {
   "features-3": "Impossibly big, ::game.S.title:: gave players a world to lose themselves in.",
   "features-4": "Pitting two players against each other with only a sword — success in ::game.S.title:: relies equally on skill and luck.",
   "features-5": "::game.S.title:: combined visual novel elements to flesh out its lore and backstory, a move many saw as groundbreaking for the genre.",
-  "features-6": "Tasking up to four players with breaking out of a castle, players were invited to utilize the interactive environment and items in the world to progress — something notable and revolutionary in ::game.S.releaseDate::."
+  "features-6": "Tasking up to four players with breaking out of a castle, players were invited to utilize the interactive environment and items in the world to progress — something notable and revolutionary in ::game.S.releaseDate::.",
+  "features-7": "Building upon great dungeon design and overall presentation, ::game.S.title:: also introduced new gameplay mechanics such as the ability to merge into walls",
+  "features-8": "::game.S.title:: radically redefined how players could interact with environments and how cinema and games could blend together.",
+  "features-9": "Full of unique, inventive \"microgames,\" ::game.S.title:: also made use of a built-in gyro sensor.",
+  "features-10": "Though many tried to steal its successful formula after its release, it took awhile for anyone to match ::game.S.title|possessive:: addictive, trick-based gameplay loop.",
+  "features-11": "No other game matches the attitude of ::game.S.title::.",
+  "features-12": "::game.S.title:: changed multiplayer games forever.",
+  "features-13": "::game.S.title:: is a game about planning, each level a maze of opportunities to explore.",
+  "features-14": "Whether your plan is an all-out assault or a silent game of cat and mouse, ::game.S.title|possessive:: world constantly adapted to your choices in positive and negative ways.",
+  "features-15": "Never telling players how to pull off an objective, ::game.S.title:: also never let them forget the repercussions their actions had on the game's world."
 };
 
 var artStyle = {
   "artStyle-0": "Nearly hypnotic, the game's gorgeous art-style make for a game as much a joy to look at as it is to play.",
   "artStyle-1": "It's rare for a game released in ::game.S.releaseDate:: to still look great, and yet ::game.S.title:: looks half its age.",
-  "artStyle-2": "::game.S.title:: makes use of its minimalistic art direction to tell a story resonating with its players emotionally, making it one of the most renowned games of all time."
+  "artStyle-2": "::game.S.title:: makes use of its minimalistic art direction to tell a story resonating with its players emotionally, making it one of the most renowned games of all time.",
+  "artStyle-3": "Pairing the game's groundbreaking visuals with an incredibly smooth framerate, it turned out to be one of ::game.S.releaseDate|possessive:: most realistic games.",
+  "artStyle-4": "Its tranquil visuals and sound design quickly garnered the game a massive fandom.",
+  "artStyle-5": "When it hit the scene, ::game.S.title:: was one of the best-looking games out there.",
+  "artStyle-6": "::game.S.title::, at the time, was one of the best looking games available.",
+  "artStyle-7": "Its high frame rate, multiple camera angles and 3D NPCs made players feel closer to the action than ever before.",
+  "artStyle-8": "A hyper-stylized take on the then-huge ::game.S.genre:: genre, ::game.S.title|possessive:: cel-shaded world, hip hop-influenced soundtrack and altogether zaniness made it stand out in a genre oversaturated with licensed tie-ins.",
+  "artStyle-9": "::game.S.title:: used hand-drawn backgrounds and rotoscoped animations to make characters look lifelike.",
+  "artStyle-10": "::game.S.title:: was a pioneer of cinematic games, with many critics praising its visuals, sound, and animation as innovative and top notch."
 };
 
 var review = {
@@ -1457,17 +1487,29 @@ var review = {
   "review-2": "As ::site.title|possessive:: review put it, it \"is as beautiful as it is engaging.\"",
   "review-3": "Upon the game's release, many loved the abilities that allowed for worlds to be traversed in different ways other than just running and jumping, but were put off by the lack of polish and issues with the camera.",
   "review-4": "\"::game.S.title:: is unflinchingly ambitious in a way that few games are,\" according to ::site.title::.",
-  "review-5": "When it released, ::site.title:: said the game \"grabbed the gaming world with its color and imaginative design.\""
+  "review-5": "When it released, ::site.title:: said the game \"grabbed the gaming world with its color and imaginative design.\"",
+  "review-6": "The changing weather, time of day, and new coordinate systems were seen as so realistic, the game's advertising claimed if it were any more lifelike \"you'd need a license.\"",
+  "review-7": "Considered one of ::site.title|possessive:: 10 most important games, ::game.S.title:: was one of the more complex games of ::game.S.releaseDate::.",
+  "review-8": "::game.S.title:: is one of the highest-rated ::game.S.genre:: games of all time.",
+  "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned ... of all time,\" according to ::site.title::."
 };
 
 var plot = {
-  "plot-0": "::game.S.title:: tells a wholesome story about friendship and how, even from different planets, we can find common ground.",
-  "plot-1": "Equal parts John Huston and John Woo, it tells a story of love, addiction and tragedy, all tied together into a game."
+  "plot-0": "::game.S.title:: told a wholesome story about friendship and how, even from different planets, we can find common ground.",
+  "plot-1": "Equal parts John Huston and John Woo, it tells a story of love, addiction and tragedy, all tied together into a game.",
+  "plot-2": "Greater than the sum of its parts, the story ::game.S.title:: tells about post-apocalyptic capitalism makes it an important example of games as political satire.",
+  "plot-3": "Telling a semi-mature story about the dangers of robot sentience, ::game.S.title:: reinvented the :game.S.genre:: genre.",
+  "plot-4": "::game.S.title:: told a story about becoming a professional skater.",
+  "plot-5": "Bathed in the dying light of a crumbling rural town, ::game.S.title:: follows an aging truck driver as he delivers his final package to an address that can only be reached by a highway buried deep in the caves of Kentucky.",
+  "plot-6": "This game is a journey through an America whose sun is setting, a place of tragic beauty where economic decline is painted in dream-like brush strokes of magical realism.",
+  "plot-7": "The game allows players to explore its dystopian United States in great detail.",
+  "plot-8": "The developers showed that they could make one of the best endings the game industry has ever seen.",
+  "plot-9": "On the surface a game about space politics and intergalactic war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage."
 };
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy']
+    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports']
   }
 };
 

@@ -12,4 +12,7 @@ export default {
   "general-11": "There's no princess to save or enemy to kill. It's simply a meditative experience through imaginary worlds, an experience only possible in games.",
   "general-12": "::game.S.title:: is the Occam's Razor of video games.",
   "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away.",
+  "general-14": "::game.S.title:: drove home the idea that games didn't necessarily need clear-cut objectives.",
+  "general-15": "::game.S.title:: exhibited remarkable attention to detail.",
+  "general-16": "It took no time for ::game.S.title:: to surpass all expectations."
 }

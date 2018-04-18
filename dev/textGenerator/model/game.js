@@ -20,7 +20,13 @@ const model = {
       'city-sim',
       'flight simulator',
       'grand strategy',
-      'real time strategy'
+      'real time strategy',
+      'farming',
+      'walking simulator',
+      'text adventure',
+      'adventure',
+      'action-adventure',
+      'action sports'
     ]
   }
 };
