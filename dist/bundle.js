@@ -15984,7 +15984,12 @@ var general = {
   "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away.",
   "general-14": "::game.S.title:: drove home the idea that games didn't necessarily need clear-cut objectives.",
   "general-15": "::game.S.title:: exhibited remarkable attention to detail.",
-  "general-16": "It took no time for ::game.S.title:: to surpass all expectations."
+  "general-16": "It took no time for ::game.S.title:: to surpass all expectations.",
+  "general-17": "It has become a popular speedrunning game.",
+  "general-18": "The game gained a cult-following that led to it being featured in the Museum of Modern Art.",
+  "general-19": "::game.S.title:: is often remembered for its unique Easter egg.",
+  "general-20": "::game.S.title:: dared to be different.",
+  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics."
 };
 
 var genre = {
@@ -16007,7 +16012,11 @@ var genre = {
   "genre-16": "Combined with one of the more memorable stories told in games, ::game.S.title:: is often considered the best :game.S.genre:: game.",
   "genre-17": "Adding numerous new moves and mechanics that changed gameplay significantly, ::game.S.title:: was a successful attempt to update a once-stale ::game.S.genre::.",
   "genre-18": "Developed by only one person, ::game.S.title:: was one of ::game.S.releaseDate|possessive:: most talked-about games for its lighthearted approach to ::game.S.genre::.",
-  "genre-19": "Its success not only changed how ::game.S.genre:: games were played, but also how the world looked at skateboarding."
+  "genre-19": "Its success not only changed how ::game.S.genre:: games were played, but also how the world looked at skateboarding.",
+  "genre-20": "::game.S.title::, in a lot of ways, was more of the same for the ::game.S.genre:: genre.",
+  "genre-21": "Every time you enjoy a ::game.S.genre::, remember to thank ::game.S.title::.",
+  "genre-22": "::game.S.title:: was the template from which nearly every ::game.S.genre:: game drew inspiration.",
+  "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business."
 };
 
 var mobile = {
@@ -16034,7 +16043,9 @@ var difficulty = {
   "difficulty-4": "::game.S.title:: tapped into the part of the brain craving \"just one more go,\" leading to numerous lost days in its world.",
   "difficulty-5": "::game.S.title:: tried to marry two audiences: fans of weird humor and fans of difficult ::game.S.genre:: games.",
   "difficulty-6": "::game.S.title:: did away with ::game.S.genre:: conventions in favor of more approachable alternatives, making it a good first step into the genre.",
-  "difficulty-7": "::game.S.title:: emphasized real(ish) combat focused on skill — especially when death is usually one hit away."
+  "difficulty-7": "::game.S.title:: emphasized real(ish) combat focused on skill — especially when death is usually one hit away.",
+  "difficulty-8": "One of the most complex games ever made, ::game.S.title:: is often described as a part-time job.",
+  "difficulty-9": "::game.S.title:: was developed around being easy to understand and fun to play."
 };
 
 var features = {
@@ -16053,7 +16064,16 @@ var features = {
   "features-12": "::game.S.title:: changed multiplayer games forever.",
   "features-13": "::game.S.title:: is a game about planning, each level a maze of opportunities to explore.",
   "features-14": "Whether your plan is an all-out assault or a silent game of cat and mouse, ::game.S.title|possessive:: world constantly adapted to your choices in positive and negative ways.",
-  "features-15": "Never telling players how to pull off an objective, ::game.S.title:: also never let them forget the repercussions their actions had on the game's world."
+  "features-15": "Never telling players how to pull off an objective, ::game.S.title:: also never let them forget the repercussions their actions had on the game's world.",
+  "features-16": "::game.S.title:: pit four players against each other, all fighting to destroy the others' castles while defending their own.",
+  "features-17": "The sheer size of ::game.S.title:: is still unparalleled by most other games.",
+  "features-18": "The game featured a near-uncountable number of secrets, minigames, and side missions.",
+  "features-19": "The game introduced numerous mechanics players hadn't seen before.",
+  "features-20": "Its emphasis on exploration has been highly influential in games being worlds to explore, not just obstacles to overcome.",
+  "features-21": "Introducing killstreaks, a level-up system, and many other new features, ::game.S.title:: changed the dynamics of multiplayer games forever.",
+  "features-22": "::game.S.title|possessive:: mechanics felt like a fresh start.",
+  "features-23": "With countless approaches to the objectives, the game was built for the player to come up with all sorts of dynamic solutions.",
+  "features-24": "It allowed players to see the world change based on how they approached different challenges."
 };
 
 var artStyle = {
@@ -16067,7 +16087,11 @@ var artStyle = {
   "artStyle-7": "Its high frame rate, multiple camera angles and 3D NPCs made players feel closer to the action than ever before.",
   "artStyle-8": "A hyper-stylized take on the then-huge ::game.S.genre:: genre, ::game.S.title|possessive:: cel-shaded world, hip hop-influenced soundtrack and altogether zaniness made it stand out in a genre oversaturated with licensed tie-ins.",
   "artStyle-9": "::game.S.title:: used hand-drawn backgrounds and rotoscoped animations to make characters look lifelike.",
-  "artStyle-10": "::game.S.title:: was a pioneer of cinematic games, with many critics praising its visuals, sound, and animation as innovative and top notch."
+  "artStyle-10": "::game.S.title:: was a pioneer of cinematic games, with many critics praising its visuals, sound, and animation as innovative and top notch.",
+  "artStyle-11": "::game.S.title:: featured a first-person view and visual depth that marked a big step forward for game visuals — and gave players the impression they were in a different world.",
+  "artStyle-12": "Its visuals completely moved the bar forward.",
+  "artStyle-13": "Unparalleled in detail at the time, ::game.S.title|possessive:: caught the eyes of critics and players, raising expectations for how games after it should look.",
+  "artStyle-14": "Its beautiful, hand-drawn art style made it one of the best-looking games of its generation."
 };
 
 var review = {
@@ -16080,7 +16104,9 @@ var review = {
   "review-6": "The changing weather, time of day, and new coordinate systems were seen as so realistic, the game's advertising claimed if it were any more lifelike \"you'd need a license.\"",
   "review-7": "Considered one of ::site.title|possessive:: 10 most important games, ::game.S.title:: was one of the more complex games of ::game.S.releaseDate::.",
   "review-8": "::game.S.title:: is one of the highest-rated ::game.S.genre:: games of all time.",
-  "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::."
+  "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::.",
+  "review-10": "When it released, the game was praised for its evolution of ::game.S.genre::-style gameplay",
+  "review-11": "::game.S.title:: was a \"metagame-within-a-game… [where] anything could and probably would happen,\" according to ::site.title::."
 };
 
 var plot = {
@@ -16093,18 +16119,23 @@ var plot = {
   "plot-6": "This game is a journey through an America whose sun is setting, a place of tragic beauty where economic decline is painted in dream-like brush strokes of magical realism.",
   "plot-7": "The game allows players to explore its dystopian United States in great detail.",
   "plot-8": "The developers showed that they could make one of the best endings the game industry has ever seen.",
-  "plot-9": "On the surface a game about space politics and intergalactic war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage."
+  "plot-9": "On the surface a game about space politics and intergalactic war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage.",
+  "plot-10": "::game.S.title:: pointed an angry finger right at the American dream.",
+  "plot-11": "::game.S.title:: was a bleak, violent look at what life could be like for an immigrant.",
+  "plot-12": "At the time of its release, ::game.S.title:: was unparalleled in its intense portrayal of war",
+  "plot-13": "::game.S.title:: stood out as a game unafraid to examine sexuality in smart, nuanced ways — something hard to say about most games",
+  "plot-14": "::game.S.title|possessive:: mature take on infidelity, lust, love and abuse showed the depth that game stories could achieve."
 };
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports']
+    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter']
   }
 };
 
 var model$1 = {
   site: {
-    title: ['Game Informer', 'Polygon', 'GameSpot', 'WayPoint', 'Giant Bomb', 'IGN', 'Electronic Gaming Monthly', 'The Guardian']
+    title: ['Game Informer', 'Polygon', 'GameSpot', 'WayPoint', 'Giant Bomb', 'IGN', 'Electronic Gaming Monthly', 'The Guardian', 'Engadget', 'Time Magazine']
   }
 };
 

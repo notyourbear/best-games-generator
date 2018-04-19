@@ -8,7 +8,9 @@ const model = {
       'Giant Bomb',
       'IGN',
       'Electronic Gaming Monthly',
-      'The Guardian'
+      'The Guardian',
+      'Engadget',
+      'Time Magazine',
     ]
   }
 };

@@ -15,4 +15,13 @@ export default {
   "features-13": "::game.S.title:: is a game about planning, each level a maze of opportunities to explore.",
   "features-14": "Whether your plan is an all-out assault or a silent game of cat and mouse, ::game.S.title|possessive:: world constantly adapted to your choices in positive and negative ways.",
   "features-15": "Never telling players how to pull off an objective, ::game.S.title:: also never let them forget the repercussions their actions had on the game's world.",
+  "features-16": "::game.S.title:: pit four players against each other, all fighting to destroy the others' castles while defending their own.",
+  "features-17": "The sheer size of ::game.S.title:: is still unparalleled by most other games.",
+  "features-18": "The game featured a near-uncountable number of secrets, minigames, and side missions.",
+  "features-19": "The game introduced numerous mechanics players hadn't seen before.",
+  "features-20": "Its emphasis on exploration has been highly influential in games being worlds to explore, not just obstacles to overcome.",
+  "features-21": "Introducing killstreaks, a level-up system, and many other new features, ::game.S.title:: changed the dynamics of multiplayer games forever.",
+  "features-22": "::game.S.title|possessive:: mechanics felt like a fresh start.",
+  "features-23": "With countless approaches to the objectives, the game was built for the player to come up with all sorts of dynamic solutions.",
+  "features-24": "It allowed players to see the world change based on how they approached different challenges.",
 }

@@ -9,5 +9,9 @@ export default {
   "artStyle-7": "Its high frame rate, multiple camera angles and 3D NPCs made players feel closer to the action than ever before.",
   "artStyle-8": "A hyper-stylized take on the then-huge ::game.S.genre:: genre, ::game.S.title|possessive:: cel-shaded world, hip hop-influenced soundtrack and altogether zaniness made it stand out in a genre oversaturated with licensed tie-ins.",
   "artStyle-9": "::game.S.title:: used hand-drawn backgrounds and rotoscoped animations to make characters look lifelike.",
-  "artStyle-10": "::game.S.title:: was a pioneer of cinematic games, with many critics praising its visuals, sound, and animation as innovative and top notch."
+  "artStyle-10": "::game.S.title:: was a pioneer of cinematic games, with many critics praising its visuals, sound, and animation as innovative and top notch.",
+  "artStyle-11": "::game.S.title:: featured a first-person view and visual depth that marked a big step forward for game visuals — and gave players the impression they were in a different world.",
+  "artStyle-12": "Its visuals completely moved the bar forward.",
+  "artStyle-13": "Unparalleled in detail at the time, ::game.S.title|possessive:: caught the eyes of critics and players, raising expectations for how games after it should look.",
+  "artStyle-14": "Its beautiful, hand-drawn art style made it one of the best-looking games of its generation.",
 };

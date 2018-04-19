@@ -7,4 +7,6 @@ export default {
   "difficulty-5": "::game.S.title:: tried to marry two audiences: fans of weird humor and fans of difficult ::game.S.genre:: games.",
   "difficulty-6": "::game.S.title:: did away with ::game.S.genre:: conventions in favor of more approachable alternatives, making it a good first step into the genre.",
   "difficulty-7": "::game.S.title:: emphasized real(ish) combat focused on skill — especially when death is usually one hit away.",
+  "difficulty-8": "One of the most complex games ever made, ::game.S.title:: is often described as a part-time job.",
+  "difficulty-9": "::game.S.title:: was developed around being easy to understand and fun to play."
 }

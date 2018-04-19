@@ -6,6 +6,7 @@ const model = {
       'racing',
       'puzzle',
       'metroidvania',
+      'arcade',
       'action',
       'strategy',
       'rpg',
@@ -26,7 +27,8 @@ const model = {
       'text adventure',
       'adventure',
       'action-adventure',
-      'action sports'
+      'action sports',
+      'twin-stick shooter'
     ]
   }
 };

@@ -19,4 +19,8 @@ export default {
   "genre-17": "Adding numerous new moves and mechanics that changed gameplay significantly, ::game.S.title:: was a successful attempt to update a once-stale ::game.S.genre::.",
   "genre-18": "Developed by only one person, ::game.S.title:: was one of ::game.S.releaseDate|possessive:: most talked-about games for its lighthearted approach to ::game.S.genre::.",
   "genre-19": "Its success not only changed how ::game.S.genre:: games were played, but also how the world looked at skateboarding.",
+  "genre-20": "::game.S.title::, in a lot of ways, was more of the same for the ::game.S.genre:: genre.",
+  "genre-21": "Every time you enjoy a ::game.S.genre::, remember to thank ::game.S.title::.",
+  "genre-22": "::game.S.title:: was the template from which nearly every ::game.S.genre:: game drew inspiration.",
+  "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business.",
 }

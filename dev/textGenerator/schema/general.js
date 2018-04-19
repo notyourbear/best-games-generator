@@ -14,5 +14,10 @@ export default {
   "general-13": "::game.S.title:: tempted players to keep exploring, all the while reminding them death was only one step away.",
   "general-14": "::game.S.title:: drove home the idea that games didn't necessarily need clear-cut objectives.",
   "general-15": "::game.S.title:: exhibited remarkable attention to detail.",
-  "general-16": "It took no time for ::game.S.title:: to surpass all expectations."
+  "general-16": "It took no time for ::game.S.title:: to surpass all expectations.",
+  "general-17": "It has become a popular speedrunning game.",
+  "general-18": "The game gained a cult-following that led to it being featured in the Museum of Modern Art.",
+  "general-19": "::game.S.title:: is often remembered for its unique Easter egg.",
+  "general-20": "::game.S.title:: dared to be different.",
+  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics."
 }

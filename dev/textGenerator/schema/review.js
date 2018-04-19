@@ -8,5 +8,7 @@ export default {
   "review-6": "The changing weather, time of day, and new coordinate systems were seen as so realistic, the game's advertising claimed if it were any more lifelike \"you'd need a license.\"",
   "review-7": "Considered one of ::site.title|possessive:: 10 most important games, ::game.S.title:: was one of the more complex games of ::game.S.releaseDate::.",
   "review-8": "::game.S.title:: is one of the highest-rated ::game.S.genre:: games of all time.",
-  "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::."
+  "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::.",
+  "review-10": "When it released, the game was praised for its evolution of ::game.S.genre::-style gameplay",
+  "review-11": "::game.S.title:: was a \"metagame-within-a-game… [where] anything could and probably would happen,\" according to ::site.title::."
 };
