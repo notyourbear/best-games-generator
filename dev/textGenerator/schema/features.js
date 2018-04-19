@@ -24,4 +24,5 @@ export default {
   "features-22": "::game.S.title|possessive:: mechanics felt like a fresh start.",
   "features-23": "With countless approaches to the objectives, the game was built for the player to come up with all sorts of dynamic solutions.",
   "features-24": "It allowed players to see the world change based on how they approached different challenges.",
+  "features-25": "It allowed three players to play together cooperatively, a rare feat for a game released in ::game.S.releaseDate::.",
 }
