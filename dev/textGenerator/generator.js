@@ -45,7 +45,6 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   }, '');
 
   const schema = { model, grammar, entry };
-
   return Deutung(schema, {seed}).compiled;
 };
 

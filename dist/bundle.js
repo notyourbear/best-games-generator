@@ -16021,7 +16021,7 @@ var genre = {
 
 var mobile = {
   "mobile-0": "::game.S.title:: is another example of a mobile game done near-perfectly.",
-  "mobile-1": "When :game.S.title:: released on mobile devices in ::game.S.releaseDate::, it differentiated itself from other mobile games with its acclaimed presentation, depth and amount of content."
+  "mobile-1": "When ::game.S.title:: released on mobile devices in ::game.S.releaseDate::, it differentiated itself from other mobile games with its acclaimed presentation, depth and amount of content."
 };
 
 var singlePlatform = {
@@ -16178,7 +16178,6 @@ var generator$1 = function generator(_ref) {
   }, '');
 
   var schema = { model: model$$1, grammar: grammar, entry: entry };
-
   return deutung(schema, { seed: seed }).compiled;
 };
 
