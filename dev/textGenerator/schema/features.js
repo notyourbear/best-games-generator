@@ -6,7 +6,7 @@ export default {
   "features-4": "Pitting two players against each other with only a sword — success in ::game.S.title:: relies equally on skill and luck.",
   "features-5": "::game.S.title:: combined visual novel elements to flesh out its lore and backstory, a move many saw as groundbreaking for the genre.",
   "features-6": "Tasking up to four players with breaking out of a castle, players were invited to utilize the interactive environment and items in the world to progress — something notable and revolutionary in ::game.S.releaseDate::.",
-  "features-7": "Building upon great dungeon design and overall presentation, ::game.S.title:: also introduced new gameplay mechanics such as the ability to merge into walls",
+  "features-7": "Building upon great dungeon design and overall presentation, ::game.S.title:: also introduced new gameplay mechanics.",
   "features-8": "::game.S.title:: radically redefined how players could interact with environments and how cinema and games could blend together.",
   "features-9": "Full of unique, inventive \"microgames,\" ::game.S.title:: also made use of a built-in gyro sensor.",
   "features-10": "Though many tried to steal its successful formula after its release, it took awhile for anyone to match ::game.S.title|possessive:: addictive, trick-based gameplay loop.",

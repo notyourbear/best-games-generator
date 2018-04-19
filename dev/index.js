@@ -25,6 +25,7 @@ if (isHomePage) {
     let seed = siteName+i;
     let amount = fns.between({array: [1,4], seed});
     let title = Title.create({seed, amount});
+    title = `<span class="emphasis">${title}</span>`;
     let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});
 
     let text = textGenerator({seed, title, releaseDate, platform: systems, type: consoleType});

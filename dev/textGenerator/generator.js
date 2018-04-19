@@ -21,16 +21,15 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   model.game.platform = platform;
   model.game.releaseDate = '' + releaseDate;
 
-  const grammar =  Object.assign({},
-    general,
-    review,
-    genre,
-    mobile,
-    singlePlatform,
-    difficulty,
-    plot,
-    features,
-    artStyle);
+  const grammar =  Object.assign({}, general);
+  Object.assign(grammar, review);
+  Object.assign(grammar, genre);
+  Object.assign(grammar, mobile);
+  Object.assign(grammar, singlePlatform);
+  Object.assign(grammar, difficulty);
+  Object.assign(grammar, plot);
+  Object.assign(grammar, features);
+  Object.assign(grammar, artStyle);
 
   const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
   if (platform.length === 1) options.push('singlePlatform');
