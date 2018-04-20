@@ -10,5 +10,6 @@ export default {
   "review-8": "::game.S.title:: is one of the highest-rated ::game.S.genre:: games of all time.",
   "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::.",
   "review-10": "When it released, the game was praised for its evolution of ::game.S.genre::-style gameplay",
-  "review-11": "::game.S.title:: was a \"metagame-within-a-game… [where] anything could and probably would happen,\" according to ::site.title::."
+  "review-11": "::game.S.title:: was a \"metagame-within-a-game… [where] anything could and probably would happen,\" according to ::site.title::.",
+  "review-12": "Players all around the world fell in love with the game because of its catchy soundtracks and its unique mix of showmanship and technical performance.",
 };

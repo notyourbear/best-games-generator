@@ -26,5 +26,11 @@ export default {
   "features-24": "It allowed players to see the world change based on how they approached different challenges.",
   "features-25": "It allowed three players to play together cooperatively, a rare feat for a game released in ::game.S.releaseDate::.",
   "features-26": "Built to facilitate thousands of players at once, the game became famous for its massive, months-long events where hundreds, sometimes thousands of players would band together to take on entire cities.",
-  "features-27": "::game.S.title:: set new standards with its sheer world size, quest depth and character options."
+  "features-27": "::game.S.title:: set new standards with its sheer world size, quest depth and character options.",
+  "features-28": "Developed by a supergroup of creative minds, ::game.S.title:: innovated with features like multiple endings and side quests that tied into the main plot.",
+  "features-29": "The game reached beyond the confines of one city, its fictional world featured numerous terrains and multiple cities.",
+  "features-30": "Unlike a lot of games at the time of its release, ::game.S.title:: told its story completely in-game, free of cutscenes.",
+  "features-31": "The great world design allowed players to slip into ::game.S.title|possessive:: world, personally engaging with the story more than in other games.",
+  "features-32": "::game.S.title:: marked the pinnacle of agency and consequences.",
+  "features-33": "The bonds you form with your many crewmates throughout the game will have you replaying the game to make sure you savor every, last, one.",
 }

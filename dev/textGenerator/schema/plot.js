@@ -13,5 +13,13 @@ export default {
   "plot-11": "::game.S.title:: was a bleak, violent look at what life could be like for an immigrant.",
   "plot-12": "At the time of its release, ::game.S.title:: was unparalleled in its intense portrayal of war",
   "plot-13": "::game.S.title:: stood out as a game unafraid to examine sexuality in smart, nuanced ways — something hard to say about most games",
-  "plot-14": "::game.S.title|possessive:: mature take on infidelity, lust, love and abuse showed the depth that game stories could achieve."
-};
+  "plot-14": "::game.S.title|possessive:: mature take on infidelity, lust, love and abuse showed the depth that game stories could achieve.",
+  "plot-15": "::game.S.title:: is all about the tranquility of a simple life.",
+  "plot-16": "Allowing players to decide how to tackle daily activities, ::game.S.title:: turned the mundanities of life into soothing, charming experiences.",
+  "plot-17": "Telling a surprisingly emotional story about gang life and the difficulties of escaping it, ::game.S.title:: was a watershed moment.",
+  "plot-18": "::game.S.title:: is said to be a view of America from those who don’t live there, but that excludes the painstaking nostalgic touches infused throughout.",
+  "plot-19": "Its greatest mission is \"Home Coming.\" The main character, after having gone through hell — returns to a family that had seen better days as well.",
+  "plot-20": "In ::game.S.title::, you're out to help those in need — through the power of dance.",
+  "plot-21": "::game.S.title:: was a bleak story about science gone wrong.",
+  "plot-22": "Essentially putting you on a suicide mission, the game built upon its deep relationships by placing your favorite characters' lives in your hands.",
+}

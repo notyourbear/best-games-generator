@@ -24,4 +24,13 @@ export default {
   "genre-22": "::game.S.title:: was the template from which nearly every ::game.S.genre:: game drew inspiration.",
   "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business.",
   "genre-24": "The game had many features that became commonplace in ::game.S.genre:: after its release.",
+  "genre-25": "::game.S.title:: caught the eyes of ::game.S.genre:: fans when it put a focus not only on speed, but on obliterating opponents.",
+  "genre-26": "The game's success is, in part, credited with popularizing ::game.S.genre:: games around the globe.",
+  "genre-27": "::game.S.title:: improved just about everything that had been in ::game.S.genre|articlize:: game up to that point, from the controls to the enemy AI to the gadgets.",
+  "genre-28": "::game.S.title:: managed to walk a tightrope between being simple yet experimental, and many critics consider it the best ::game.S.genre:: game of all time.",
+  "genre-29": "For ::game.S.title:: fans, it still stands out as one of the best representations of the genre in games.",
+  "genre-30": "::game.S.title:: dominated the ::game.S.genre:: genre.",
+  "genre-31": "::game.S.tilte:: distanced itself from other ::game.S.genre:: games with its extreme attention to detail.",
+  "genre-32": "While ::game.S.genre:: games have a few forebears to their credit, none saw the same ubiquity and success as ::game.S.title::.",
+  "genre-33": "::game.S.title:: is a master class in ::game.S.genre:: games, with a hero designed to appeal to, and inspire, a wide variety of gamers.",
 }

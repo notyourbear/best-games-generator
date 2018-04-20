@@ -9,7 +9,7 @@ const model = {
       'arcade',
       'action',
       'strategy',
-      'rpg',
+      'RPG',
       'first person shooter',
       'third person shooter',
       'visual novel',
@@ -21,7 +21,7 @@ const model = {
       'city-sim',
       'flight simulator',
       'grand strategy',
-      'real time strategy',
+      'real-time strategy',
       'farming',
       'walking simulator',
       'text adventure',
@@ -32,6 +32,13 @@ const model = {
       'clicker',
       'MMO',
       'MOBA',
+      'fighting',
+      'hockey',
+      'football',
+      'MMA',
+      'character action',
+      'rhythm',
+      'open-world',
     ]
   }
 };

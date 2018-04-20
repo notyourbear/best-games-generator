@@ -14,4 +14,5 @@ export default {
   "artStyle-12": "Its visuals completely moved the bar forward.",
   "artStyle-13": "Unparalleled in detail at the time, ::game.S.title|possessive:: caught the eyes of critics and players, raising expectations for how games after it should look.",
   "artStyle-14": "Its beautiful, hand-drawn art style made it one of the best-looking games of its generation.",
+  "artStyle-15": "It was a super pretty game.",
 };

@@ -23,4 +23,11 @@ export default {
   "general-22": "The game was supposedly developed to facilitate up to 10,000 players, though it never reached that number.",
   "general-23": "::game.S.title:: has remained one of Steam's most popular games, hitting one million concurrents at its peak.",
   "general-24": "The game has also been one of the biggest success stories in the esports world, with some prize pools topping $20 million.",
+  "general-25": "With more than 100 million people playing ::game.S.title:: every month, it's hard to think of bigger game.",
+  "general-26": "::game.S.title:: is one of the most lucrative esports titles in the world, with top prize pools totalling more than $6 million.",
+  "general-27": "Requiring only one hand to operate and needing a second player to go against, ::game.S.title|possessive:: popularity rose in part to its frequent placement in bars.",
+  "general-28": "::game.S.title:: charming sense of humor, surprisingly awesome soundtrack and addictive gameplay made gave it a true sense of character.",
+  "general-29": "::game.S.title|possessive:: revolutionary active playstyle has helped the series stand the test of time.",
+  "general-30": "::game.S.title:: innovated the amount of depth a game can have.",
+  "general-31": "Very few games have built identity, history, and genre like ::game.S.title::."
 }
