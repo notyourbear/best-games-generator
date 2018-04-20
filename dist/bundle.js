@@ -15989,7 +15989,10 @@ var general = {
   "general-18": "The game gained a cult-following that led to it being featured in the Museum of Modern Art.",
   "general-19": "::game.S.title:: is often remembered for its unique Easter egg.",
   "general-20": "::game.S.title:: dared to be different.",
-  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics."
+  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics.",
+  "general-22": "The game was supposedly developed to facilitate up to 10,000 players, though it never reached that number.",
+  "general-23": "::game.S.title:: has remained one of Steam's most popular games, hitting one million concurrents at its peak.",
+  "general-24": "The game has also been one of the biggest success stories in the esports world, with some prize pools topping $20 million."
 };
 
 var genre = {
@@ -16016,7 +16019,8 @@ var genre = {
   "genre-20": "::game.S.title::, in a lot of ways, was more of the same for the ::game.S.genre:: genre.",
   "genre-21": "Every time you enjoy a ::game.S.genre::, remember to thank ::game.S.title::.",
   "genre-22": "::game.S.title:: was the template from which nearly every ::game.S.genre:: game drew inspiration.",
-  "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business."
+  "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business.",
+  "genre-24": "The game had many features that became commonplace in ::game.S.genre:: after its release."
 };
 
 var mobile = {
@@ -16074,7 +16078,9 @@ var features = {
   "features-22": "::game.S.title|possessive:: mechanics felt like a fresh start.",
   "features-23": "With countless approaches to the objectives, the game was built for the player to come up with all sorts of dynamic solutions.",
   "features-24": "It allowed players to see the world change based on how they approached different challenges.",
-  "features-25": "It allowed three players to play together cooperatively, a rare feat for a game released in ::game.S.releaseDate::."
+  "features-25": "It allowed three players to play together cooperatively, a rare feat for a game released in ::game.S.releaseDate::.",
+  "features-26": "Built to facilitate thousands of players at once, the game became famous for its massive, months-long events where hundreds, sometimes thousands of players would band together to take on entire cities.",
+  "features-27": "::game.S.title:: set new standards with its sheer world size, quest depth and character options."
 };
 
 var artStyle = {
@@ -16130,7 +16136,7 @@ var plot = {
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter']
+    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'rpg', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter', 'clicker', 'MMO', 'MOBA']
   }
 };
 
@@ -16200,14 +16206,13 @@ if (isHomePage) {
     var seed = siteName + i;
     var amount = fns.between({ array: [1, 4], seed: seed });
     var title = Title.create({ seed: seed, amount: amount });
-    title = '<span class="emphasis">' + title + '</span>';
 
     var _systemsGenerator = generator({ seed: seed, title: title }),
         systems$1 = _systemsGenerator.systems,
         releaseDate = _systemsGenerator.releaseDate,
         consoleType = _systemsGenerator.consoleType;
 
-    var text = generator$1({ seed: seed, title: title, releaseDate: releaseDate, platform: systems$1, type: consoleType });
+    var text = generator$1({ seed: seed, title: '<span class="emphasis">' + title + '</span>', releaseDate: releaseDate, platform: systems$1, type: consoleType });
 
     var item = {
       title: title,

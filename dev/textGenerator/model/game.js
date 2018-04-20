@@ -28,7 +28,10 @@ const model = {
       'adventure',
       'action-adventure',
       'action sports',
-      'twin-stick shooter'
+      'twin-stick shooter',
+      'clicker',
+      'MMO',
+      'MOBA',
     ]
   }
 };

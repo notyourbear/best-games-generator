@@ -23,4 +23,5 @@ export default {
   "genre-21": "Every time you enjoy a ::game.S.genre::, remember to thank ::game.S.title::.",
   "genre-22": "::game.S.title:: was the template from which nearly every ::game.S.genre:: game drew inspiration.",
   "genre-23": "::game.S.title:: is among the pantheon of great ::game.S.genre:: games that turned video games from toys into a full blown business.",
+  "genre-24": "The game had many features that became commonplace in ::game.S.genre:: after its release.",
 }

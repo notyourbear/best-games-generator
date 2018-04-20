@@ -19,5 +19,8 @@ export default {
   "general-18": "The game gained a cult-following that led to it being featured in the Museum of Modern Art.",
   "general-19": "::game.S.title:: is often remembered for its unique Easter egg.",
   "general-20": "::game.S.title:: dared to be different.",
-  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics."
+  "general-21": "::game.S.title:: got credit for being both fun and a learning experience about economics.",
+  "general-22": "The game was supposedly developed to facilitate up to 10,000 players, though it never reached that number.",
+  "general-23": "::game.S.title:: has remained one of Steam's most popular games, hitting one million concurrents at its peak.",
+  "general-24": "The game has also been one of the biggest success stories in the esports world, with some prize pools topping $20 million.",
 }

@@ -25,4 +25,6 @@ export default {
   "features-23": "With countless approaches to the objectives, the game was built for the player to come up with all sorts of dynamic solutions.",
   "features-24": "It allowed players to see the world change based on how they approached different challenges.",
   "features-25": "It allowed three players to play together cooperatively, a rare feat for a game released in ::game.S.releaseDate::.",
+  "features-26": "Built to facilitate thousands of players at once, the game became famous for its massive, months-long events where hundreds, sometimes thousands of players would band together to take on entire cities.",
+  "features-27": "::game.S.title:: set new standards with its sheer world size, quest depth and character options."
 }
