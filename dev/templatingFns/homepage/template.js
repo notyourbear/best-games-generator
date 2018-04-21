@@ -1,6 +1,6 @@
-const homePageTemplate = (obj = {}) => {
-  const title = obj.title || 'Not Polygon';
-  const number = obj.number || 50;
+const homePageTemplate = (data = {}) => {
+  const title = data.title || 'Polygonal';
+  const number = data.number || 50;
 
   return ` <div class='form-container'>
       <div class="background-logo"></div>

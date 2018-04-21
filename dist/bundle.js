@@ -1185,10 +1185,10 @@ var fns = {
 };
 
 var homePageTemplate = function homePageTemplate() {
-  var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var title = obj.title || 'Not Polygon';
-  var number = obj.number || 50;
+  var title = data.title || 'Polygonal';
+  var number = data.number || 50;
 
   return ' <div class=\'form-container\'>\n      <div class="background-logo"></div>\n      <form class=\'form create-best-games\'>\n        <input id=\'title-input\' type=\'text\' name=\'title\' value=\'' + title + '\' autofocus>\n        <div>\n          <span> The </span>\n          <input id=\'amount-input\' type=\'number\' name=\'amount\' value=' + number + '>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id=\'submit-input\' type=\'submit\' name=\'submit\' value=\'View Now\'>\n     </form>\n     </div>';
 };
@@ -16388,7 +16388,7 @@ if (isHomePage) {
 
     list.push(item);
   }
-  paintListPage({ container: container, list: list, title: siteName, amount: number });
+  paintListPage({ container: container, list: list, title: siteName, number: number });
   setTimeout(function () {
     document.querySelector("ul").scrollIntoView({ behavior: 'smooth' });
   }, 100);

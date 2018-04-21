@@ -40,7 +40,7 @@ if (isHomePage) {
 
     list.push(item);
   }
-  paintListPage({container, list, title: siteName, amount: number});
+  paintListPage({container, list, title: siteName, number});
   setTimeout(() => {
     document.querySelector("ul").scrollIntoView({behavior: 'smooth'});
   }, 100);
