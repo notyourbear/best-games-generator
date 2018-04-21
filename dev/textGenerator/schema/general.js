@@ -51,4 +51,5 @@ export default {
   "general-50": "::game.S.title:: was one of the most popular games released in ::game.S.releaseDate::.",
   "general-51": "::game.S.title:: was a great example of a game challenging the conventional models of the industry.",
   "general-52": "Its title song was the first game track to win a Grammy, so that's cool.",
+  "general-53": "::game.S.title:: was more about the journey than the destination.",
 }

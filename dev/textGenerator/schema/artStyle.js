@@ -20,9 +20,10 @@ export default {
   "artStyle-18": "::game.S.title:: was one of the most technically impressive games when it released in ::game.S.releaseDate::.",
   "artStyle-19": "::game.S.title:: was more stylish than almost any game released before or after.",
   "artStyle-20": "Utilizing fixed cameras to give the game a cinematic look, ::game.S.title:: created a sense of tension unseen before as players walked through its numerous winding halls and traps.",
-  "artStyle-21": "It features some of the smoothest animation ever seen in a ::game.S.title::.",
+  "artStyle-21": "It features some of the smoothest animation ever seen in a game.",
   "artStyle-22": "Though its cartoony visuals were divisive at the time of release, ::game.S.title|possessive:: aesthetic made for a more expressive game that has gained fans over time.",
   "artStyle-23": "It featured some of the best graphics of its time.",
   "artStyle-24": "It was considered a pinnacle of video game visuals in ::game.S.releaseDate::.",
   "artStyle-25": "Its art deco metropolis-gone-wrong style instantly engrossed players in the action, enticing them to search every corner to learn what went wrong.",
+  "artStyle-26": "A game as much about subtlety as it was grand scale, ::game.S.title:: is an example of games as high art.",
 };

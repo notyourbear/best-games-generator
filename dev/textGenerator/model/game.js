@@ -1,5 +1,26 @@
 const model = {
   game: {
+    place: [
+      'America',
+      'Tokyo',
+      'United States',
+      'Soviet Russia',
+      'Boston',
+      'Washington D.C.',
+      'Hell',
+      'World War II era Germany',
+      'Medieval Europe',
+      'rural America',
+    ],
+    setting: [
+      'post-apocalyptic',
+      'underwater',
+      'post-human',
+      'dystopic',
+      'intergalactic',
+      'eldritch',
+      'medieval',
+    ],
     genre: [
       'superhero',
       'horror',
@@ -48,6 +69,12 @@ const model = {
       'CCG',
       'action horror',
       'arcade racer',
+      'basketball',
+      'baseball',
+      'puzzle',
+      'puzzle platformer',
+      'MMORPG',
+      'survival sim',
     ]
   }
 };

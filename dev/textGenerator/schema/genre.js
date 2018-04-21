@@ -49,4 +49,5 @@ export default {
   "genre-47": "::game.S.title:: more or less created the modern ::game.S.genre:: genre.",
   "genre-48": "The game sold better than nearly any other ::game.S.genre:: game at the time.",
   "genre-49": "Ultimately, it was so popular that it's sometimes credited for killing the traditional ::game.S.title:: game.",
+  "genre-50": "Striving for a level of realism still pretty rare in games, the game combined classic adventure mechanics with an approach that would later be known as the ::game.genre:: genre.."
 }

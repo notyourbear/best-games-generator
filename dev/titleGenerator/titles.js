@@ -1268,4 +1268,18 @@ export default [
   "Outlast 2",
   "Tesla vs Lovecraft",
   "Scribblenauts Showdown",
-  "Subsurface Circular"];
+  "Subsurface Circular",
+  "To Leave",
+  "Dead Secret",
+  "Runbow",
+  "Gal*Gun 2",
+  "Death Road to Canada",
+  "Runestone Keeper",
+  "Fast Food Rampage",
+  "Unalive",
+  "Devious Dungeon",
+  "WarioWare: Gold",
+  "39 Days to Mars",
+  "Endless Crusade",
+  "Disco Elsyium"
+];
