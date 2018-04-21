@@ -993,6 +993,58 @@ if (('object') == 'object' && module.exports) {
 );
 });
 
+// A library of seedable RNGs implemented in Javascript.
+//
+// Usage:
+//
+// var seedrandom = require('seedrandom');
+// var random = seedrandom(1); // or any seed.
+// var x = random();       // 0 <= x < 1.  Every bit is random.
+// var x = random.quick(); // 0 <= x < 1.  32 bits of randomness.
+
+// alea, a 53-bit multiply-with-carry generator by Johannes Baagøe.
+// Period: ~2^116
+// Reported to pass all BigCrush tests.
+
+
+// xor128, a pure xor-shift generator by George Marsaglia.
+// Period: 2^128-1.
+// Reported to fail: MatrixRank and LinearComp.
+
+
+// xorwow, George Marsaglia's 160-bit xor-shift combined plus weyl.
+// Period: 2^192-2^32
+// Reported to fail: CollisionOver, SimpPoker, and LinearComp.
+
+
+// xorshift7, by François Panneton and Pierre L'ecuyer, takes
+// a different approach: it adds robustness by allowing more shifts
+// than Marsaglia's original three.  It is a 7-shift generator
+// with 256 bits, that passes BigCrush with no systmatic failures.
+// Period 2^256-1.
+// No systematic BigCrush failures reported.
+
+
+// xor4096, by Richard Brent, is a 4096-bit xor-shift with a
+// very long period that also adds a Weyl generator. It also passes
+// BigCrush with no systematic failures.  Its long period may
+// be useful if you have many generators and need to avoid
+// collisions.
+// Period: 2^4128-2^32.
+// No systematic BigCrush failures reported.
+
+
+// Tyche-i, by Samuel Neves and Filipe Araujo, is a bit-shifting random
+// number generator derived from ChaCha, a modern stream cipher.
+// https://eden.dei.uc.pt/~sneves/pubs/2011-snfa2.pdf
+// Period: ~2^127
+// No systematic BigCrush failures reported.
+
+
+// The original ARC4-based prng included in this library.
+// Period: ~2^1600
+
+
 seedrandom.alea = alea;
 seedrandom.xor128 = xor128;
 seedrandom.xorwow = xorwow;
@@ -15999,7 +16051,28 @@ var general = {
   "general-28": "::game.S.title:: charming sense of humor, surprisingly awesome soundtrack and addictive gameplay made gave it a true sense of character.",
   "general-29": "::game.S.title|possessive:: revolutionary active playstyle has helped the series stand the test of time.",
   "general-30": "::game.S.title:: innovated the amount of depth a game can have.",
-  "general-31": "Very few games have built identity, history, and genre like ::game.S.title::."
+  "general-31": "Very few games have built identity, history, and genre like ::game.S.title::.",
+  "general-32": "::game.S.title:: is a masterclass in how to modernize a classic game.",
+  "general-33": "::game.S.title:: became one of the most addictive games ever released.",
+  "general-34": "::game.S.title:: added a modern sheen to a classic genre.",
+  "general-35": "Though not the first game to feature crossover characters, its use of big names stood out from the pack.",
+  "general-36": "Online only, ::game.S.title:: was awash with thousands of players trying to prove their skills.",
+  "general-37": "::game.S.title:: felt like playing with action figures.",
+  "general-38": "::game.S.title:: went on to shape the competitive gaming scene.",
+  "general-39": "One of the most widespread games of all time, ::game.S.title:: gamified learning.",
+  "general-40": "::game.S.title:: evolved online gaming in its own small way.",
+  "general-41": "::game.S.title:: shattered any preconceived notions of what to expect from a game, proving games can be whatever you want them to be.",
+  "general-42": "Because of its realistic approach, ::game.S.title:: and its sequels have become staples of the esports industry.",
+  "general-43": "It was like nothing players had seen before.",
+  "general-44": "It was fast. It was cool. It had attitude.",
+  "general-45": "::game.S.title:: focused primarily on action, making it more exciting than many of its competitors.",
+  "general-46": "When it released, ::game.S.title:: felt like a breath of fresh air.",
+  "general-47": "Since release, the game's consistently been a star attraction for tournaments paying out well over $100,000.",
+  "general-48": "This was one of the best licensed games of its time due to its ability to make you feel like you were in the action.",
+  "general-49": "Praised for its revolutionary graphics and funny story, the game maintains a cult status to this day.",
+  "general-50": "::game.S.title:: was one of the most popular games released in ::game.S.releaseDate::.",
+  "general-51": "::game.S.title:: was a great example of a game challenging the conventional models of the industry.",
+  "general-52": "Its title song was the first game track to win a Grammy, so that's cool."
 };
 
 var genre = {
@@ -16036,12 +16109,33 @@ var genre = {
   "genre-30": "::game.S.title:: dominated the ::game.S.genre:: genre.",
   "genre-31": "::game.S.tilte:: distanced itself from other ::game.S.genre:: games with its extreme attention to detail.",
   "genre-32": "While ::game.S.genre:: games have a few forebears to their credit, none saw the same ubiquity and success as ::game.S.title::.",
-  "genre-33": "::game.S.title:: is a master class in ::game.S.genre:: games, with a hero designed to appeal to, and inspire, a wide variety of gamers."
+  "genre-33": "::game.S.title:: is a master class in ::game.S.genre:: games, with a hero designed to appeal to, and inspire, a wide variety of gamers.",
+  "genre-34": "Colorful, goofy and, most of all, fun, it was a far cry from the overly serious style of most ::game.S.genre:: games.",
+  "genre-35": "::game.S.title:: is still loved not for reinventing the ::game.S.genre:: genre, but for nearly perfecting it.",
+  "genre-36": "::game.S.title:: was massively innovative, changing the way ::game.s.genre:: games were played and how games in general approached navigation.",
+  "genre-37": "::game.S.title:: played with the idea that ::game.S.genre:: games didn't have to harshly punish mistakes.",
+  "genre-38": "::game.S.title|possessive:: thinking-man's approach to the ::game.S.genre:: genre became a blueprint for the genre going forward.",
+  "genre-39": "::game.S.title:: is one of the best ::game.S.genre:: games of all time, and a hell of a time if played with another person.",
+  "genre-40": "::game.S.title:: was the apex of the ::genre.S.genre:: genre.",
+  "genre-41": "Best played with four players, it constantly bounced between genres but never suffered an identity crisis because of it.",
+  "genre-42": "::game.S.title|possessive:: lighthearted approach helped pave the way for an influx of ::game.S.title:: games.",
+  "genre-43": "Unprecedented in its size, the game set forth conventions and designs that'd define the ::game.S.genre:: genre going forward.",
+  "genre-44": "It wasn't even close to being the first ::game.S.genre:: game, but ::game.S.title:: defined the genre after its ::game.S.releaseDate:: release.",
+  "genre-45": "::game.S.title:: single-handedly made the ::game.S.genre:: genre what it is today.",
+  "genre-46": "::game.S.title:: was never afraid to jerk the wheel, shifting genres and subverting gameplay tropes.",
+  "genre-47": "::game.S.title:: more or less created the modern ::game.S.genre:: genre.",
+  "genre-48": "The game sold better than nearly any other ::game.S.genre:: game at the time.",
+  "genre-49": "Ultimately, it was so popular that it's sometimes credited for killing the traditional ::game.S.title:: game."
 };
 
 var mobile = {
   "mobile-0": "::game.S.title:: is another example of a mobile game done near-perfectly.",
-  "mobile-1": "When ::game.S.title:: released on mobile devices in ::game.S.releaseDate::, it differentiated itself from other mobile games with its acclaimed presentation, depth and amount of content."
+  "mobile-1": "When ::game.S.title:: released on mobile devices in ::game.S.releaseDate::, it differentiated itself from other mobile games with its acclaimed presentation, depth and amount of content.",
+  "mobile-2": "::game.S.title|possessive:: gameplay was simple enough to jump into but deep enough to stand among its console ::game.S.genre:: genre brethren.",
+  "mobile-3": "The game's handheld nature made it addictive, since it was so easy to return to at a moment's notice.",
+  "mobile-4": "::game.S.title:: felt too big to be a mobile game.",
+  "mobile-5": "Though now the genre is well-established on mobile, ::game.S.title:: was the first to make us enjoy ::game.S.genre: games on the go.",
+  "mobile-6": "::game.S.title:: didn't bring the ::game.S.genre:: to mobile; it was a tailor-made experience for the desires and demands of mobile players."
 };
 
 var singlePlatform = {
@@ -16054,7 +16148,9 @@ var singlePlatform = {
   "singlePlatform-6": "Making use of the ::game.S.platform|possessive:: internal clock for realistic passages of time, players were free to live out a new life, filling days with numerous side activities.",
   "singlePlatform-7": "::game.S.title:: was one of the only ::game.S.platform:: games to utilize motion controls.",
   "singlePlatform-8": "One of the biggest success stories of the ::game.S.platform::, ::game.S.title:: wasn't afraid to be weird, and its deeply emotional story remains a fan favorite still today.",
-  "singlePlatform-9": "::game.S.title:: played like a dream despite — and in part because of — the unusual ::game.S.platform:: controller setup."
+  "singlePlatform-9": "::game.S.title:: played like a dream despite — and in part because of — the unusual ::game.S.platform:: controller setup.",
+  "singlePlatform-10": "It was one of the ::game.S.platform|possessive:: best looking games.",
+  "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released."
 };
 
 var difficulty = {
@@ -16068,8 +16164,9 @@ var difficulty = {
   "difficulty-7": "::game.S.title:: emphasized real(ish) combat focused on skill — especially when death is usually one hit away.",
   "difficulty-8": "One of the most complex games ever made, ::game.S.title:: is often described as a part-time job.",
   "difficulty-9": "::game.S.title:: was developed around being easy to understand and fun to play.",
-  "difficulty-10": "It expertly rode the line between simulation and arcade experience, making it possible for players of all skill levels to jump in, play, and find something to love."
-
+  "difficulty-10": "It expertly rode the line between simulation and arcade experience, making it possible for players of all skill levels to jump in, play, and find something to love.",
+  "difficulty-11": "::game.S.title:: helped establish games as challenges to overcome through skill and reflex.",
+  "difficulty-12": "The notoriously hard final boss offered a true test of skill, making this a game players constantly came back to, thinking, \"I've got it this time.\""
 };
 
 var features = {
@@ -16106,7 +16203,29 @@ var features = {
   "features-30": "Unlike a lot of games at the time of its release, ::game.S.title:: told its story completely in-game, free of cutscenes.",
   "features-31": "The great world design allowed players to slip into ::game.S.title|possessive:: world, personally engaging with the story more than in other games.",
   "features-32": "::game.S.title:: marked the pinnacle of agency and consequences.",
-  "features-33": "The bonds you form with your many crewmates throughout the game will have you replaying the game to make sure you savor every, last, one."
+  "features-33": "The bonds you form with your many crewmates throughout the game will have you replaying the game to make sure you savor every, last, one.",
+  "features-34": "The ever-changing gameplay — dictated on the fly by the game's A.I. \"Director\" — kept each playthrough interesting.",
+  "features-35": "Incredibly ambitious, the sheer amount of content and meticulous world design made for a game still considered one of the best in the genre.",
+  "features-36": "::game.S.title|possessive:: multiplayer alone is enough to secure a spot on this list.",
+  "features-37": "The game's expansive roster and unique special moves make for something special.",
+  "features-38": "The degree to which the game's buildings and structures could be torn apart changed how scenarios could be approached and found critical praise.",
+  "features-39": "::game.S.title|possessive:: approach to destruction forced players to be more active and experimental.",
+  "features-40": "The game set a new standard for the way games presented real-life activities.",
+  "features-41": "::game.S.title:: felt overwhelming due to waves of enemies that exploded into bright, colorful particles.",
+  "features-42": "::game.S.title|possessive:: perspective made it engulfing, incentivizing further exploration and leading players around every corner.",
+  "features-43": "::game.S.title|possessive:: character roster stands out, even today.",
+  "features-44": "::game.S.title:: gave players a host of customization options and ways to interact with the world.",
+  "features-45": "::game.S.title:: featured a cast of unique, funny characters, a different approach at a moment in time when many games featured voiceless killing apparatuses.",
+  "features-46": "::game.S.title:: gave players three continents to explore and 14 classes/12 races to choose from when creating a character.",
+  "features-47": "::game.S.title:: let you experiment in your approach, changing your play style to make each attempt a little bit different than the last.",
+  "features-48": "Wholly unique, ::game.S.title:: format was one that could only exist as a game, and it was better for it.",
+  "features-49": "::game.S.title:: still stands out for how it brought four players together for something more than competition.",
+  "features-50": "Focused on rewards, ::game.S.title|possessive:: feedback loop of fight-then-receive-loot influenced countless other games to implement similar structures.",
+  "features-51": "Its wide cast of wild characters, exciting open world, and amazing soundtrack made ::game.S.title:: one of the best games of all time.",
+  "features-52": "Its map editor allowed players to create and play their own multiplayer maps.",
+  "features-53": "Its one of the industry's best examples of local multiplayer.",
+  "features-54": "::game.S.title:: struck a beautiful balance between deep mechanics and fast, fluid execution.",
+  "features-55": "Abandoning the obtuse design and seemingly random punishments many were accustomed to from similar games, ::game.S.title:: appealed to enough players to spawn several sequels and spinoffs."
 };
 
 var artStyle = {
@@ -16125,7 +16244,17 @@ var artStyle = {
   "artStyle-12": "Its visuals completely moved the bar forward.",
   "artStyle-13": "Unparalleled in detail at the time, ::game.S.title|possessive:: caught the eyes of critics and players, raising expectations for how games after it should look.",
   "artStyle-14": "Its beautiful, hand-drawn art style made it one of the best-looking games of its generation.",
-  "artStyle-15": "It was a super pretty game."
+  "artStyle-15": "It was a super pretty game.",
+  "artStyle-16": "::game.S.title|possessive:: abstract, art house-like subversion of the ::game.S.genre:: is something you need to see to fully appreciate.",
+  "artStyle-17": "Making use of Gouraud shading, ::game.S.title:: was more realistic looking than most games when it released.",
+  "artStyle-18": "::game.S.title:: was one of the most technically impressive games when it released in ::game.S.releaseDate::.",
+  "artStyle-19": "::game.S.title:: was more stylish than almost any game released before or after.",
+  "artStyle-20": "Utilizing fixed cameras to give the game a cinematic look, ::game.S.title:: created a sense of tension unseen before as players walked through its numerous winding halls and traps.",
+  "artStyle-21": "It features some of the smoothest animation ever seen in a ::game.S.title::.",
+  "artStyle-22": "Though its cartoony visuals were divisive at the time of release, ::game.S.title|possessive:: aesthetic made for a more expressive game that has gained fans over time.",
+  "artStyle-23": "It featured some of the best graphics of its time.",
+  "artStyle-24": "It was considered a pinnacle of video game visuals in ::game.S.releaseDate::.",
+  "artStyle-25": "Its art deco metropolis-gone-wrong style instantly engrossed players in the action, enticing them to search every corner to learn what went wrong."
 };
 
 var review = {
@@ -16141,7 +16270,19 @@ var review = {
   "review-9": "::game.S.title:: was a precisely balanced game, \"perhaps one of the most finely tuned... of all time,\" according to ::site.title::.",
   "review-10": "When it released, the game was praised for its evolution of ::game.S.genre::-style gameplay",
   "review-11": "::game.S.title:: was a \"metagame-within-a-game… [where] anything could and probably would happen,\" according to ::site.title::.",
-  "review-12": "Players all around the world fell in love with the game because of its catchy soundtracks and its unique mix of showmanship and technical performance."
+  "review-12": "Players all around the world fell in love with the game because of its catchy soundtracks and its unique mix of showmanship and technical performance.",
+  "review-13": "Thanks to a combination of old and new elements, ::game.S.title:: resonated immensely with fans and critics.",
+  "review-14": "Today, it still retains the ::game.S.genre:: genre's highest Metacritic score.",
+  "review-15": "::site.title:: called it \"quite possibly the perfect ::game.S.genre:: game.\"",
+  "review-16": "It was called \"the best space combat game ever made\" by ::site.title:: upon its release.",
+  "review-17": "Reviews have since praised the game for its striking visuals, great gameplay and wonderful soundtrack.",
+  "review-18": "::game.S.title:: is ageless and perfect.",
+  "review-19": "Most critics were surprised that such a low budget game shipped with the quality it did.",
+  "review-20": "As ::site.title|possessive:: review put it, \"Even at its most unrecognizable, it's one of the most joyous multiplayer experiences we've ever been a part of.\"",
+  "review-21": "::game.S.title \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
+  "review-22": "::game.S.title|possessive:: dark world and addictive loot-based gameplay received critical and fan praise.",
+  "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
+  "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay."
 };
 
 var plot = {
@@ -16167,12 +16308,44 @@ var plot = {
   "plot-19": "Its greatest mission is \"Home Coming.\" The main character, after having gone through hell — returns to a family that had seen better days as well.",
   "plot-20": "In ::game.S.title::, you're out to help those in need — through the power of dance.",
   "plot-21": "::game.S.title:: was a bleak story about science gone wrong.",
-  "plot-22": "Essentially putting you on a suicide mission, the game built upon its deep relationships by placing your favorite characters' lives in your hands."
+  "plot-22": "Essentially putting you on a suicide mission, the game built upon its deep relationships by placing your favorite characters' lives in your hands.",
+  "plot-23": "The game tasked players with creating and upgrading their weapons as they journeyed alone through catacombs.",
+  "plot-24": "The game's deep story and trope-breaking found success around the world.",
+  "plot-25": "::game.S.title:: is full of inventive, weird puzzles and a genuinely funny script about the misadventures of pirates.",
+  "plot-26": "::game.S.title:: is about staying alive — even when it seems impossible.",
+  "plot-27": "It tells a brutal, yet intimate post-apocalyptic story with some of the finest examples of character development in games.",
+  "plot-28": "::game.S.title|possessive:: tale of love, lies and the human condition set a new bar for storytelling in games — one that'll be hard to top.",
+  "plot-29": "Terrifying, tense and open-ended, ::game.S.title:: earns special praise for its story of AI sentience.",
+  "plot-30": "A cult classic, ::game.S.title|possessive:: rich story gets points for being smarter than its peers, casting players as a selfish protagonist with surprising depth.",
+  "plot-31": "The game tasked players with running a successful dynasty and appointing an heir.",
+  "plot-32": "Telling the story of two brothers, each controlled differently, the game's unique set-up tested the bonds of family.",
+  "plot-33": "Lauded for its emotional story, ::game.S.title:: was about learning to work together, all the while growing closer.",
+  "plot-34": "The masterfulness in which ::game.S.title:: told its story of world travel, and the nuances and complexities in which the story is dissected by player choice, is one of the finer examples storytelling in video games.",
+  "plot-35": "::game.S.title:: was an emotional tale of revenge.",
+  "plot-36": "::game.S.title:: changed everything we knew about game writing. Focusing on the impact of every decision, it presented numerous heart-stopping experiences.",
+  "plot-37": "::game.S.title:: asked a near-impossible-to-answer question: How far will you go to save someone's life?",
+  "plot-38": "The game's '60s chic, hilarious script and gadgets would make a Bond blush.",
+  "plot-39": "It taught its players about American history while being immensely fun and engaging to interact with over the course of the game's long journey.",
+  "plot-40": "Centered around investigating computer files in an effort to find information, ::game.S.title:: tells its story by dragging players down a rabbit hole of mystery in the pursuit of truth.",
+  "plot-41": "The push and pull of the job and the personal life of your character made ::game.S.title:: an emotional experience, one emphasizing empathy over economic growth.",
+  "plot-42": "Few games match the pacing of ::game.S.title::.",
+  "plot-43": "Seemingly down to the second, ::game.S.title:: knew exactly when to put players through amazing set pieces, when to introduce puzzles and when to pull back for quieter, more intimate moments.",
+  "plot-44": "::game.S.title:: was an amazing breakthrough in storytelling and a surprising reinvention of one of the oldest genres.",
+  "plot-45": "::game.S.title:: told the personal stories of wartime soldiers with unmatched bombast never seen before in games.",
+  "plot-46": "::game.S.title:: ushered in a new era of intense plot, narration and dialog everywhere, but particularly in the ::game.S.genre:: genre.",
+  "plot-47": "The macabre underwater fantasy that was ::game.S.title:: left an impression on gamers that has rarely been matched.",
+  "plot-48": "Telling a complex story about the nature of man, ::game.S.title:: offered one of the most unforgettable experiences in games.",
+  "plot-49": "Somber and contemplative, ::game.S.title:: explores the life of rural America, both in its simplicity and its bizarreness.",
+  "plot-50": "The game puts the lives of others in your hands — possibly at the cost of your family's safety. Upon its release, ::game.S.title:: was lauded for its intense moral dilemmas.",
+  "plot-51": "::game.S.title:: was masterclass in how to write a plot twist and how to smash player expectations.",
+  "plot-52": "::game.S.title:: leaves it up to the player to imagine the events of a heist gone wrong, telling a short, out-of-order story.",
+  "plot-53": "Inspired by real-world events like the Gulf War, ::game.S.title:: was partly responsible for the popularization of modern war settings in games.",
+  "plot-54": "::game.S.title:: let players become who they wanted."
 };
 
 var model = {
   game: {
-    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'RPG', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real-time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter', 'clicker', 'MMO', 'MOBA', 'fighting', 'hockey', 'football', 'MMA', 'character action', 'rhythm', 'open-world']
+    genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'RPG', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real-time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter', 'clicker', 'MMO', 'MOBA', 'fighting', 'hockey', 'football', 'MMA', 'character action', 'rhythm', 'open-world', 'point-and-click adventure', 'beat-\'em-up', 'horizontal shoot-\'em-up', 'vertical shooter', 'hero shooter', 'survival horror', 'CCG', 'action horror', 'arcade racer']
   }
 };
 

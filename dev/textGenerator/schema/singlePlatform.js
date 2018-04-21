@@ -9,4 +9,6 @@ export default {
   "singlePlatform-7": "::game.S.title:: was one of the only ::game.S.platform:: games to utilize motion controls.",
   "singlePlatform-8": "One of the biggest success stories of the ::game.S.platform::, ::game.S.title:: wasn't afraid to be weird, and its deeply emotional story remains a fan favorite still today.",
   "singlePlatform-9": "::game.S.title:: played like a dream despite — and in part because of — the unusual ::game.S.platform:: controller setup.",
+  "singlePlatform-10": "It was one of the ::game.S.platform|possessive:: best looking games.",
+  "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released.",
 }

@@ -10,5 +10,6 @@ export default {
   "difficulty-8": "One of the most complex games ever made, ::game.S.title:: is often described as a part-time job.",
   "difficulty-9": "::game.S.title:: was developed around being easy to understand and fun to play.",
   "difficulty-10": "It expertly rode the line between simulation and arcade experience, making it possible for players of all skill levels to jump in, play, and find something to love.",
-  
+  "difficulty-11": "::game.S.title:: helped establish games as challenges to overcome through skill and reflex.",
+  "difficulty-12": "The notoriously hard final boss offered a true test of skill, making this a game players constantly came back to, thinking, \"I've got it this time.\"",
 }

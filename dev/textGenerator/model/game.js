@@ -39,6 +39,15 @@ const model = {
       'character action',
       'rhythm',
       'open-world',
+      'point-and-click adventure',
+      'beat-\'em-up',
+      'horizontal shoot-\'em-up',
+      'vertical shooter',
+      'hero shooter',
+      'survival horror',
+      'CCG',
+      'action horror',
+      'arcade racer',
     ]
   }
 };
