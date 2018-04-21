@@ -61,17 +61,19 @@ const createChain = ({state, amount, seed}) => {
   let direction = 'prev';
   let i = 0;
   let item = getItem({seed, state: state.node});
+  let newSeed = 0;
 
-  while (item.next === true && item.prev === true) {
-    item = getItem({seed, state: state.node});
+  while (item.entry === true && item.exit === true) {
+    item = getItem({seed: seed + newSeed, state: state.node});
+    newSeed++;
     haveStart = item.entry === true;
     haveEnd = item.exit === true;
   }
 
   let parts = [];
-
   while (i < amount) {
     direction = switcher(direction);
+    i++;
     if (haveStart === true && haveEnd === true) break;
     if (haveStart && direction === 'prev') continue;
     if (haveEnd && direction === 'next') continue;
@@ -83,8 +85,6 @@ const createChain = ({state, amount, seed}) => {
     if (direction === 'next') parts.unshift(item.value);
     haveStart = item.entry === true;
     haveEnd = item.exit === true;
-
-    i++;
   }
 
   if (haveStart === false) {

@@ -1,6 +1,6 @@
 const model = {
   game: {
-    place: [
+    location: [
       'America',
       'Tokyo',
       'United States',

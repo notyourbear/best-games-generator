@@ -1081,17 +1081,19 @@ var createChain = function createChain(_ref5) {
   var direction = 'prev';
   var i = 0;
   var item = getItem({ seed: seed, state: state.node });
+  var newSeed = 0;
 
-  while (item.next === true && item.prev === true) {
-    item = getItem({ seed: seed, state: state.node });
+  while (item.entry === true && item.exit === true) {
+    item = getItem({ seed: seed + newSeed, state: state.node });
+    newSeed++;
     haveStart = item.entry === true;
     haveEnd = item.exit === true;
   }
 
   var parts = [];
-
   while (i < amount) {
     direction = switcher(direction);
+    i++;
     if (haveStart === true && haveEnd === true) break;
     if (haveStart && direction === 'prev') continue;
     if (haveEnd && direction === 'next') continue;
@@ -1103,8 +1105,6 @@ var createChain = function createChain(_ref5) {
     if (direction === 'next') parts.unshift(item.value);
     haveStart = item.entry === true;
     haveEnd = item.exit === true;
-
-    i++;
   }
 
   if (haveStart === false) {
@@ -16084,7 +16084,7 @@ var mobile = {
   "mobile-2": "::game.S.title|possessive:: gameplay was simple enough to jump into but deep enough to stand among its console ::game.S.genre:: genre brethren.",
   "mobile-3": "The game's handheld nature made it addictive, since it was so easy to return to at a moment's notice.",
   "mobile-4": "::game.S.title:: felt too big to be a mobile game.",
-  "mobile-5": "Though now the genre is well-established on mobile, ::game.S.title:: was the first to make us enjoy ::game.S.genre: games on the go.",
+  "mobile-5": "Though now the genre is well-established on mobile, ::game.S.title:: was the first to make us enjoy ::game.S.genre:: games on the go.",
   "mobile-6": "::game.S.title:: didn't bring the ::game.S.genre:: to mobile; it was a tailor-made experience for the desires and demands of mobile players."
 };
 
@@ -16230,7 +16230,7 @@ var review = {
   "review-18": "::game.S.title:: is ageless and perfect.",
   "review-19": "Most critics were surprised that such a low budget game shipped with the quality it did.",
   "review-20": "As ::site.title|possessive:: review put it, \"Even at its most unrecognizable, it's one of the most joyous multiplayer experiences we've ever been a part of.\"",
-  "review-21": "::game.S.title \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
+  "review-21": "::game.S.title:: \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
   "review-22": "::game.S.title|possessive:: dark world and addictive loot-based gameplay received critical and fan praise.",
   "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
   "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay."
@@ -16242,9 +16242,9 @@ var plot = {
   "plot-2": "Greater than the sum of its parts, the story ::game.S.title:: tells about ::game.setting:: capitalism makes it an important example of games as political satire.",
   "plot-3": "Telling a semi-mature story about the dangers of robot sentience, ::game.S.title:: reinvented the :game.S.genre:: genre.",
   "plot-4": "::game.S.title:: told a story about becoming a professional skater.",
-  "plot-5": "Bathed in the dying light of ::game.place|articlize::, ::game.S.title:: follows an aging truck driver as he delivers his final package to an address that can only be reached by a highway buried deep in the caves.",
-  "plot-6": "This game is a journey through ::game.place|articlize:: whose sun is setting, a place of tragic beauty where economic decline is painted in dream-like brush strokes of magical realism.",
-  "plot-7": "The game allows players to explore its ::game.setting:: ::game.place:: in great detail.",
+  "plot-5": "Bathed in the dying light of ::game.location|articlize::, ::game.S.title:: follows an aging truck driver as he delivers his final package to an address that can only be reached by a highway buried deep in the caves.",
+  "plot-6": "This game is a journey through ::game.location|articlize:: whose sun is setting, a place of tragic beauty where economic decline is painted in dream-like brush strokes of magical realism.",
+  "plot-7": "The game allows players to explore its ::game.setting:: ::game.location:: in great detail.",
   "plot-8": "The developers showed that they could make one of the best endings the game industry has ever seen.",
   "plot-9": "On the surface a game about ::game.setting:: politics and war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage.",
   "plot-10": "::game.S.title:: pointed an angry finger right at the American dream.",
@@ -16255,12 +16255,12 @@ var plot = {
   "plot-15": "::game.S.title:: is all about the tranquility of a simple life.",
   "plot-16": "Allowing players to decide how to tackle daily activities, ::game.S.title:: turned the mundanities of life into soothing, charming experiences.",
   "plot-17": "Telling a surprisingly emotional story about gang life and the difficulties of escaping it, ::game.S.title:: was a watershed moment.",
-  "plot-18": "::game.S.title:: is said to be a view of ::game.place:: from those who don’t live there, but that excludes the painstaking nostalgic touches infused throughout.",
+  "plot-18": "::game.S.title:: is said to be a view of ::game.location:: from those who don’t live there, but that excludes the painstaking nostalgic touches infused throughout.",
   "plot-19": "In its greatest mission, \"Home Coming.\", the main character, returns to a family that has gone through hell.",
   "plot-20": "In ::game.S.title::, you're out to help those in need — through the power of dance.",
   "plot-21": "::game.S.title:: was a bleak story about science gone wrong.",
   "plot-22": "Essentially putting you on a suicide mission, the game built upon its deep relationships by placing your favorite characters' lives in your hands.",
-  "plot-23": "The game tasked players with creating and upgrading their weapons as they journeyed alone through ::game.place::.",
+  "plot-23": "The game tasked players with creating and upgrading their weapons as they journeyed alone through ::game.location::.",
   "plot-24": "The game's deep story and trope-breaking found success around the world.",
   "plot-25": "::game.S.title:: is full of inventive, weird puzzles and a genuinely funny script about the misadventures of pirates.",
   "plot-26": "::game.S.title:: is about staying alive — even when it seems impossible.",
@@ -16296,7 +16296,7 @@ var plot = {
 
 var model = {
   game: {
-    place: ['America', 'Tokyo', 'United States', 'Soviet Russia', 'Boston', 'Washington D.C.', 'Hell', 'World War II era Germany', 'Medieval Europe', 'rural America'],
+    location: ['America', 'Tokyo', 'United States', 'Soviet Russia', 'Boston', 'Washington D.C.', 'Hell', 'World War II era Germany', 'Medieval Europe', 'rural America'],
     setting: ['post-apocalyptic', 'underwater', 'post-human', 'dystopic', 'intergalactic', 'eldritch', 'medieval'],
     genre: ['superhero', 'horror', 'racing', 'puzzle', 'metroidvania', 'arcade', 'action', 'strategy', 'RPG', 'first person shooter', 'third person shooter', 'visual novel', 'platformer', 'action platformer', 'split-screen co-op', 'simulation', 'action-role playing', 'city-sim', 'flight simulator', 'grand strategy', 'real-time strategy', 'farming', 'walking simulator', 'text adventure', 'adventure', 'action-adventure', 'action sports', 'twin-stick shooter', 'clicker', 'MMO', 'MOBA', 'fighting', 'hockey', 'football', 'MMA', 'character action', 'rhythm', 'open-world', 'point-and-click adventure', 'beat-\'em-up', 'horizontal shoot-\'em-up', 'vertical shooter', 'hero shooter', 'survival horror', 'CCG', 'action horror', 'arcade racer', 'basketball', 'baseball', 'puzzle', 'puzzle platformer', 'MMORPG', 'survival sim']
   }

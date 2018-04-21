@@ -20,7 +20,7 @@ export default {
   "review-18": "::game.S.title:: is ageless and perfect.",
   "review-19": "Most critics were surprised that such a low budget game shipped with the quality it did.",
   "review-20": "As ::site.title|possessive:: review put it, \"Even at its most unrecognizable, it's one of the most joyous multiplayer experiences we've ever been a part of.\"",
-  "review-21": "::game.S.title \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
+  "review-21": "::game.S.title:: \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
   "review-22": "::game.S.title|possessive:: dark world and addictive loot-based gameplay received critical and fan praise.",
   "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
   "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay.",
