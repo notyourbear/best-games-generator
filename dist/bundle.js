@@ -1095,16 +1095,16 @@ var createChain = function createChain(_ref5) {
     direction = switcher(direction);
     i++;
     if (haveStart === true && haveEnd === true) break;
-    if (haveStart && direction === 'prev') continue;
-    if (haveEnd && direction === 'next') continue;
+    if (haveStart && direction === 'prev') break;
+    if (haveEnd && direction === 'next') break;
 
     item = getItem({ seed: seed + i, state: state.node });
     if (parts.includes(item.value)) continue;
 
     if (direction === 'prev') parts.push(item.value);
     if (direction === 'next') parts.unshift(item.value);
-    haveStart = item.entry === true;
-    haveEnd = item.exit === true;
+    haveStart = item.entry && direction === 'prev' === true;
+    haveEnd = item.exit && direction === 'next' === true;
   }
 
   if (haveStart === false) {
@@ -16249,8 +16249,8 @@ var plot = {
   "plot-9": "On the surface a game about ::game.setting:: politics and war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage.",
   "plot-10": "::game.S.title:: pointed an angry finger right at the American dream.",
   "plot-11": "::game.S.title:: was a bleak, violent look at what life could be like for an immigrant.",
-  "plot-12": "At the time of its release, ::game.S.title:: was unparalleled in its intense portrayal of war",
-  "plot-13": "::game.S.title:: stood out as a game unafraid to examine sexuality in smart, nuanced ways — something hard to say about most games",
+  "plot-12": "At the time of its release, ::game.S.title:: was unparalleled in its intense portrayal of war.",
+  "plot-13": "::game.S.title:: stood out as a game unafraid to examine sexuality in smart, nuanced ways — something hard to say about most games.",
   "plot-14": "::game.S.title|possessive:: mature take on infidelity, lust, love and abuse showed the depth that game stories could achieve.",
   "plot-15": "::game.S.title:: is all about the tranquility of a simple life.",
   "plot-16": "Allowing players to decide how to tackle daily activities, ::game.S.title:: turned the mundanities of life into soothing, charming experiences.",
