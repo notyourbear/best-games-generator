@@ -4,7 +4,7 @@ const model = {
       'Game Informer',
       'Polygon',
       'GameSpot',
-      'WayPoint',
+      'Waypoint',
       'Giant Bomb',
       'IGN',
       'Electronic Gaming Monthly',
