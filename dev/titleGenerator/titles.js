@@ -1301,6 +1301,9 @@ export default [
   "Yakuza Kiwami",
   "Mighty Gunvolt Burst",
   "Horizon Zero Dawn",
-
-
+  "Dream Daddy: A Dad Dating Simulator",
+  "Blaster Master Zero",
+  "Shovel Knight: Specter of Torment",
+  "Fire Emblem Warriors",
+  "Ys VIII: Lacrimosa of Dana",
 ];
