@@ -20,6 +20,10 @@ const model = {
       'intergalactic',
       'eldritch',
       'medieval',
+      'cyperpunk',
+      'fantasy',
+      'alternate history',
+      'gothic',
     ],
     genre: [
       'superhero',
@@ -28,9 +32,11 @@ const model = {
       'puzzle',
       'metroidvania',
       'arcade',
+      'side scroller',
       'action',
       'strategy',
       'RPG',
+      'JRPG',
       'first person shooter',
       'third person shooter',
       'visual novel',
@@ -75,6 +81,8 @@ const model = {
       'puzzle platformer',
       'MMORPG',
       'survival sim',
+      'roguelike',
+      'dungeon crawler',
     ]
   }
 };
