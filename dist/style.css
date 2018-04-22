@@ -3,6 +3,34 @@ body {
   background: #f7f7f7;
 }
 
+.about {
+  position: absolute;
+  color: white;
+  right: 20px;
+  top: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.offscreen {
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  width: 35vw;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  background: #f7f7f7;
+  padding: 25px;
+  text-align: justify;
+}
+
+.offscreen h3 {
+  margin: 0;
+}
+
 .emphasis {
   font-style: italic;
 }
