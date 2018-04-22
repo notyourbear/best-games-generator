@@ -11,7 +11,7 @@ const filesize = require('rollup-plugin-filesize');
 export default {
   input: 'dev/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: 'docs/bundle.js',
     format: 'iife',
     globals: {
       seedrandom: '*',

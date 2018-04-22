@@ -1,15 +1,15 @@
 {
   "name": "best_games",
   "version": "1.0.0",
-  "main": "./dist/index.html",
+  "main": "./docs/index.html",
   "author": "Patrick Racenberg",
   "license": "MIT",
   "scripts": {
     "test": "yarn lint && jest --coverage",
     "lint": "eslint ./dev",
-    "build": "rimraf ./dist/bundle.js && ./node_modules/.bin/rollup -c",
+    "build": "rimraf ./docs/bundle.js && ./node_modules/.bin/rollup -c",
     "build-prod": "NODE_ENV=production yarn build",
-    "watch": "rimraf ./dist/bundle.js && ./node_modules/.bin/rollup -c -w",
+    "watch": "rimraf ./docs/bundle.js && ./node_modules/.bin/rollup -c -w",
     "watch-prod": "NODE_ENV=production yarn watch"
   },
   "devDependencies": {
