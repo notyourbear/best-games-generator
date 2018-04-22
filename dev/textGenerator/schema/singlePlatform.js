@@ -13,4 +13,6 @@ export default {
   "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released.",
   "singlePlatform-12": "It was one of the \"most unusual and original game[s] to hit ::game.S.platform::,\" according to ::site.title::.",
   "singlePlatform-13": "::game.S.title:: pushed every inch of the ::game.S.platform:: farther than anyone knew it could go.",
+  "singlePlatform-14": "It is one of the finest ::game.S.platform:: ::game.S.genre:: games of all time.",
+  "singlePlatform-15": "::game.S.title:: achieved perfection on ::game.S.platform::.",
 }

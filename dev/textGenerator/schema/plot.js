@@ -54,4 +54,12 @@ export default {
   "plot-52": "::game.S.title:: leaves it up to the player to imagine the events of a heist gone wrong, telling a short, out-of-order story.",
   "plot-53": "Inspired by real-world events like the Gulf War, ::game.S.title:: was partly responsible for the popularization of the modern war setting in games.",
   "plot-54": "::game.S.title:: let players become who they wanted.",
+  "plot-55": "Constantly changing, constantly rotating, ::game.S.title:: was a mind-bending exploration of ::game.setting|articlize:: ::game.location:: and what many critics felt was a nonsensical story.",
+  "plot-56": "Combined with a conspiracy plot revolving around ::game.S.setting|articlize:: ::game.S.location::, ::game.S.title:: let players choose how important fidelity is to them, giving them complete freedom to let their relationships go up in flames.",
+  "plot-57": "Pitting players against a race of enormous aliens and offering them over 100 guns to take the beasts down, the world is a playground.",
+  "plot-58": "Games often lack nuance, understanding of human emotions and mental illnesses. ::game.S.title:: however, does not.",
+  "plot-59": "The game featured no heads-up display as players were tasked with breaking out of ::game.S.setting|articlize:: ::game.S.location:: by seemingly any means necessary.",
+  "plot-60": "The objective of ::game.S.title:: is pretty simple: fight the bad guys.",
+  "plot-61": "Flawed. Full of heart. Unafraid. ::game.S.title:: took the ultra-gruff protagonist archetype and tore it to shreds.",
+  "plot-62": "Taking place primarily in ::game.location|possessive:: ::game.setting:: streets, ::game.S.title:: is as much about survival horror as it is survival in the wake of tragedy.",
 }

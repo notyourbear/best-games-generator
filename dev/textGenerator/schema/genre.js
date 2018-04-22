@@ -52,5 +52,11 @@ export default {
   "genre-50": "Striving for a level of realism still pretty rare in games, the game combined classic adventure mechanics with an approach that would later be known as the ::game.genre:: genre.",
   "genre-51": "What seems like another boilerplate entry in the ::game.S.genre:: genre quickly establishes its own identity.",
   "genre-52": "Cloned and ported all over the place since, ::game.S.title:: is still one of the best ::game.S.genre:: games out there.",
-
+  "genre-53": "A follow up to one of the most important ::game.S.genre:: games of all time, ::game.S.title:: expanded the gameplay with new challenges and collectibles.",
+  "genre-54": "::game.S.title:: introduced a lot of mechanics that became staples in its genre.",
+  "genre-55": "Almost like two games in one, ::game.S.title:: requires players to be thoughtful and skilled at its genre-bending format.",
+  "genre-56": "::game.S.title:: set a lot of the standards people now expect from open world role-playing games.",
+  "genre-57": "::game.S.title|possessive:: incredible depth and attention to detail redefined a genre all about living in a different world in a different life.",
+  "genre-58": "::game.S.title:: still stands out as one of the higher-rated games in its genre.",
+  "genre-59": "::game.S.title:: reinvented the ::game.S.genre:: genre by removing its primary mechanic.",
 }

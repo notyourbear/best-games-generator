@@ -3,7 +3,7 @@ export default {
   "features-1": "Its innovative use of varied gameplay is an early example of a game pushing its gameplay beyond one schtick.",
   "features-2": "::game.S.title:: is a rare example of ::game.S.genre|articlize:: game incentivizing exploration.",
   "features-3": "Impossibly big, ::game.S.title:: gave players a world to lose themselves in.",
-  "features-4": "Pitting two players against each other with only a sword — success in ::game.S.title:: relies equally on skill and luck.",
+  "features-4": "No other game has matched the fluid grace of its brilliant mechanics.",
   "features-5": "::game.S.title:: combined visual novel elements to flesh out its lore and backstory, a move many saw as groundbreaking for the genre.",
   "features-6": "Tasking up to four players with breaking out of a castle, players were invited to utilize the interactive environment and items in the world to progress — something notable and revolutionary in ::game.S.releaseDate::.",
   "features-7": "Building upon great dungeon design and overall presentation, ::game.S.title:: also introduced new gameplay mechanics.",
@@ -55,4 +55,8 @@ export default {
   "features-53": "Its one of the industry's best examples of local multiplayer.",
   "features-54": "::game.S.title:: struck a beautiful balance between deep mechanics and fast, fluid execution.",
   "features-55": "Abandoning the obtuse design and seemingly random punishments many were accustomed to from similar games, ::game.S.title:: appealed to enough players to spawn several sequels and spinoffs.",
+  "features-56": "::game.S.title:: sports the most creative and varied level design of any ::game.S.genre:: game, bar none.",
+  "features-57": "The variety of ::game.S.title|possessive:: monsters, items and weapons provide the player with a million ways to attack the same problem.",
+  "features-58": "Featuring the most extensive character creators up to that point, players were free to be creative with their personas, giving them the chance to roleplay like never before.",
+  "features-59": "::game.S.title:: is one of those games so simple in its design, you rarely realize how brilliant it is.",
 }

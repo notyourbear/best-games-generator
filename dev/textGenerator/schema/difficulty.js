@@ -12,4 +12,17 @@ export default {
   "difficulty-10": "It expertly rode the line between simulation and arcade experience, making it possible for players of all skill levels to jump in, play, and find something to love.",
   "difficulty-11": "::game.S.title:: helped establish games as challenges to overcome through skill and reflex.",
   "difficulty-12": "The notoriously hard final boss offered a true test of skill, making this a game players constantly came back to, thinking, \"I've got it this time.\"",
+  "difficulty-13": "::game.S.title:: is noted for the surprising amount of depth and strategy required when playing through its worlds.",
+  "difficulty-14": "::game.S.title:: is a hard game, which is part of the attraction.",
+  "difficulty-15": "Challenging in all the right ways, ::game.S.title:: never outstays its welcome.",
+  "difficulty-16": "Requiring math skills, logic, and other skills to progress, on paper the game sounds like a nightmare.",
+  "difficulty-17": "::game.S.title:: is delightful brain teasing, requiring just the amount of thought to feel perplexing but not frustrating.",
+  "difficulty-18": "::game.S.title:: feels like a game of chess, where every move must be calculated and thought about.",
+  "difficulty-19": "Players had to strategically plan every movement before taking action, if they did not want to perish.",
+  "difficulty-20": "::game.S.title:: forces players to think outside the box.",
+  "difficulty-21": "::game.S.title:: necessitated that players be creative, making it stand out among other ::game.S.genre:: games released at the time.",
+  "difficulty-22": "Success in ::game.S.title:: relies equally on skill as it does luck.",
+  "difficulty-23": "::game.S.title::, inherently, creates an even playing field where any mistake you made could reliably only be caused by yourself.",
+  "difficulty-24": "::game.S.title:: excels by asking little of players while still being enough of a challenge to make for an engaging game.",
+  "difficulty-25": "::game.S.title:: takes seconds to understand but hours to put down."
 }

@@ -26,4 +26,12 @@ export default {
   "artStyle-24": "It was considered a pinnacle of video game visuals in ::game.S.releaseDate::.",
   "artStyle-25": "Its art deco metropolis-gone-wrong style instantly engrossed players in the action, enticing them to search every corner to learn what went wrong.",
   "artStyle-26": "A game as much about subtlety as it was grand scale, ::game.S.title:: is an example of games as high art.",
+  "artStyle-27": "::game.S.title:: derives its strength from its high core production values.",
+  "artStyle-28": "Its detailed graphics form a cohesive, wonderous whole, and its sound effects where at the apex of ::game.S.releaseDate::.",
+  "artStyle-29": "The blissful tunes and the indelibly vibrant colors conspire to conjure an experience of paradise.",
+  "artStyle-30": "It’s rare to encounter a game that so effectively transports you someplace so beautiful.",
+  "artStyle-31": "::game.S.title:: is all about movement and style, and it has both in spades.",
+  "artStyle-32": "The maps were a joy to get around and everything just looked <span class='emphasis'>so cool.</span>",
+  "artStyle-33": "Still one of the coolest games ever, ::game.S.title:: put style first, rewarding players for being flashy and violent.",
+  "artStyle-34": "::game.S.title:: revolutionized the way ::game.S.genre:: games could look and feel.",
 };

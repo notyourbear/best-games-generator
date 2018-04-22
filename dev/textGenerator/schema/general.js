@@ -53,4 +53,12 @@ export default {
   "general-52": "Its title song was the first game track to win a Grammy, so that's cool.",
   "general-53": "::game.S.title:: was more about the journey than the destination.",
   "general-54": "People still talk about ::game.S.title|possessive:: depth and mature approach to romance options, allowing players to choose their sexual orientation.",
+  "general-55": "The game maintains a cult following and spawned a sequel iterating on the bizarre approach to level design that made ::game.S.title:: a memorable journey.",
+  "general-56": "It's easy to see ::game.S.title:: as a fad, something for retailers to slap on children's clothes and backpacks.",
+  "general-57": "Since its release, the game has been plastered on millions of shirts and even received its own feature length film.",
+  "general-58": "It also birthed what's thought of as one of the best DLC episodes of all time.",
+  "general-59": "With 22.8 million players making the game $43.4 million within its first quarter of release, ::game.S.title:: reached — and continues to reach — more players than most critically acclaimed games.",
+  "general-60": "The success of ::game.S.title:: was so tremendous that it was adapted into other media like comics, television and film.",
+  "general-61": "Just ignore the online issues.",
+  "general-62": "In 2018, Emmett/Furla/Oasis Films secured the rights to make a ::game.S.title:: movie.",
 }

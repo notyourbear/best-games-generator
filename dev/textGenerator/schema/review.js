@@ -25,4 +25,7 @@ export default {
   "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
   "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay.",
   "review-25": "::site.title:: noted that the game was \"a sufficiently convincing universe of otherness that consumed your time while playing, and your attention when not.\"",
+  "review-26": "It is, as ::site.title:: said, \"perhaps the most ingenious and inspired idea ever for a game.\"",
+  "review-27": "::game.S.title:: is, as one writer puts it, \"arguably the most important ::game.S.genre:: game ever made.\"",
+  "review-28": "When this ::game.S.genre:: game released in ::game.S.releaseDate::, it was met with immense backlash and criticism, but the developer's intense commitment to the project led to a game that accrued millions of devoted players.",
 };
