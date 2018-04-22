@@ -30,7 +30,7 @@ export default {
   "genre-28": "::game.S.title:: managed to walk a tightrope between being simple yet experimental, and many critics consider it the best ::game.S.genre:: game of all time.",
   "genre-29": "For ::game.S.title:: fans, it still stands out as one of the best representations of the genre in games.",
   "genre-30": "::game.S.title:: dominated the ::game.S.genre:: genre.",
-  "genre-31": "::game.S.tilte:: distanced itself from other ::game.S.genre:: games with its extreme attention to detail.",
+  "genre-31": "::game.S.title:: distanced itself from other ::game.S.genre:: games with its extreme attention to detail.",
   "genre-32": "While ::game.S.genre:: games have a few forebears to their credit, none saw the same ubiquity and success as ::game.S.title::.",
   "genre-33": "::game.S.title:: is a master class in ::game.S.genre:: games, with a hero designed to appeal to, and inspire, a wide variety of gamers.",
   "genre-34": "Colorful, goofy and, most of all, fun, it was a far cry from the overly serious style of most ::game.S.genre:: games.",
