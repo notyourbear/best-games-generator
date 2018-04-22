@@ -5,7 +5,7 @@ export default {
   "plot-3": "Telling a semi-mature story about the dangers of robot sentience, ::game.S.title:: reinvented the :game.S.genre:: genre.",
   "plot-4": "::game.S.title:: told a story about becoming a professional skater.",
   "plot-5": "Bathed in the dying light of ::game.location::, ::game.S.title:: follows an aging truck driver as he delivers his final package to an address that can only be reached by a highway buried deep in the caves.",
-  "plot-6": "This game is a journey through ::game.location|articlize:: whose sun is setting, a place of tragic beauty where economic decline is painted in dream-like brush strokes of magical realism.",
+  "plot-6": "This game is a journey through ::game.location|articlize:: whose sun is setting, a place of tragic beauty painted in dream-like brush strokes of magical realism.",
   "plot-7": "The game allows players to explore its ::game.setting:: ::game.location:: in great detail.",
   "plot-8": "The developers showed that they could make one of the best endings the game industry has ever seen.",
   "plot-9": "On the surface a game about ::game.setting:: politics and war, ::game.S.title:: is more memorable for the deep, emotional relationships with which the player could engage.",

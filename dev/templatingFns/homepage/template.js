@@ -11,7 +11,6 @@ const homePageTemplate = (data = {}) => {
       <p>To celebrate their fifth birthday, the website Polygon decided to rank the 500 best games of all time.</p>
       <p>To pay homage, I thought it would be a fun project to create a generative version. </p>
       <p>The generator uses the title of the site as the seed for randomization; this makes a list easy to share, should you find a made up list that you think is worth sharing.</p>
-      <p>As example, in a universe where the website Polygonal exists, it's 11th best game of all time will always be a game called <span class="emphasis">Offworld Deadly Company</span>, a game I would most definitively play.</p>
     </div>
     <div class='form-container'>
       <div class='about-callout'>What even is this?</div>
