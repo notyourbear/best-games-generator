@@ -22,7 +22,7 @@ if (isHomePage) {
 
   let list = [];
   for (let i = number; i > 0; i--) {
-    let seed = siteName+i;
+    let seed = `${siteName}.${100/i}`;
     let amount = fns.between({array: [1,4], seed});
     let title = Title.create({seed, amount});
     let { systems, releaseDate, consoleType } = systemsGenerator({seed, title});

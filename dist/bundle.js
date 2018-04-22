@@ -16375,7 +16375,7 @@ if (isHomePage) {
 
   var list = [];
   for (var i = number; i > 0; i--) {
-    var seed = siteName + i;
+    var seed = siteName + '.' + 100 / i;
     var amount = fns.between({ array: [1, 4], seed: seed });
     var title = Title.create({ seed: seed, amount: amount });
 
