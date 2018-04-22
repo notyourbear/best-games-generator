@@ -52,4 +52,5 @@ export default {
   "general-51": "::game.S.title:: was a great example of a game challenging the conventional models of the industry.",
   "general-52": "Its title song was the first game track to win a Grammy, so that's cool.",
   "general-53": "::game.S.title:: was more about the journey than the destination.",
+  "general-54": "People still talk about ::game.S.title|possessive:: depth and mature approach to romance options, allowing players to choose their sexual orientation.",
 }

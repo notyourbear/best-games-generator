@@ -11,4 +11,6 @@ export default {
   "singlePlatform-9": "::game.S.title:: played like a dream despite — and in part because of — the unusual ::game.S.platform:: controller setup.",
   "singlePlatform-10": "It was one of the ::game.S.platform|possessive:: best looking games.",
   "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released.",
+  "singlePlatform-12": "It was one of the \"most unusual and original game[s] to hit ::game.S.platform::,\" according to ::site.title::.",
+  "singlePlatform-13": "::game.S.title:: pushed every inch of the ::game.S.platform:: farther than anyone knew it could go.",
 }

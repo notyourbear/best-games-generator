@@ -24,4 +24,5 @@ export default {
   "review-22": "::game.S.title|possessive:: dark world and addictive loot-based gameplay received critical and fan praise.",
   "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
   "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay.",
+  "review-25": "::site.title:: noted that the game was \"a sufficiently convincing universe of otherness that consumed your time while playing, and your attention when not.\"",
 };

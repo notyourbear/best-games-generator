@@ -6,4 +6,5 @@ export default {
   "mobile-4": "::game.S.title:: felt too big to be a mobile game.",
   "mobile-5": "Though now the genre is well-established on mobile, ::game.S.title:: was the first to make us enjoy ::game.S.genre:: games on the go.",
   "mobile-6": "::game.S.title:: didn't bring the ::game.S.genre:: to mobile; it was a tailor-made experience for the desires and demands of mobile players.",
+  "mobile-7": "::game.S.title:: found favor from critics when playing against other players, with some saying it was one of the \"meatiest mobile games out there.\"",
 }

@@ -16023,7 +16023,8 @@ var general = {
   "general-50": "::game.S.title:: was one of the most popular games released in ::game.S.releaseDate::.",
   "general-51": "::game.S.title:: was a great example of a game challenging the conventional models of the industry.",
   "general-52": "Its title song was the first game track to win a Grammy, so that's cool.",
-  "general-53": "::game.S.title:: was more about the journey than the destination."
+  "general-53": "::game.S.title:: was more about the journey than the destination.",
+  "general-54": "People still talk about ::game.S.title|possessive:: depth and mature approach to romance options, allowing players to choose their sexual orientation."
 };
 
 var genre = {
@@ -16077,7 +16078,10 @@ var genre = {
   "genre-47": "::game.S.title:: more or less created the modern ::game.S.genre:: genre.",
   "genre-48": "The game sold better than nearly any other ::game.S.genre:: game at the time.",
   "genre-49": "Ultimately, it was so popular that it's sometimes credited for killing the traditional ::game.S.title:: game.",
-  "genre-50": "Striving for a level of realism still pretty rare in games, the game combined classic adventure mechanics with an approach that would later be known as the ::game.genre:: genre.."
+  "genre-50": "Striving for a level of realism still pretty rare in games, the game combined classic adventure mechanics with an approach that would later be known as the ::game.genre:: genre.",
+  "genre-51": "What seems like another boilerplate entry in the ::game.S.genre:: genre quickly establishes its own identity.",
+  "genre-52": "Cloned and ported all over the place since, ::game.S.title:: is still one of the best ::game.S.genre:: games out there."
+
 };
 
 var mobile = {
@@ -16087,7 +16091,8 @@ var mobile = {
   "mobile-3": "The game's handheld nature made it addictive, since it was so easy to return to at a moment's notice.",
   "mobile-4": "::game.S.title:: felt too big to be a mobile game.",
   "mobile-5": "Though now the genre is well-established on mobile, ::game.S.title:: was the first to make us enjoy ::game.S.genre:: games on the go.",
-  "mobile-6": "::game.S.title:: didn't bring the ::game.S.genre:: to mobile; it was a tailor-made experience for the desires and demands of mobile players."
+  "mobile-6": "::game.S.title:: didn't bring the ::game.S.genre:: to mobile; it was a tailor-made experience for the desires and demands of mobile players.",
+  "mobile-7": "::game.S.title:: found favor from critics when playing against other players, with some saying it was one of the \"meatiest mobile games out there.\""
 };
 
 var singlePlatform = {
@@ -16102,7 +16107,9 @@ var singlePlatform = {
   "singlePlatform-8": "One of the biggest success stories of the ::game.S.platform::, ::game.S.title:: wasn't afraid to be weird, and its deeply emotional story remains a fan favorite still today.",
   "singlePlatform-9": "::game.S.title:: played like a dream despite — and in part because of — the unusual ::game.S.platform:: controller setup.",
   "singlePlatform-10": "It was one of the ::game.S.platform|possessive:: best looking games.",
-  "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released."
+  "singlePlatform-11": "::game.S.title:: was a relentless game full of inventive mechanics, culminating in one of the finest ::game.S.platform:: games ever released.",
+  "singlePlatform-12": "It was one of the \"most unusual and original game[s] to hit ::game.S.platform::,\" according to ::site.title::.",
+  "singlePlatform-13": "::game.S.title:: pushed every inch of the ::game.S.platform:: farther than anyone knew it could go."
 };
 
 var difficulty = {
@@ -16235,7 +16242,8 @@ var review = {
   "review-21": "::game.S.title:: \"obliterated\" the bar for online gaming when it released in ::game.S.releaseDate::, according to ::site.title::.",
   "review-22": "::game.S.title|possessive:: dark world and addictive loot-based gameplay received critical and fan praise.",
   "review-23": "::game.S.title:: received numerous perfect scores and spots on greatest games of all time lists.",
-  "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay."
+  "review-24": "The game reviewed to universal acclaim, with many praising its challenging gameplay.",
+  "review-25": "::site.title:: noted that the game was \"a sufficiently convincing universe of otherness that consumed your time while playing, and your attention when not.\""
 };
 
 var plot = {
