@@ -1192,7 +1192,7 @@ var homePageTemplate = function homePageTemplate() {
 
   document.title = 'The ' + number + ' best games of all time - ' + title;
 
-  return '\n    <div class=\'offscreen\'>\n      <h3>What Even Is This?</h3>\n      <p>To celebrate their fifth birthday, the website Polygon decided to rank the 500 best games of all time.</p>\n      <p>To pay homage, I thought it would be a fun project to create a generative version. </p>\n      <p>The generator uses the title of the site as the seed for randomization; this makes a list easy to share, should you find a made up list that you think is worth sharing.</p>\n      <p>As example, in a universe where the website Polygonal exists, it\'s 11th best game of all time will always be a game called <span class="emphasis">Offworld Deadly Company</span>, a game I would most definitively play.</p>\n    </div>\n    <div class=\'form-container\'>\n      <div class=\'about\'>What even is this?</div>\n      <div class="background-logo"></div>\n      <form class=\'form create-best-games\'>\n        <input id=\'title-input\' type=\'text\' name=\'title\' value=\'' + title + '\' autofocus>\n        <div>\n          <span> The </span>\n          <input id=\'amount-input\' type=\'number\' name=\'amount\' value=' + number + '>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id=\'submit-input\' type=\'submit\' name=\'submit\' value=\'View Now\'>\n     </form>\n    </div>';
+  return '\n    <div class=\'about offscreen\'>\n      <div>\xD7</div>\n      <h3>What Even Is This?</h3>\n      <p>To celebrate their fifth birthday, the website Polygon decided to rank the 500 best games of all time.</p>\n      <p>To pay homage, I thought it would be a fun project to create a generative version. </p>\n      <p>The generator uses the title of the site as the seed for randomization; this makes a list easy to share, should you find a made up list that you think is worth sharing.</p>\n      <p>As example, in a universe where the website Polygonal exists, it\'s 11th best game of all time will always be a game called <span class="emphasis">Offworld Deadly Company</span>, a game I would most definitively play.</p>\n    </div>\n    <div class=\'form-container\'>\n      <div class=\'about-callout\'>What even is this?</div>\n      <div class="background-logo"></div>\n      <form class=\'form create-best-games\'>\n        <input id=\'title-input\' type=\'text\' name=\'title\' value=\'' + title + '\' autofocus>\n        <div>\n          <span> The </span>\n          <input id=\'amount-input\' type=\'number\' name=\'amount\' value=' + number + '>\n          <span> best games of all time</span>\n        </div>\n        <span> After weeks of voting and arguments, we\u2019re ready to present our choices </span>\n        <input id=\'submit-input\' type=\'submit\' name=\'submit\' value=\'View Now\'>\n     </form>\n    </div>';
 };
 
 var paintHomePage = function paintHomePage(container) {
@@ -1243,6 +1243,21 @@ var formEvent = function formEvent() {
     if (urlFns.validateInputs(data)) {
       urlFns.setUrl.apply(urlFns, toConsumableArray(data));
     }
+  });
+};
+
+var aboutEvent = function aboutEvent() {
+  var callout = document.querySelector('.about-callout');
+  var about = document.querySelector('.about');
+
+  callout.addEventListener('click', function (e) {
+    e.preventDefault();
+    about.classList.remove('offscreen');
+  });
+
+  about.addEventListener('click', function (e) {
+    e.preventDefault();
+    about.classList.add('offscreen');
   });
 };
 
@@ -16405,5 +16420,6 @@ if (isHomePage) {
 }
 
 formEvent();
+aboutEvent();
 
 }());

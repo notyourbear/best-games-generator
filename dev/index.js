@@ -4,6 +4,7 @@ import fns from './fns';
 import paintHomePage from './templatingFns/homepage/paint';
 import paintListPage from  './templatingFns/listpage/paint';
 import formEvent from './templatingFns/formEvent';
+import aboutEvent from './templatingFns/aboutEvent';
 
 import titleGenerator from './titleGenerator/generator';
 import systemsGenerator from './systemsGenerator/generator';
@@ -47,3 +48,4 @@ if (isHomePage) {
 }
 
 formEvent();
+aboutEvent();

@@ -3,7 +3,7 @@ body {
   background: #f7f7f7;
 }
 
-.about {
+.about-callout {
   position: absolute;
   color: white;
   right: 20px;
@@ -13,22 +13,33 @@ body {
   cursor: pointer;
 }
 
-.offscreen {
+.about {
   font-size: 14px;
   line-height: 20px;
   cursor: pointer;
-  width: 35vw;
+  width: 30vw;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 10px;
   z-index: 100;
   background: #f7f7f7;
   padding: 25px;
   text-align: justify;
+  transition: all 1s ease-out;
 }
 
-.offscreen h3 {
+.about div {
+  float: right;
+  font-size: 20px;
+  margin-top: -10px;
+}
+
+.about h3 {
   margin: 0;
+}
+
+.offscreen {
+  right: -40vw;
 }
 
 .emphasis {
