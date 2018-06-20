@@ -59,4 +59,6 @@ export default {
   "features-57": "The variety of ::game.S.title|possessive:: monsters, items and weapons provide the player with a million ways to attack the same problem.",
   "features-58": "Featuring the most extensive character creators up to that point, players were free to be creative with their personas, giving them the chance to roleplay like never before.",
   "features-59": "::game.S.title:: is one of those games so simple in its design, you rarely realize how brilliant it is.",
+  "features-60": "A Japanese-style ninja fantasy featuring a grappling hook, the game offers a verticality in its level-design not often seen in similar games.",
+  "features-61": "It features a humongous open world powered by an amazing engine.",
 }

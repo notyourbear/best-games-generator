@@ -61,4 +61,7 @@ export default {
   "general-60": "The success of ::game.S.title:: was so tremendous that it was adapted into other media like comics, television and film.",
   "general-61": "Just ignore the online issues.",
   "general-62": "In 2018, Emmett/Furla/Oasis Films secured the rights to make a ::game.S.title:: movie.",
+  "general-63": "It’s an enveloping, relaxing experience, allowing players to sit back and let the game wash over them.",
+  "general-64": "It’s weird, gross and incredibly fun.",
+  "general-65": "::game.S.title:: has, in many ways, as close to a perfect story as we’ve seen from a massive AAA title.",
 }

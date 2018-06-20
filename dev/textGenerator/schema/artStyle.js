@@ -34,4 +34,5 @@ export default {
   "artStyle-32": "The maps were a joy to get around and everything just looked <span class='emphasis'>so cool.</span>",
   "artStyle-33": "Still one of the coolest games ever, ::game.S.title:: put style first, rewarding players for being flashy and violent.",
   "artStyle-34": "::game.S.title:: revolutionized the way ::game.S.genre:: games could look and feel.",
+  "artStyle-35": "::game.S.title:: has a rich, artistic quality. It's the sort of game that demands a photo mode.",
 };

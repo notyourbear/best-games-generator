@@ -59,4 +59,7 @@ export default {
   "genre-57": "::game.S.title|possessive:: incredible depth and attention to detail redefined a genre all about living in a different world in a different life.",
   "genre-58": "::game.S.title:: still stands out as one of the higher-rated games in its genre.",
   "genre-59": "::game.S.title:: reinvented the ::game.S.genre:: genre by removing its primary mechanic.",
+  "genre-60": "The release of this game established its developer as a world-leader in the ::game.S.genre:: genre.",
+  "genre-61": "When it released, ::game.S.title:: was the freshest take in years of the popular ::game.S.genre:: genre.",
+  "genre-62": "::game.S.title:: is a ::game.S.genre:: game for people who don’t yet know they like the genre.",
 }
