@@ -1316,4 +1316,12 @@ export default [
   "Resident Evil 2",
   "Ghost of Tsushima",
   "Anthem",
+  "Neo Cab",
+  "Assassin’s Creed Odyssey",
+  "Forza Horizon 4",
+  "Mario Tennis Aces",
+  "Quarantine Circular",
+  "Subsurface Circular",
+  "Super Mega Baseball",
+  "Super Mega Baseball 2",
 ];

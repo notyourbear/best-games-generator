@@ -35,4 +35,5 @@ export default {
   "artStyle-33": "Still one of the coolest games ever, ::game.S.title:: put style first, rewarding players for being flashy and violent.",
   "artStyle-34": "::game.S.title:: revolutionized the way ::game.S.genre:: games could look and feel.",
   "artStyle-35": "::game.S.title:: has a rich, artistic quality. It's the sort of game that demands a photo mode.",
+  "artStyle-36": "Art, music, sound effects, and settings are kept to a minimum. Rather, as in a good stage play, the direction achieves much with little.",
 };

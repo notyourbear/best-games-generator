@@ -63,4 +63,5 @@ export default {
   "plot-61": "Flawed. Full of heart. Unafraid. ::game.S.title:: took the ultra-gruff protagonist archetype and tore it to shreds.",
   "plot-62": "Taking place primarily in ::game.location|possessive:: ::game.setting:: streets, ::game.S.title:: is as much about survival horror as it is survival in the wake of tragedy.",
   "plot-63": "It presents a coherent vision of a futuristic America filled with enough sex, guns, and rock-and-roll to make even a hardcore ’80s rockstar blush.",
+  "plot-64": "The game tells an emotional ::game.S.genre:: story about gig labor, tech disruption & the experience of being a driver-for-hire.",
 }

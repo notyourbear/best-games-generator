@@ -64,4 +64,8 @@ export default {
   "general-63": "It’s an enveloping, relaxing experience, allowing players to sit back and let the game wash over them.",
   "general-64": "It’s weird, gross and incredibly fun.",
   "general-65": "::game.S.title:: has, in many ways, as close to a perfect story as we’ve seen from a massive AAA title.",
+  "general-66": "::game.S.title:: is a game that allows us to process what’s happening in this world within the safe (and beautifully animated) confines of a virtual one.",
+  "general-67": "It’s rare for a game to grab the player this strongly solely with its visuals.",
+  "general-68": "::game.S.title:: feels like going to your favorite restaurant and ordering your favorite dish, and finding out that today it will be prepared and garnished with ritzy, fresh ingredients.",
+  "general-69": "::game.S.title:: is a useful reminder that the ::game.S.genre:: genre can entertain us in the here and now, while straining toward a more thrilling tomorrow.",
 }

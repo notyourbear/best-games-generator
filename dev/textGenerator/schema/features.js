@@ -61,4 +61,6 @@ export default {
   "features-59": "::game.S.title:: is one of those games so simple in its design, you rarely realize how brilliant it is.",
   "features-60": "A Japanese-style ninja fantasy featuring a grappling hook, the game offers a verticality in its level-design not often seen in similar games.",
   "features-61": "It features a humongous open world powered by an amazing engine.",
+  "features-62": "::game.S.title:: lets players play as a man or woman, romance who they want regardless of gender, and participate in conversation via dialogue trees.",
+  "features-63": "The social features, persistent weather and seasonal effects help give the ::game.S.location:: setting depth and a sense of shared experience.",
 }
