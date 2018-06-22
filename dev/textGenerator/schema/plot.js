@@ -70,4 +70,8 @@ export default {
   "plot-68": "It features a memorable story about a brutal war, a conflict that makes your character an orphan facing off against an evil regime that stands in your way.",
   "plot-69": "The story is like nothing else. Imagine your friend got really, really high while thinking about food and you transcribed their thoughts and handed them to a talented studio with the express orders of turning it all into a game with remarkably good production values.",
   "plot-70": "::game.S.title:: would feel like a Pixar movie, were it not so fascinated with the death of human civilization at the hands (claws? maws?) of grotesque aliens.",
+  "plot-71": "It’s a game you feel in your gut, where you help topple a totalitarian regime by leaving a trail of broken and twisted mechs, as well as their dead pilots, littered across the stars.",
+  "plot-72": "The game is built around medieval and Renaissance politics played-out across the galaxy, with massive piloted mechs taking the place of the mounted knight.",
+  
+
 }

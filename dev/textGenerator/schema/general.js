@@ -74,4 +74,5 @@ export default {
   "general-73": "::game.S.title:: has a raucous, concussive energy stemming from the seemingly impossible nature of its visually stunning action.",
   "general-74": "The breathless pace of new ideas and the speed of the action is unrelenting in a breakneck way that shouldn’t work, yet paradoxically feels relaxing.",
   "general-75": "::game.S.title:: feels like a game we’ll remember as a distinctly ::game.S.releaseDate:: product: a glossy testament to the astonishing artistry and craft of games at this moment, and a reminder of how much room the medium still has to grow.",
+  "general-76": "It is a special game because it rewards curiosity. The game encourages you to take a minute and look at your surroundings. To explore—poke and prod a little.",
 }

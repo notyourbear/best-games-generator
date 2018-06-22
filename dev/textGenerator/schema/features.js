@@ -67,4 +67,6 @@ export default {
   "features-65": "::game.S.title:: set out to make us laugh — no easy task in a video game — and delivered in spades. Only the dourest soul could fail to crack a smile at its silly antics.",
   "features-66": "::game.S.title:: is smart about how it teaches you game mechanics, providing the freedom to play however you want right from the outset.",
   "features-67": "::game.S.title:: is all about the power of friendship. In this adventure, players have a single button used exclusively for befriending enemies.",
+  "features-68": "Rapid mechanical switch-up isn’t the exception in ::game.S.title::, it’s the rule. The game marries two key elements: satisfying game mechanics and level design that brings out the best in them.",
+  
 }

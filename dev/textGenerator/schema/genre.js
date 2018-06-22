@@ -65,4 +65,5 @@ export default {
   "genre-63": "::game.S.title:: is a ::game.S.genre:: game without its traditional trappings. In your first hours playing, you aren’t just learning a new game; you’re actively working to forget the training of an entire genre.",
   "genre-64": "::game.S.title:: is a methodical reimagining of the ::game.S.genre:: franchise.",
   "genre-65": "It is a feverishly optimistic (and welcomingly naive) ::game.S.genre:: game inspired, in part, by the works of Studio Ghibli.",
+  "genre-66": "::game.S.title:: is the rare tactics game that makes attrition a tool, not a mistake.",
 }
