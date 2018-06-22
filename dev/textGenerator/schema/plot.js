@@ -64,4 +64,10 @@ export default {
   "plot-62": "Taking place primarily in ::game.location|possessive:: ::game.setting:: streets, ::game.S.title:: is as much about survival horror as it is survival in the wake of tragedy.",
   "plot-63": "It presents a coherent vision of a futuristic America filled with enough sex, guns, and rock-and-roll to make even a hardcore ’80s rockstar blush.",
   "plot-64": "The game tells an emotional ::game.S.genre:: story about gig labor, tech disruption & the experience of being a driver-for-hire.",
+  "plot-65": "Its story is akin to a fully realized drama that plays out like a TV-miniseries, exploring themes like family, parenthood, aging and family legacies.",
+  "plot-66": "You play as a former member of a yakuza clan who’s fresh out of prison. After a three-year stint in jail, you just want to see your adopted daughter. Things don’t go as planned.",
+  "plot-67": "It tells the story of two teenage girls trapped in a small town.",
+  "plot-68": "It features a memorable story about a brutal war, a conflict that makes your character an orphan facing off against an evil regime that stands in your way.",
+  "plot-69": "The story is like nothing else. Imagine your friend got really, really high while thinking about food and you transcribed their thoughts and handed them to a talented studio with the express orders of turning it all into a game with remarkably good production values.",
+  "plot-70": "::game.S.title:: would feel like a Pixar movie, were it not so fascinated with the death of human civilization at the hands (claws? maws?) of grotesque aliens.",
 }

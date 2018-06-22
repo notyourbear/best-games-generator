@@ -68,4 +68,10 @@ export default {
   "general-67": "It’s rare for a game to grab the player this strongly solely with its visuals.",
   "general-68": "::game.S.title:: feels like going to your favorite restaurant and ordering your favorite dish, and finding out that today it will be prepared and garnished with ritzy, fresh ingredients.",
   "general-69": "::game.S.title:: is a useful reminder that the ::game.S.genre:: genre can entertain us in the here and now, while straining toward a more thrilling tomorrow.",
+  "general-70": "It is unadulterated joy, providing a frantic experience that never ceases to delight.",
+  "general-71": "There’s a strange, almost hypnotic flow to ::game.S.title::.",
+  "general-72": "The game feels like a complete joy to play, and all of its moving parts snap together tightly, rewarding a clear head and steady hands.",
+  "general-73": "::game.S.title:: has a raucous, concussive energy stemming from the seemingly impossible nature of its visually stunning action.",
+  "general-74": "The breathless pace of new ideas and the speed of the action is unrelenting in a breakneck way that shouldn’t work, yet paradoxically feels relaxing.",
+  "general-75": "::game.S.title:: feels like a game we’ll remember as a distinctly ::game.S.releaseDate:: product: a glossy testament to the astonishing artistry and craft of games at this moment, and a reminder of how much room the medium still has to grow.",
 }

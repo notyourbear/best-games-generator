@@ -62,4 +62,7 @@ export default {
   "genre-60": "The release of this game established its developer as a world-leader in the ::game.S.genre:: genre.",
   "genre-61": "When it released, ::game.S.title:: was the freshest take in years of the popular ::game.S.genre:: genre.",
   "genre-62": "::game.S.title:: is a ::game.S.genre:: game for people who don’t yet know they like the genre.",
+  "genre-63": "::game.S.title:: is a ::game.S.genre:: game without its traditional trappings. In your first hours playing, you aren’t just learning a new game; you’re actively working to forget the training of an entire genre.",
+  "genre-64": "::game.S.title:: is a methodical reimagining of the ::game.S.genre:: franchise.",
+  "genre-65": "It is a feverishly optimistic (and welcomingly naive) ::game.S.genre:: game inspired, in part, by the works of Studio Ghibli.",
 }

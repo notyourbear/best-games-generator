@@ -24,5 +24,7 @@ export default {
   "difficulty-22": "Success in ::game.S.title:: relies equally on skill as it does luck.",
   "difficulty-23": "::game.S.title::, inherently, creates an even playing field where any mistake you made could reliably only be caused by yourself.",
   "difficulty-24": "::game.S.title:: excels by asking little of players while still being enough of a challenge to make for an engaging game.",
-  "difficulty-25": "::game.S.title:: takes seconds to understand but hours to put down."
+  "difficulty-25": "::game.S.title:: takes seconds to understand but hours to put down.",
+  "difficulty-26": ":game.S.title:: is a challenging game, but notably, it includes tools to modify and alleviate the difficulty. You can slow the game speed, turn on invincibility or simply skip chapters.",
+  "difficulty-27": "For those who want a more difficult experience, collectible strawberries are tucked throughout the world, typically in precarious places, provoking highly skilled players to pursue challenge for no greater reason than it’s fun.",
 }

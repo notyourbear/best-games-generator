@@ -28,4 +28,7 @@ export default {
   "review-26": "It is, as ::site.title:: said, \"perhaps the most ingenious and inspired idea ever for a game.\"",
   "review-27": "::game.S.title:: is, as one writer puts it, \"arguably the most important ::game.S.genre:: game ever made.\"",
   "review-28": "When this ::game.S.genre:: game released in ::game.S.releaseDate::, it was met with immense backlash and criticism, but the developer's intense commitment to the project led to a game that accrued millions of devoted players.",
+  "review-29": "::site.title::, in it's review, named it \"some kind of ludicrous masterpiece\".",
+  "review-30": "Here’s ::site.title:: laying out everything you need to know about ::game.S.title::, \“To answer the most pressing questions about it: Yes, this game lets you be best friends with a cat.\”",
+  "review-31": "Here’s the take from ::site.title|possessive::, \“There’s not a wasted breath or a plot point that doesn’t manage to pay off in a significant way. ::game.S.title:: is a solid contemporary ::game.S.genre:: game that brings a lot of design ideas into sharp, clear focus while staying entertaining and engaging throughout.\”",
 };

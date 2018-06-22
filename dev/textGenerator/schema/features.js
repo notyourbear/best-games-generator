@@ -63,4 +63,8 @@ export default {
   "features-61": "It features a humongous open world powered by an amazing engine.",
   "features-62": "::game.S.title:: lets players play as a man or woman, romance who they want regardless of gender, and participate in conversation via dialogue trees.",
   "features-63": "The social features, persistent weather and seasonal effects help give the ::game.S.location:: setting depth and a sense of shared experience.",
+  "features-64": "All of ::game.S.title|possessive:: interlocking systems make for an arresting time sink that merges logic, forethought, psychology and experimentation.",
+  "features-65": "::game.S.title:: set out to make us laugh — no easy task in a video game — and delivered in spades. Only the dourest soul could fail to crack a smile at its silly antics.",
+  "features-66": "::game.S.title:: is smart about how it teaches you game mechanics, providing the freedom to play however you want right from the outset.",
+  "features-67": "::game.S.title:: is all about the power of friendship. In this adventure, players have a single button used exclusively for befriending enemies.",
 }
