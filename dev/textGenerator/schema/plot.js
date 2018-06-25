@@ -72,6 +72,5 @@ export default {
   "plot-70": "::game.S.title:: would feel like a Pixar movie, were it not so fascinated with the death of human civilization at the hands (claws? maws?) of grotesque aliens.",
   "plot-71": "It’s a game you feel in your gut, where you help topple a totalitarian regime by leaving a trail of broken and twisted mechs, as well as their dead pilots, littered across the stars.",
   "plot-72": "The game is built around medieval and Renaissance politics played-out across the galaxy, with massive piloted mechs taking the place of the mounted knight.",
-  
-
+  "plot-73": "Make no mistake about it, ::game.S.title:: is a weird game. It’s wrapped around a concept featuring sentient hat and enemy possession, but actually playing the game feels very familiar.",
 }
