@@ -19,4 +19,6 @@ export default {
   "art-18": "Still one of the coolest games ever, ::game.S.title:: put style first, rewarding players for being flashy and violent.",
   "art-19": "::game.S.title:: revolutionized the way ::game.S.genre:: games could look and feel.",
   "art-20": "::game.S.title:: has a rich and ::art.platitude:: quality. It is the sort of game that demands a photo mode.",
+  "art-21": "This is a game that grabs you and holds you, and it’s simple to get lost in the often sublime mixture of sights and sounds.",
+  "art-22": "::game.S.title:: inhabits a sumptuous world of color and mystery that demands to be explored.",
 }

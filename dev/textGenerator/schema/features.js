@@ -68,5 +68,7 @@ export default {
   "features-66": "::game.S.title:: is smart about how it teaches you game mechanics, providing the freedom to play however you want right from the outset.",
   "features-67": "::game.S.title:: is all about the power of friendship. In this adventure, players have a single button used exclusively for befriending enemies.",
   "features-68": "Rapid mechanical switch-up isn’t the exception in ::game.S.title::, it’s the rule. The game marries two key elements: satisfying game mechanics and level design that brings out the best in them.",
-  
+  "features-69": "::game.S.title:: is all about the providing moment-to-moment gameplay that is its own reward.",
+  "features-70": "::game.S.title:: sets an immensely high bar for storytelling, exuding careful and deliberate artistry in every aspect to create a world worth exploring.",
+
 }
