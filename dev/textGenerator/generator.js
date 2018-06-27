@@ -8,15 +8,17 @@ import mobile from './schema/mobile';
 import singlePlatform from './schema/singlePlatform';
 import difficulty from './schema/difficulty';
 import features from './schema/features';
-import artStyle from './schema/artStyle';
+import artStyle from './schema/art';
+import animation from './schema/animation';
 import review from './schema/review';
 import plot from './schema/plot';
 
 import game from './model/game';
 import site from './model/site';
+import art from './model/art';
 
 const generator = ({title, platform, releaseDate, type, seed}) => {
-  const model = Object.assign({}, game, site);
+  const model = Object.assign({}, game, site, art);
   model.game.title = title;
   model.game.platform = platform;
   model.game.releaseDate = '' + releaseDate;
@@ -30,12 +32,13 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   Object.assign(grammar, plot);
   Object.assign(grammar, features);
   Object.assign(grammar, artStyle);
+  Object.assign(grammar, animation);
 
-  const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'artStyle'];
+  const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'art', 'animation'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
-  let descriptors = fns.sample({array: options, seed, amount: 3});
+  const descriptors = fns.sample({array: options, seed, amount: 3});
 
   const entry = descriptors.reduce((string, option, i) => {
     const keyes = Object.keys(grammar);
@@ -45,7 +48,8 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   }, '');
 
   const schema = { model, grammar, entry };
-  return Deutung(schema, {seed}).compiled;
+  const generated = Deutung(schema, {seed});
+  return generated.compiled;
 };
 
 export default generator;
