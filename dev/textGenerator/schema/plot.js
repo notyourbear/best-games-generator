@@ -32,7 +32,7 @@ export default {
   "plot-30": "Pitting players against a race of enormous aliens and offering them over 100 guns to take the beasts down, the world is a playground.",
   "plot-31": "The game featured no heads-up display as players were tasked with breaking out of ::game.S.setting|articlize:: ::game.S.location:: by seemingly any means necessary.",
   "plot-32": "The objective of ::game.S.title:: is pretty simple: fight the bad guys.",
-  "plot-33": "Taking place primarily in ::game.location|possessive:: ::game.setting:: streets, ::game.S.title:: is as much about survival horror as it is survival in the wake of tragedy.",
+  "plot-33": "Taking place primarily in ::game.setting|articlize:: ::game.location|possessive:: streets, ::game.S.title:: is as much about survival horror as it is survival in the wake of tragedy.",
   "plot-34": "It presents a coherent vision of ::game.setting|articlize:: ::game.location:: filled with enough sex, guns, and rock-and-roll to make even a hardcore ’80s rockstar blush.",
   "plot-35": "The game told an emotional ::game.S.genre:: story about gig labor, tech disruption & the experience of being a ::game.vocaton::.",
   "plot-36": "Its story is akin to a fully realized drama that plays out like a TV-miniseries, exploring themes like family, parenthood, aging and family legacies.",

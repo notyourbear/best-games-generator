@@ -12,7 +12,7 @@ const model = {
       'Moscow',
       'Washington D.C.',
       'Hell',
-      'World War II era Germany',
+      'World War II',
       'Medieval Europe',
       'rural America',
       'City',
