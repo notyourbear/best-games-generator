@@ -21,4 +21,5 @@ export default {
   "art-20": "::game.S.title:: has a rich and ::art.platitude:: quality. It is the sort of game that demands a photo mode.",
   "art-21": "This is a game that grabs you and holds you, and it’s simple to get lost in the often sublime mixture of sights and sounds.",
   "art-22": "::game.S.title:: inhabits a sumptuous world of color and mystery that demands to be explored.",
+  "art-23": "It has a ::art.platitude:: look, allowing color and smart visual cues to do all its talking.",
 }

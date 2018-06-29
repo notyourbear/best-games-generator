@@ -12,6 +12,7 @@ import artStyle from './schema/art';
 import animation from './schema/animation';
 import review from './schema/review';
 import plot from './schema/plot';
+import critique from './schema/critique';
 
 import game from './model/game';
 import site from './model/site';
@@ -30,11 +31,12 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
   Object.assign(grammar, singlePlatform);
   Object.assign(grammar, difficulty);
   Object.assign(grammar, plot);
+  Object.assign(grammar, critique);
   Object.assign(grammar, features);
   Object.assign(grammar, artStyle);
   Object.assign(grammar, animation);
 
-  const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'art', 'animation'];
+  const options = ['plot', 'genre', 'general', 'review', 'difficulty', 'features', 'art', 'animation', 'critique'];
   if (platform.length === 1) options.push('singlePlatform');
   if (type === 'mobile') options.push('mobile');
 
