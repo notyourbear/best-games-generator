@@ -132,6 +132,10 @@ const model = {
       'witcher',
       'magician',
       'black mage',
+      'blacksmith',
+      'shopkeeper',
+      'gun-for-hire',
+      'cleric',
       'red mage',
       'rock star',
       'pirate',
@@ -142,7 +146,6 @@ const model = {
       'cowboy',
     ],
     concept: [
-      'friendship',
       'love',
       'motherhood',
       'fatherhood',
@@ -155,7 +158,6 @@ const model = {
       'despair',
       'depression',
       'relationships',
-      'science',
     ],
     personality: [
       'aging',

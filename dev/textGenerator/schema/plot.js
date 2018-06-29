@@ -49,4 +49,9 @@ export default {
   "plot-47": "::game.S.title:: is about ::game.vocation|articlize:: who ignores a whole bunch of foreboding signs and decides to embark on a journey that he believes will allow him to look into the future.",
   "plot-48": "::game.S.title|possessive:: appeal lies in randomized 10-minute stories about people coping with impending doom, ones that are meant to be generated again and again and shared with a few equally doomed friends.",
   "plot-49": "::game.S.title:: sends players soaring through alien landscapes and down thrilling valley dives with nothing but their wings.",
+  "plot-50": "::game.S.title:: let the player experience the minutiae of being ::game.vocation|articlize::.",
+  "plot-51": "::game.S.title:: details the struggles of ::game.vocation|articlize:: coping with ::game.concept|capitalize::.",
+  "plot-52": "Nothing came to close to ::game.S.title|possessive:: ::game.adjective:: portrayal of ::game.concept:: when it released in ::game.S.releaseDate::.",
+  "plot-53": "By getting to choose how tackle daily activities, the player got to turn the banalities of ::game.vocation:: life into soothing, charming experiences.",
+  "plot-54": "::game.S.title:: told the story of a young immigrant to ::game.setting|articlize:: ::game.location:: that had to begin life anew while picking up the trade of ::game.vocation|articlize::.",
 }

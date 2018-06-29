@@ -22,4 +22,5 @@ export default {
   "art-21": "This is a game that grabs you and holds you, and it’s simple to get lost in the often sublime mixture of sights and sounds.",
   "art-22": "::game.S.title:: inhabits a sumptuous world of color and mystery that demands to be explored.",
   "art-23": "It has a ::art.platitude:: look, allowing color and smart visual cues to do all its talking.",
+  "art-24": "At times, the visuals seemingly tear the fabric of reality apart with seismic waves of distorted color.",
 }

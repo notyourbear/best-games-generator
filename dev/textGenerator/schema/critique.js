@@ -34,4 +34,10 @@ export default {
   "critique-32": "Its high design masks a surprisingly tense ::game.S.genre:: game that demands lateral thinking, bold reinvention, and ruthless economics.",
   "critique-33": "The game’s real innovation is its seances, frequently conducted by decoding patches of ominous white noise. Janky, gloomy, and suffused with a dark beauty, ::game.S.title:: is a true original.",
   "critique-34": "A thrilling ending that dares the player to put their money where their mouth is ensures ::game.S.title:: holds strong and stable even as it constantly darts forward to its next big thought.",
+  "critique-35": "::game.S.title|possessive:: story was a watershed moment in narrative design.",
+  "critique-36": "The story ::game.S.title:: told was greater than the sum of its parts and managed to serve as a memorable elegy on the struggles with ::game.concept::.",
+  "critique-37": "It was a game unafraid to examine ::game.concept:: in smart, nuanced ways.",
+  "critique-38": "::game.S.title:: served as a scathing critique of the American dream.",
+  "critique-39": "::game.S.title|possessive:: showed the depth that game narratives were capable of attaining.",
+  "critique-40": "The game's ::game.adjective::, trope-breaking story found immediate and long-lasting acclaim.",
 }
