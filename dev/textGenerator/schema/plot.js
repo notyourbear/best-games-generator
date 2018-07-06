@@ -54,4 +54,6 @@ export default {
   "plot-52": "Nothing came to close to ::game.S.title|possessive:: ::game.adjective:: portrayal of ::game.concept:: when it released in ::game.S.releaseDate::.",
   "plot-53": "By getting to choose how tackle daily activities, the player got to turn the banalities of ::game.vocation:: life into soothing, charming experiences.",
   "plot-54": "::game.S.title:: told the story of a young immigrant to ::game.setting|articlize:: ::game.location:: that had to begin life anew while picking up the trade of ::game.vocation|articlize::.",
+  "plot-55": "::game.S.title:: is a universal story about ::game.concept:: tastefully spiced with complicated emotions.",
+  "plot-56": "Its story captured the feeling of being a 20-something ::game.S.vocation:: and feeling stuck on a path carrying you to a predetermined destination.",
 }
