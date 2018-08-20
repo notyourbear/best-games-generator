@@ -10,7 +10,12 @@ const populateState = ({array, state}) => {
 
 const create = ({state}) => (options = { amount: 2 }) => {
   let { amount, seed } = options;
-  return fns.createChain({state, amount, seed});
+  let title = fns.createChain({state, amount, seed});
+  while (titles.includes(title)) {
+    seed = seed += '1';
+    title = fns.createChain({state, amount, seed});
+  }
+  return title;
 }
 
 const Markov = () => {

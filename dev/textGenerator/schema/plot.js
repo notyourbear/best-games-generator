@@ -56,4 +56,6 @@ export default {
   "plot-54": "game.S.title:: told the story of a young immigrant to game.setting|articlize:: game.location:: that had to begin life anew while picking up the trade of game.vocation|articlize::.",
   "plot-55": "game.S.title:: is a universal story about game.concept:: tastefully spiced with complicated emotions.",
   "plot-56": "Its story captured the feeling of being a 20-something game.S.vocation:: and feeling stuck on a path carrying you to a predetermined destination.",
+  "plot-57": "Its powerful conclusion elevates the entire plot.",
+  "plot-58": "The slow-rolling apocalypse that unfolds across the game remains in the backdrop to better highlight its ambivalent exploration of humanity and ethics."
 }

@@ -1370,4 +1370,12 @@ export default [
   "Rainbow Skies",
   "Rainbow Moon",
   "No Heroes Here",
+  "F1 2018",
+  "Semblance",
+  "The Spectrum Retreat",
+  "State of Mind",
+  "Penguin Wars",
+  "Overcooked! 2",
+  "The Inner World: The Last Wind Monk",
+  "Kensho",
 ];
