@@ -46,12 +46,15 @@ const generator = ({title, platform, releaseDate, type, seed}) => {
     const keyes = Object.keys(grammar);
     const matches = keyes.filter(key => key.match(option, 'g'));
     const sampled = fns.sample({array: matches, seed});
-    return i === 0 ? `::!${sampled}::` : `${string} ::!${sampled}::`;
+    return i === 0 ? `!${sampled}::` : `${string} !${sampled}::`;
   }, '');
 
-  const schema = { model, grammar, entry };
-  const generated = Deutung(schema, {seed});
-  return generated.compiled;
+  const schema = { model, grammar };
+  const regex = /[^ ]*::/g;
+
+  const generator = new Deutung({entry, schema, seed, regex})
+  const result = generator.run();
+  return result;
 };
 
 export default generator;
