@@ -40,4 +40,5 @@ export default {
   "critique-38": "game.S.title:: served as a scathing critique of the American dream.",
   "critique-39": "game.S.title|possessive:: showed the depth that game narratives were capable of attaining.",
   "critique-40": "The game's game.adjective::, trope-breaking story found immediate and long-lasting acclaim.",
+  "critique-41": "game.S.title:: is the type of game I walk away from feeling more hopeful in the world.",
 }

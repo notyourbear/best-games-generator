@@ -19,6 +19,10 @@ const model = {
       "Shoshone National Forest",
       "Maximum Security Prison",
       "California",
+      "Mexiverse",
+      "Las Vegas",
+      "Three Kingdoms-era China",
+      
     ],
     setting: [
       'bizarre',

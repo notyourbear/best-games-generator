@@ -77,4 +77,5 @@ export default {
   "general-76": "It is a special game because it rewards curiosity. The game encourages you to take a minute and look at your surroundings. To explore—poke and prod a little.",
   "general-77": "game.S.title:: is not so much a game as it is an experience.",
   "general-78": "The action is intense and rewarding, particularly for perfectionists who don’t mind a grind.",
+  "general-79": "game.S.title:: is one of the best games ever made.",
 }

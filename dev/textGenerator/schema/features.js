@@ -71,5 +71,6 @@ export default {
   "features-69": "game.S.title:: is all about the providing moment-to-moment gameplay that is its own reward.",
   "features-70": "game.S.title:: sets an immensely high bar for storytelling, exuding careful and deliberate artistry in every aspect to create a world worth exploring.",
   "features-71": "Its greatest strength might be its minimal text.",
+  "features-72": "The sheer amount of content on offer across multiple modes is an achievement in itself, made even better by the way in which game.S.title:: unashamedly bathes players in the culture that inspired it.",
 
 }
