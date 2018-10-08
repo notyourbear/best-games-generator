@@ -72,5 +72,6 @@ export default {
   "features-70": "game.S.title:: sets an immensely high bar for storytelling, exuding careful and deliberate artistry in every aspect to create a world worth exploring.",
   "features-71": "Its greatest strength might be its minimal text.",
   "features-72": "The sheer amount of content on offer across multiple modes is an achievement in itself, made even better by the way in which game.S.title:: unashamedly bathes players in the culture that inspired it.",
+  "features-73": "game.S.title:: features a rich, beautiful world inhabited by compelling characters."
 
 }

@@ -58,5 +58,7 @@ export default {
   "plot-56": "Its story captured the feeling of being a 20-something game.S.vocation:: and feeling stuck on a path carrying you to a predetermined destination.",
   "plot-57": "Its powerful conclusion elevates the entire plot.",
   "plot-58": "The slow-rolling apocalypse that unfolds across the game remains in the backdrop to better highlight its ambivalent exploration of humanity and ethics.",
-  "plot-59": "game.S.title:: is a vibrant expansion full of wondrous new locales to explore, characters to meet, and stories to tell."
+  "plot-59": "game.S.title:: is a vibrant expansion full of wondrous new locales to explore, characters to meet, and stories to tell.",
+  "plot-60": "It presents us with a complex lead character, an authentic portrayal of a multifaceted person struggling with the agony of parental rejection, while living a life layered upon, rather than dedicated to, their own tragedy.",
+  
 }
