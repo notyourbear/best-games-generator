@@ -1445,9 +1445,10 @@ export default [
   "Yume Nikki: Dream Diary",
   "Zero Escape: Virtue's Last Reward",
   "Zone of the Enders: The Fist of Mars",
+  "Zone of the Enders: The 2nd Runner",
   "Zork",
   "inFamous",
-  "inFamous",
+  "inFamous 2",
   "Ōkami HD",
   "Ōkami",
 ];
